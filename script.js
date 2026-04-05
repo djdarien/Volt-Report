@@ -1,5 +1,8 @@
-// Your NewsData.io API Key
-const API_KEY = "pub_0a40bca6a31a4b92ae3f8eab6996da01"; // <-- Replace this!
+// NewsData configuration
+// NOTE: You previously had a client-side API key; re-enabling it so the site works
+// on GitHub Pages. If you prefer a proxy later, set USE_PROXY = true and provide a server endpoint.
+const API_KEY = "pub_0a40bca6a31a4b92ae3f8eab6996da01"; // original key restored per request
+const USE_PROXY = false; // set to true if you later add a server-side proxy at /api/news
 
 // Default landing page query
 let currentQuery = "Tesla";
@@ -37,11 +40,20 @@ function updateCategory(query) {
 // Fetch news from NewsData.io
 async function fetchNews() {
   const newsContainer = document.getElementById("news-container");
+  newsContainer.setAttribute('aria-busy', 'true');
   newsContainer.innerHTML = "<p>Loading latest EV news...</p>";
 
-  const endpoint = `https://newsdata.io/api/1/news?apikey=${API_KEY}&q=${encodeURIComponent(
-    currentQuery
-  )}&language=en&country=us&image=1`;
+  let endpoint = null;
+  if (API_KEY && !USE_PROXY) {
+    endpoint = `https://newsdata.io/api/1/news?apikey=${API_KEY}&q=${encodeURIComponent(currentQuery)}&language=en&country=us&image=1`;
+  } else if (USE_PROXY) {
+    // Expect a server-side proxy at /api/news that accepts the same query params
+    endpoint = `/api/news?q=${encodeURIComponent(currentQuery)}&language=en&country=us&image=1`;
+  } else {
+    newsContainer.innerHTML = "<p class='notice'>No API configured. Please configure a server-side proxy or set an API key (not recommended).</p>";
+    newsContainer.setAttribute('aria-busy', 'false');
+    return;
+  }
 
   try {
     const response = await fetch(endpoint);
@@ -76,7 +88,10 @@ async function fetchNews() {
 
       const img = document.createElement("img");
       img.src = imgSrc;
-      img.alt = article.title;
+      img.alt = article.title || "Article image";
+      img.loading = "lazy";
+      img.decoding = "async";
+      img.width = 600;
 
       imgLink.appendChild(img);
       card.appendChild(imgLink);
@@ -103,16 +118,17 @@ async function fetchNews() {
       // Share Button
       const shareBtn = document.createElement("button");
       shareBtn.textContent = "Share";
-      shareBtn.onclick = () =>
-        shareArticle(article.title, article.link || "#");
+      shareBtn.setAttribute('aria-label', `Share article: ${article.title}`);
+      shareBtn.onclick = () => shareArticle(article.title, article.link || "#");
       card.appendChild(shareBtn);
 
       newsContainer.appendChild(card);
     });
+    newsContainer.setAttribute('aria-busy', 'false');
   } catch (err) {
     console.error("Error fetching NewsData articles:", err);
-    newsContainer.innerHTML =
-      "<p>Error loading news. Please try again later.</p>";
+    newsContainer.innerHTML = "<p>Error loading news. Please try again later.</p>";
+    newsContainer.setAttribute('aria-busy', 'false');
   }
 }
 
@@ -125,8 +141,13 @@ function shareArticle(title, url) {
         url,
       })
       .catch((err) => console.error("Share failed:", err));
+  } else if (navigator.clipboard) {
+    navigator.clipboard.writeText(`${title} - ${url}`).then(() => {
+      alert("Link copied to clipboard.");
+    });
   } else {
-    alert("Sharing not supported on this browser.");
+    // Fallback: select and copy via prompt
+    window.prompt("Copy this link:", url);
   }
 }
 

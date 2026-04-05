@@ -21,6 +21,8 @@
           <div class="dropdown-submenu">
             <a href="index.html">EV News</a>
             <a href="guides.html">EV Guides</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="charging.html">Charging</a>
             <a href="chat.html" class="active">Chat Assistant</a>
             <a href="about.html">About</a>
             <a href="privacy.html">Privacy Policy</a>
@@ -53,7 +55,7 @@
           >
           <h2>Talk to the EV Expert</h2>
           <p>Click below to start chatting with our AI-powered assistant — your personal guide to all things electric vehicles.</p>
-          <button class="chat-button" onclick="window.open('https://ev-expert-chat-701502515049.us-west1.run.app/', '_blank')">
+          <button class="chat-button" onclick="openExternal('https://ev-expert-chat-701502515049.us-west1.run.app/')">
             🚗 Open Chat
           </button>
         </div>
@@ -71,6 +73,10 @@
     }
     function toggleSidenav() {
       document.getElementById("sidenav").classList.toggle("open");
+    }
+    function openExternal(url){
+      const w = window.open(url, '_blank');
+      try{ if(w) w.opener = null; }catch(e){}
     }
   </script>
 

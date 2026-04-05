@@ -47,12 +47,36 @@
 <body class="no-sidenav">
   <!-- Top Navbar -->
   <nav class="navbar">
-    <div class="logo"><a href="index.html">Simplify EV News</a></div>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="guides.html" class="active">EV Guides</a>
-      <a href="chat.html">Ask ChatGPT</a>
-      <a href="about.html">About</a>
+    <div class="nav-inner">
+      <div class="logo"><a href="index.html">Simplify EV News</a></div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Categories ▾</button>
+          <div class="dropdown-menu" role="menu" aria-label="EV Categories">
+            <div style="padding:6px 10px;color:#ccc;font-weight:700">Tesla</div>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model 3')">Model 3</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model Y')">Model Y</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model S')">Model S</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model X')">Model X</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Cybertruck')">Cybertruck</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Autopilot')">Autopilot</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla FSD')">Full Self-Driving</a>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.06);margin:8px 0">
+            <div style="padding:6px 10px;color:#ccc;font-weight:700">Other EVs</div>
+            <a href="#" role="menuitem" onclick="updateCategory('Rivian')">Rivian</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Lucid Motors')">Lucid</a>
+            <a href="#" role="menuitem" onclick="updateCategory('BYD EV')">BYD</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Volkswagen EV')">Volkswagen</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Ford EV')">Ford (Mach-E, Lightning)</a>
+          </div>
+        </div>
+        <a href="guides.html" class="active">EV Guides</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="charging.html">Charging</a>
+        <a href="chat.html">Ask EVy chat bot</a>
+        <a href="about.html">About</a>
+      </div>
     </div>
   </nav>
 
@@ -66,20 +90,20 @@
         <div class="guide-section">
           <h3>Tesla Manuals</h3>
           <div class="guide-card">
-            <img src="images/tesla-gallery-model-3-2024/Model3_48.jpg" alt="Tesla Model 3" />
+            <img src="images/tesla-gallery-model-3-2024/Model3_48.jpg" alt="Tesla Model 3" loading="lazy" decoding="async" />
             <div class="guide-card-content">
               <h4>Model 3 Manual</h4>
               <p>Read the official Tesla Model 3 manual for detailed information on operation, safety, and features.</p>
-              <a href="https://www.tesla.com/ownersmanual/model3/en_us/" target="_blank">View Manual</a>
+              <a href="https://www.tesla.com/ownersmanual/model3/en_us/" target="_blank" rel="noopener noreferrer">View Manual</a>
             </div>
           </div>
 
           <div class="guide-card">
-            <img src="images/tesla-gallery-sales/Sales_94.jpg" alt="Tesla Model Y" />
+            <img src="images/tesla-gallery-sales/Sales_94.jpg" alt="Tesla Model Y" loading="lazy" decoding="async" />
             <div class="guide-card-content">
               <h4>Model Y Manual</h4>
               <p>Explore everything you need to know about your Tesla Model Y, from charging to advanced features.</p>
-              <a href="https://www.tesla.com/ownersmanual/modely/en_us/" target="_blank">View Manual</a>
+              <a href="https://www.tesla.com/ownersmanual/modely/en_us/" target="_blank" rel="noopener noreferrer">View Manual</a>
             </div>
           </div>
         </div>
@@ -88,11 +112,11 @@
         <div class="guide-section">
           <h3>Charging Resources</h3>
           <div class="guide-card">
-            <img src="images/tesla-gallery-wall-connector/WallConnector_87.jpg" alt="EV Charging" />
+            <img src="images/tesla-gallery-wall-connector/WallConnector_87.jpg" alt="EV Charging" loading="lazy" decoding="async" />
             <div class="guide-card-content">
               <h4>PlugShare</h4>
               <p>Find charging stations near you with PlugShare, a community-driven charging map.</p>
-              <a href="https://www.plugshare.com/" target="_blank">Visit PlugShare</a>
+              <a href="https://www.plugshare.com/" target="_blank" rel="noopener noreferrer">Visit PlugShare</a>
             </div>
           </div>
 

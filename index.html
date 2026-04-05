@@ -7,97 +7,67 @@
   <meta name="description" content="Simplify EV News - Get the latest news on Tesla, EV cars, charging, and the future of electric mobility.">
   <title>Simplify EV News - Tesla & Electric Vehicle Updates</title>
   <link rel="stylesheet" href="style.css">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3211630470920033"
-     crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <meta property="og:title" content="Simplify EV News - Tesla & Electric Vehicle Updates">
+  <meta property="og:description" content="Your daily hub for Tesla and electric vehicle news.">
+  <meta property="og:image" content="images/tesla-gallery-sales/Sales_94.jpg">
+  <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
-  <div class="container">
-    <!-- Side Navigation -->
-    <div class="sidenav" id="sidenav">
-      <div class="sidenav-header">
-        <h2>Simplify EV News</h2>
-        <span class="closebtn" onclick="toggleSidenav()">&times;</span>
-      </div>
-
-      <!-- EV Guides -->
-      <button class="dropbtn">
+  <a class="sr-only skip-link" href="#main">Skip to content</a>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="logo"><a href="index.html">Simplify EV News</a></div>
+      <button class="openbtn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <div class="nav-dropdown" id="ev-categories">
+          <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Categories ▾</button>
+          <div class="dropdown-menu" role="menu" aria-label="EV Categories">
+            <div style="padding:6px 10px;color:#ccc;font-weight:700">Tesla</div>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model 3')">Model 3</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model Y')">Model Y</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model S')">Model S</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model X')">Model X</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Cybertruck')">Cybertruck</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Autopilot')">Autopilot</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla FSD')">Full Self-Driving</a>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.06);margin:8px 0">
+            <div style="padding:6px 10px;color:#ccc;font-weight:700">Other EVs</div>
+            <a href="#" role="menuitem" onclick="updateCategory('Rivian')">Rivian</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Lucid Motors')">Lucid</a>
+            <a href="#" role="menuitem" onclick="updateCategory('BYD EV')">BYD</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Volkswagen EV')">Volkswagen</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Ford EV')">Ford (Mach-E, Lightning)</a>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.06);margin:8px 0">
+            <div style="padding:6px 10px;color:#ccc;font-weight:700">Charging & Tech</div>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Supercharger')">Superchargers</a>
+            <a href="#" role="menuitem" onclick="updateCategory('EV Charging Stations')">Public Charging</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Battery Technology')">Battery Tech</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Solid State Batteries')">Solid State</a>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.06);margin:8px 0">
+            <a href="#" role="menuitem" onclick="updateCategory('EV incentives')">Government Incentives</a>
+            <a href="#" role="menuitem" onclick="updateCategory('EV Market')">EV Market</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Sustainability')">Sustainability</a>
+          </div>
+        </div>
+        <a href="chat.html">Ask EVy chat bot</a>
         <a href="guides.html">EV Guides</a>
-      </button>
-
-      <!-- EV Categories -->
-      <button class="dropbtn">EV Categories</button>
-      <div class="dropdown-content">
-
-        <!-- Tesla -->
-        <div class="dropdown-item">
-          <span class="dropdown-title">Tesla</span>
-          <div class="dropdown-submenu">
-            <a href="#" onclick="updateCategory('Tesla Model 3')">Model 3</a>
-            <a href="#" onclick="updateCategory('Tesla Model Y')">Model Y</a>
-            <a href="#" onclick="updateCategory('Tesla Model S')">Model S</a>
-            <a href="#" onclick="updateCategory('Tesla Model X')">Model X</a>
-            <a href="#" onclick="updateCategory('Cybertruck')">Cybertruck</a>
-            <a href="#" onclick="updateCategory('Tesla Autopilot')">Autopilot</a>
-            <a href="#" onclick="updateCategory('Tesla FSD')">Full Self-Driving</a>
-          </div>
-        </div>
-
-        <!-- Other EVs -->
-        <div class="dropdown-item">
-          <span>Other EVs</span>
-          <div class="dropdown-submenu">
-            <a href="#" onclick="updateCategory('Rivian')">Rivian</a>
-            <a href="#" onclick="updateCategory('Lucid Motors')">Lucid</a>
-            <a href="#" onclick="updateCategory('BYD EV')">BYD</a>
-            <a href="#" onclick="updateCategory('Volkswagen EV')">Volkswagen</a>
-            <a href="#" onclick="updateCategory('Ford EV')">Ford (Mach-E, Lightning)</a>
-          </div>
-        </div>
-
-        <!-- Charging & Batteries -->
-        <div class="dropdown-item">
-          <span>Charging</span>
-          <div class="dropdown-submenu">
-            <a href="#" onclick="updateCategory('Tesla Supercharger')">Superchargers</a>
-            <a href="#" onclick="updateCategory('EV Charging Stations')">Public Charging</a>
-            <a href="#" onclick="updateCategory('Battery Technology')">Battery Tech</a>
-            <a href="#" onclick="updateCategory('Solid State Batteries')">Solid State</a>
-          </div>
-        </div>
-
-        <!-- Industry -->
-        <div class="dropdown-item">
-          <span>EV Industry</span>
-          <div class="dropdown-submenu">
-            <a href="#" onclick="updateCategory('EV incentives')">Government Incentives</a>
-            <a href="#" onclick="updateCategory('EV Market')">EV Market</a>
-            <a href="#" onclick="updateCategory('Sustainability')">Sustainability</a>
-            <a href="#" onclick="updateCategory('EV Infrastructure')">Infrastructure</a>
-          </div>
-        </div>
-
-        <!-- Site Info -->
-        <div class="dropdown-item">
-          <span>Site Info</span>
-          <div class="dropdown-submenu">
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact Us</a>
-            <a href="privacy.html">Privacy Policy</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Extra -->
-      <div class="additional-controls">
-        <button onclick="window.location.href='https://www.streamlabs.com/khaos_Demon'">Donate</button>
+        <a href="reviews.html">Reviews</a>
+        <a href="charging.html">Charging</a>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="contact.html">Contact Us</a>
       </div>
     </div>
+  </nav>
 
+  <div class="container">
     <!-- Main Content -->
     <div class="main-content">
       <!-- Header -->
       <header class="header hero">
-        <button class="openbtn" onclick="toggleSidenav()">&#9776;</button>
         <h1>Simplify EV News</h1>
         <h3>Your daily hub for the latest Tesla and electric vehicle news, plus guides and more!</h3>
       </header>
@@ -105,7 +75,7 @@
       <!-- News Grid -->
       <main>
         <h2>EV Headlines</h2>
-        <div id="news-container" class="grid"></div>
+        <div id="news-container" class="grid" aria-live="polite" aria-busy="false"></div>
       </main>
 
       <!-- Google AdSense -->
@@ -116,9 +86,7 @@
              data-ad-layout-key="-5n+bu-1z-4o+vr"
              data-ad-client="ca-pub-3211630470920033"
              data-ad-slot="6828138977"></ins>
-        <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+        <!-- AdSense will be loaded after user consent via consent.js -->
       </div>
 
       <!-- Footer -->
@@ -128,6 +96,38 @@
     </div>
   </div>
 
+  <script src="consent.js"></script>
   <script src="script.js"></script>
+  <script>
+    // Mobile menu toggle for the top navbar
+    document.addEventListener('DOMContentLoaded', function(){
+      const btn = document.getElementById('mobile-menu-btn');
+      const links = document.getElementById('nav-links');
+      if(!btn || !links) return;
+      btn.addEventListener('click', ()=>{
+        links.classList.toggle('open');
+      });
+
+      // Dropdown toggle behavior for mobile: delegate to dropdown-toggle buttons
+      document.querySelectorAll('.dropdown-toggle').forEach(btn=>{
+        btn.addEventListener('click', (e)=>{
+          // On small screens, toggle the parent .nav-dropdown open state
+          const parent = btn.closest('.nav-dropdown');
+          if(!parent) return;
+          parent.classList.toggle('open');
+          const expanded = parent.classList.contains('open');
+          btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+          e.stopPropagation();
+        });
+      });
+
+      // Close dropdowns when clicking outside
+      document.addEventListener('click', ()=>{
+        document.querySelectorAll('.nav-dropdown.open').forEach(el=>el.classList.remove('open'));
+        document.querySelectorAll('.dropdown-toggle[aria-expanded]')
+          .forEach(b=>b.setAttribute('aria-expanded', 'false'));
+      });
+    });
+  </script>
 </body>
 </html>

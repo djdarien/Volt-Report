@@ -11,14 +11,38 @@
 <body>
   <!-- Top Navbar -->
   <nav class="navbar">
-    <div class="logo"><a href="index.html">Simplify EV News</a></div>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="chat.html">Ask ChatGPT</a>
-      <a href="guides.html">EV Guides</a>
-      <a href="privacy.html" class="active">Privacy Policy</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact Us</a>
+    <div class="nav-inner">
+      <div class="logo"><a href="index.html">Simplify EV News</a></div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Categories ▾</button>
+          <div class="dropdown-menu" role="menu" aria-label="EV Categories">
+            <div style="padding:6px 10px;color:#ccc;font-weight:700">Tesla</div>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model 3')">Model 3</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model Y')">Model Y</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model S')">Model S</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model X')">Model X</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Cybertruck')">Cybertruck</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Autopilot')">Autopilot</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla FSD')">Full Self-Driving</a>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.06);margin:8px 0">
+            <div style="padding:6px 10px;color:#ccc;font-weight:700">Other EVs</div>
+            <a href="#" role="menuitem" onclick="updateCategory('Rivian')">Rivian</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Lucid Motors')">Lucid</a>
+            <a href="#" role="menuitem" onclick="updateCategory('BYD EV')">BYD</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Volkswagen EV')">Volkswagen</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Ford EV')">Ford (Mach-E, Lightning)</a>
+          </div>
+        </div>
+        <a href="chat.html">Ask EVy chat bot</a>
+        <a href="guides.html">EV Guides</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="charging.html">Charging</a>
+        <a href="privacy.html" class="active">Privacy Policy</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
     </div>
   </nav>
 
@@ -78,6 +102,9 @@
         <p>
           By using our website, you hereby consent to our Privacy Policy 
           and agree to its terms.
+        </p>
+        <p>
+          We show third-party ads and analytics only after you give explicit consent via the cookie banner. You can change your preference at any time by clearing site data or using the banner control.
         </p>
       </div>
     </main>

@@ -1,15 +1,13 @@
-<!-- contact.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Contact Simplify News">
-  <title>Contact Us - Simplify EV News</title>
+  <meta name="description" content="Charging Resources - Simplify EV News">
+  <title>Charging Resources - Simplify EV News</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <!-- Top Navbar -->
+<body class="no-sidenav">
   <nav class="navbar">
     <div class="nav-inner">
       <div class="logo"><a href="index.html">Simplify EV News</a></div>
@@ -38,33 +36,47 @@
         <a href="chat.html">Ask EVy chat bot</a>
         <a href="guides.html">EV Guides</a>
         <a href="reviews.html">Reviews</a>
-        <a href="charging.html">Charging</a>
-        <a href="privacy.html">Privacy Policy</a>
+        <a href="charging.html" class="active">Charging</a>
         <a href="about.html">About</a>
-        <a href="contact.html" class="active">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="contact.html">Contact Us</a>
       </div>
     </div>
   </nav>
 
-  <!-- Additional Controls -->
-  <div class="additional-controls">
+  <div class="container">
+    <main class="main-content">
+      <header class="page-header">
+        <h2>Charging Resources</h2>
+        <p>Guides and tools to help you find chargers, understand charging speeds, and plan trips.</p>
+      </header>
 
-    <button onclick="window.location.href='https://www.streamlabs.com/khaos_Demon'">Donate</button>
-  </div>
+      <section>
+        <div class="guide-card">
+          <img src="images/tesla-gallery-wall-connector/WallConnector_87.jpg" alt="Wall Connector" loading="lazy" decoding="async">
+          <div class="guide-card-content">
+            <h4>Home Charging</h4>
+            <p>Recommendations for home chargers, installations, and cost estimates.</p>
+            <a href="#" class="read-more">Get Started</a>
+          </div>
+        </div>
 
-  <!-- Main Content -->
-  <div class="main-content">
-    <header class="page-header">
-      <h2>Contact Us</h2>
-    </header>
-    <main>
-      <p>If you’d like to reach out to us, feel free to send an email:</p>
-      <p><a href="mailto:info@simplifynews.info">info@simplifynews.info</a></p>
+        <div class="guide-card">
+          <img src="images/tesla-gallery-sales/Sales_93.jpg" alt="Supercharger" loading="lazy" decoding="async">
+          <div class="guide-card-content">
+            <h4>Public Charging Networks</h4>
+            <p>When to use Superchargers, third-party networks, and port adapters.</p>
+            <a href="#" class="read-more">Learn More</a>
+          </div>
+        </div>
+      </section>
+
     </main>
-    <footer>
-      <p>Powered by NewsData API</p>
-    </footer>
   </div>
+
+  <footer>
+    <p>© 2026 Simplify EV News</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
