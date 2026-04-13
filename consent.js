@@ -2,7 +2,7 @@
 // Stores consent in localStorage key: 'simplifynews_consent_ads'
 
 (function(){
-  const CONSENT_KEY = 'simplifynews_consent_ads';
+  const CONSENT_KEY = 'voltreport_consent_ads';
 
   function hasConsent(){
     return localStorage.getItem(CONSENT_KEY) === 'granted';
@@ -18,7 +18,7 @@
     banner.innerHTML = `
       <div class="consent-inner">
         <div class="consent-copy">
-          <strong>Simplify EV News</strong> uses ads to support the site. Do you accept loading ads and analytics on this device?
+          <strong>Volt Report</strong> uses ads to support the site. Do you accept loading ads and analytics on this device?
         </div>
         <div class="consent-actions">
           <button id="consent-accept" class="btn primary">Accept</button>

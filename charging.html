@@ -3,37 +3,150 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Charging Resources - Simplify EV News">
-  <title>Charging Resources - Simplify EV News</title>
+  <meta name="description" content="EV Charging Guide - Superchargers, home charging, networks, and tips for electric vehicle owners. Find charging stations and learn charging speeds.">
+  <meta name="og:title" content="EV Charging Guide - Volt Report">
+  <meta name="og:description" content="Complete EV charging resources including home setup, public networks, charging speeds, and cost comparisons.">
+  <title>Charging Guide - Volt Report</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .charging-section { margin: 3rem 0; padding: 2rem 0; border-bottom: 1px solid #eee; }
+    .charging-section h2 { color: #000; margin-bottom: 2rem; font-size: 28px; font-weight: 700; }
+    .charging-section:last-child { border-bottom: none; }
+    
+    .charging-card {
+      background: #fff;
+      border: 1px solid rgba(204,0,0,0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      transition: box-shadow .22s ease, border-color .22s ease;
+    }
+    
+    .charging-card:hover {
+      box-shadow: 0 8px 28px rgba(204,0,0,0.15);
+      border-color: rgba(204,0,0,0.3);
+    }
+    
+    .charging-card h3 { color: #000; margin-bottom: 1rem; font-size: 20px; }
+    .charging-card p { margin: 0 0 1rem; color: #555; line-height: 1.6; }
+    .charging-card ul { margin: 0 0 1rem 1.5rem; padding: 0; }
+    .charging-card li { margin-bottom: 0.5rem; color: #555; }
+    
+    .speed-chart {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .speed-item {
+      background: linear-gradient(135deg, rgba(204,0,0,0.05) 0%, rgba(204,0,0,0.02) 100%);
+      border-left: 4px solid #cc0000;
+      padding: 1.5rem;
+      border-radius: 8px;
+    }
+    
+    .speed-item h4 { color: #000; margin: 0 0 0.5rem; font-weight: 700; }
+    .speed-item .speed { font-size: 18px; font-weight: 700; color: #cc0000; margin: 0.5rem 0; }
+    .speed-item p { font-size: 0.9rem; color: #666; margin: 0; }
+    
+    .network-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .network-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: border-color .22s ease;
+    }
+    
+    .network-card:hover { border-color: #cc0000; }
+    .network-card h4 { color: #000; margin: 0.5rem 0; font-weight: 700; }
+    .network-card .badge { display: inline-block; background: #cc0000; color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.85rem; margin: 0.5rem 0; }
+    .network-card a { color: #cc0000; text-decoration: none; font-weight: 600; }
+    .network-card a:hover { text-decoration: underline; }
+    
+    .tip-box {
+      background: rgba(204,0,0,0.08);
+      border-left: 4px solid #cc0000;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+    
+    .tip-box h4 { color: #000; margin: 0 0 0.5rem; }
+    .tip-box p { margin: 0.5rem 0; }
+    
+    .cost-comparison {
+      overflow-x: auto;
+      margin: 2rem 0;
+    }
+    
+    .cost-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    .cost-table thead { background: #000; color: #fff; }
+    .cost-table th { padding: 1rem; text-align: left; font-weight: 700; border-bottom: 3px solid #cc0000; }
+    .cost-table td { padding: 1rem; border-bottom: 1px solid #eee; }
+    .cost-table tbody tr:hover { background: rgba(204,0,0,0.02); }
+    
+    .cta-section {
+      background: linear-gradient(135deg, #000 0%, #111 100%);
+      color: #fff;
+      padding: 3rem 2rem;
+      border-radius: 12px;
+      text-align: center;
+      margin: 3rem 0;
+    }
+    
+    .cta-section h2 { color: #fff; margin-bottom: 1rem; }
+    .cta-section p { margin-bottom: 2rem; font-size: 1.1rem; }
+    
+    .page-header { margin-bottom: 2rem; }
+    .page-header h1 { color: #000; margin-bottom: 0.5rem; font-size: 2.5rem; }
+    .subtitle { color: #666; font-size: 1.1rem; }
+    
+    @media (max-width: 768px) {
+      .speed-chart, .network-grid { grid-template-columns: 1fr; }
+      .charging-card { padding: 1.5rem; }
+    }
+  </style>
 </head>
 <body class="no-sidenav">
   <nav class="navbar">
     <div class="nav-inner">
-      <div class="logo"><a href="index.html">Simplify EV News</a></div>
-      <div class="nav-links">
+      <div class="logo"><a href="index.html">Volt Report</a></div>
+      <button class="openbtn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+      <div class="nav-links" id="nav-links">
         <a href="index.html">Home</a>
         <div class="nav-dropdown">
           <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Categories ▾</button>
           <div class="dropdown-menu" role="menu" aria-label="EV Categories">
             <div style="padding:6px 10px;color:#ccc;font-weight:700">Tesla</div>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model 3')">Model 3</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model Y')">Model Y</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model S')">Model S</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model X')">Model X</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Cybertruck')">Cybertruck</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla Autopilot')">Autopilot</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla FSD')">Full Self-Driving</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Supercharger')">Superchargers</a>
+            <a href="#" role="menuitem" onclick="updateCategory('EV Charging Stations')">Public Charging</a>
+            <a href="#" role="menuitem" onclick="updateCategory('EV Charging')">EV Charging</a>
             <hr style="border:none;border-top:1px solid rgba(255,255,255,0.06);margin:8px 0">
-            <div style="padding:6px 10px;color:#ccc;font-weight:700">Other EVs</div>
-            <a href="#" role="menuitem" onclick="updateCategory('Rivian')">Rivian</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Lucid Motors')">Lucid</a>
-            <a href="#" role="menuitem" onclick="updateCategory('BYD EV')">BYD</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Volkswagen EV')">Volkswagen</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Ford EV')">Ford (Mach-E, Lightning)</a>
+            <div style="padding:6px 10px;color:#ccc;font-weight:700">Other Topics</div>
+            <a href="#" role="menuitem" onclick="updateCategory('Battery Technology')">Battery Tech</a>
+            <a href="#" role="menuitem" onclick="updateCategory('EV incentives')">Incentives</a>
           </div>
         </div>
-        <a href="chat.html">Ask EVy chat bot</a>
+        <a href="https://ev-expert-chat-701502515049.us-west1.run.app" target="_blank" rel="noopener noreferrer">Ask EVy chat bot</a>
         <a href="guides.html">EV Guides</a>
         <a href="reviews.html">Reviews</a>
         <a href="charging.html" class="active">Charging</a>
@@ -47,37 +160,269 @@
   <div class="container">
     <main class="main-content">
       <header class="page-header">
-        <h2>Charging Resources</h2>
-        <p>Guides and tools to help you find chargers, understand charging speeds, and plan trips.</p>
+        <h1>EV Charging Guide</h1>
+        <p class="subtitle">Complete guide to charging your electric vehicle: home setup, public networks, charging speeds, and cost comparisons.</p>
       </header>
 
-      <section>
-        <div class="guide-card">
-          <img src="images/tesla-gallery-wall-connector/WallConnector_87.jpg" alt="Wall Connector" loading="lazy" decoding="async">
-          <div class="guide-card-content">
-            <h4>Home Charging</h4>
-            <p>Recommendations for home chargers, installations, and cost estimates.</p>
-            <a href="#" class="read-more">Get Started</a>
+      <!-- Charging Types Section -->
+      <section class="charging-section">
+        <h2>Types of EV Charging</h2>
+        
+        <div class="speed-chart">
+          <div class="speed-item">
+            <h4>Level 1 (120V)</h4>
+            <div class="speed">3-5 miles/hour</div>
+            <p>Slowest charging using standard household outlet. Best for overnight charging or emergency top-ups.</p>
           </div>
-        </div>
-
-        <div class="guide-card">
-          <img src="images/tesla-gallery-sales/Sales_93.jpg" alt="Supercharger" loading="lazy" decoding="async">
-          <div class="guide-card-content">
-            <h4>Public Charging Networks</h4>
-            <p>When to use Superchargers, third-party networks, and port adapters.</p>
-            <a href="#" class="read-more">Learn More</a>
+          
+          <div class="speed-item">
+            <h4>Level 2 (240V)</h4>
+            <div class="speed">25-30 miles/hour</div>
+            <p>Home or public charger. Most common for residential installation. Full charge in 4-10 hours depending on battery size.</p>
+          </div>
+          
+          <div class="speed-item">
+            <h4>DC Fast Charging</h4>
+            <div class="speed">150-350 miles/hour</div>
+            <p>Rapid charging from 10-80% in 20-45 minutes. Essential for road trips. Available at Tesla Superchargers and public networks.</p>
           </div>
         </div>
       </section>
 
+      <!-- Home Charging Section -->
+      <section class="charging-section">
+        <h2>Home Charging Setup</h2>
+        
+        <div class="charging-card">
+          <h3>Installation Basics</h3>
+          <p>Installing a Level 2 home charger is the best way to keep your EV charged overnight. Most new EV owners choose 240V home charging.</p>
+          <ul>
+            <li><strong>Cost:</strong> $500-$2,500 for equipment + installation</li>
+            <li><strong>Installation time:</strong> 4-8 hours for standard home setup</li>
+            <li><strong>Electrical requirement:</strong> 30-60 amp circuit (check home capacity)</li>
+            <li><strong>Charging speed:</strong> 25-30 miles per hour (depends on charger and vehicle)</li>
+          </ul>
+          <div class="tip-box">
+            <h4>💡 Money-Saving Tip</h4>
+            <p>Many states and utilities offer tax credits and rebates for home charger installation. Check your local programs—federal credit up to $500 available.</p>
+          </div>
+        </div>
+
+        <div class="charging-card">
+          <h3>Popular Home Chargers</h3>
+          <p>Top-rated Level 2 home charging options:</p>
+          <ul>
+            <li><strong>Tesla Wall Connector:</strong> 11.5 kW, WiFi-enabled, excellent for Tesla owners. ~$800-$1,200 installed.</li>
+            <li><strong>Wallbox Pulsar Plus:</strong> 11.5 kW, smartphone app, universal compatibility. ~$600-$1,000 installed.</li>
+            <li><strong>Chargepoint Home Flex:</strong> 19.2 kW, WiFi/Bluetooth, smartphone control. ~$700-$1,200 installed.</li>
+            <li><strong>Amazon Basics Level 2 Charger:</strong> Budget option, 9.6 kW, plug-in design. ~$500-$800 installed.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Public Charging Networks Section -->
+      <section class="charging-section">
+        <h2>Public Charging Networks</h2>
+        
+        <p>Finding the right public charging network is essential for road trips and daily convenience. Compare networks by coverage, speed, and pricing.</p>
+        
+        <div class="network-grid">
+          <div class="network-card">
+            <h4>Tesla Supercharger</h4>
+            <span class="badge">DC Fast Charging</span>
+            <p>150-250 kW charging, 15-45 min for 80% charge. Best coverage in North America.</p>
+            <p><strong>Availability:</strong> Tesla owners (third-party access expanding)</p>
+            <p><strong>Pricing:</strong> ~$0.26/kWh or subscription</p>
+            <a href="https://www.tesla.com/supercharger" target="_blank" rel="noopener noreferrer">Find Supercharger →</a>
+          </div>
+
+          <div class="network-card">
+            <h4>Electrify America</h4>
+            <span class="badge">DC Fast Charging</span>
+            <p>150-350 kW stations, 20-30 min for 80% charge. Growing network across USA.</p>
+            <p><strong>Availability:</strong> All EVs (pay-per-use or subscription)</p>
+            <p><strong>Pricing:</strong> ~$0.35/kWh or membership plans</p>
+            <a href="https://www.electrifyamerica.com" target="_blank" rel="noopener noreferrer">Find Charger →</a>
+          </div>
+
+          <div class="network-card">
+            <h4>EVgo</h4>
+            <span class="badge">DC Fast Charging</span>
+            <p>50-350 kW charging, good coverage in urban areas and highways.</p>
+            <p><strong>Availability:</strong> All EVs (pay-per-use or subscription)</p>
+            <p><strong>Pricing:</strong> ~$0.30/kWh or memberships</p>
+            <a href="https://www.evgo.com" target="_blank" rel="noopener noreferrer">Find Charger →</a>
+          </div>
+
+          <div class="network-card">
+            <h4>Chargepoint</h4>
+            <span class="badge">Level 2 & DC Fast</span>
+            <p>Largest public network with 50,000+ locations. Mostly Level 2, DC fast growing.</p>
+            <p><strong>Availability:</strong> All EVs (pay-per-use or free)</p>
+            <p><strong>Pricing:</strong> Varies by location, many free</p>
+            <a href="https://www.chargepoint.com" target="_blank" rel="noopener noreferrer">Find Charger →</a>
+          </div>
+
+          <div class="network-card">
+            <h4>Blink</h4>
+            <span class="badge">Level 2 & DC Fast</span>
+            <p>30,000+ locations, including home charging subscriptions.</p>
+            <p><strong>Availability:</strong> All EVs</p>
+            <p><strong>Pricing:</strong> ~$0.20-0.40/kWh depending on location</p>
+            <a href="https://www.blinkcharging.com" target="_blank" rel="noopener noreferrer">Find Charger →</a>
+          </div>
+
+          <div class="network-card">
+            <h4>Shell Recharge</h4>
+            <span class="badge">Level 2 & DC Fast</span>
+            <p>Premium charging experience with loyalty rewards. Growing DC fast network.</p>
+            <p><strong>Availability:</strong> All EVs</p>
+            <p><strong>Pricing:</strong> Competitive, membership discounts available</p>
+            <a href="https://www.shellrecharge.com" target="_blank" rel="noopener noreferrer">Find Charger →</a>
+          </div>
+        </div>
+
+        <div class="tip-box">
+          <h4>📱 Charging Apps & Tools</h4>
+          <p><strong>PlugShare:</strong> Community-driven app showing all charging stations and real-time availability. Essential for road trip planning.</p>
+          <p><strong>A Better Route Planner (ABRP):</strong> EV-specific GPS that accounts for charging stops and battery management.</p>
+          <p><strong>Native EV Apps:</strong> Tesla, Ford, Chevy, and Rivian apps show closest chargers and compatibility.</p>
+        </div>
+      </section>
+
+      <!-- Charging Cost Section -->
+      <section class="charging-section">
+        <h2>Charging Costs Breakdown</h2>
+        
+        <p>Compare the cost of charging your EV at home versus public chargers:</p>
+        
+        <div class="cost-comparison">
+          <table class="cost-table">
+            <thead>
+              <tr>
+                <th>Charging Type</th>
+                <th>Cost per kWh</th>
+                <th>Full Charge (60 kWh)</th>
+                <th>Per Mile Cost</th>
+                <th>Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Home Level 2</td>
+                <td>~$0.14-0.18</td>
+                <td>$8.40-10.80</td>
+                <td>$0.03-0.04</td>
+                <td>Daily charging</td>
+              </tr>
+              <tr>
+                <td>Electrify America DC</td>
+                <td>~$0.35</td>
+                <td>$21</td>
+                <td>$0.07</td>
+                <td>Road trips</td>
+              </tr>
+              <tr>
+                <td>Tesla Supercharger</td>
+                <td>~$0.26</td>
+                <td>$15.60</td>
+                <td>$0.05</td>
+                <td>Tesla road trips</td>
+              </tr>
+              <tr>
+                <td>Public Level 2</td>
+                <td>~$0.20-0.30</td>
+                <td>$12-18</td>
+                <td>$0.04-0.06</td>
+                <td>Parking lots, work</td>
+              </tr>
+              <tr>
+                <td>Workplace (often free)</td>
+                <td>$0</td>
+                <td>Free</td>
+                <td>$0</td>
+                <td>Work commute</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="charging-card">
+          <h3>Example: Monthly Charging Cost</h3>
+          <p><strong>Scenario:</strong> 1,000 miles/month in Tesla Model 3 (efficiency: 0.24 kWh/mile = 240 kWh/month)</p>
+          <ul>
+            <li><strong>Home charging only:</strong> 240 kWh × $0.16 = ~$38/month</li>
+            <li><strong>50% Home, 50% DC Fast:</strong> 120 kWh home ($19) + 120 kWh DC ($42) = ~$61/month</li>
+            <li><strong>Comparison to gas:</strong> Same distance in gas car (~25 mpg) = $120-180/month (at $3/gallon)</li>
+          </ul>
+          <p><strong>Annual savings: ~$1,000-$1,700 with home charging</strong></p>
+        </div>
+      </section>
+
+      <!-- Road Trip Tips -->
+      <section class="charging-section">
+        <h2>Road Trip Charging Tips</h2>
+        
+        <div class="charging-card">
+          <h3>Planning Your Route</h3>
+          <ul>
+            <li><strong>Use ABRP or native apps:</strong> These automatically add charging stops to your route accounting for your vehicle's efficiency and battery.</li>
+            <li><strong>Pre-book DC fast chargers:</strong> Popular stations can have wait times. Many networks let you reserve ahead.</li>
+            <li><strong>Charge to 80%:</strong> DC fast charging slows significantly after 80%. Plan stops strategically.</li>
+            <li><strong>Download offline maps:</strong> Cell service isn't always available on remote routes.</li>
+            <li><strong>Know your car's range:</strong> Real-world range varies by weather, terrain, and driving style. Use 80% of EPA rating as estimate.</li>
+          </ul>
+        </div>
+
+        <div class="charging-card">
+          <h3>Common Road Trip Issues & Solutions</h3>
+          <ul>
+            <li><strong>Charger availability:</strong> Not all advertised chargers are working. Check PlugShare reviews before detouring.</li>
+            <li><strong>Winter range loss:</strong> Cold weather reduces range 20-40%. Plan shorter distances or include extra charging stops.</li>
+            <li><strong>Different connectors:</strong> Most US EVs use Tesla connector or CCS. Some require adapters. Check your car's compatibility.</li>
+            <li><strong>Queue times:</strong> Popular stops during peak travel can have long waits. Charge during off-peak if possible.</li>
+            <li><strong>Payment issues:</strong> Have backup cards/apps. Not all chargers accept all payment methods.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Additional Resources -->
+      <section class="charging-section">
+        <h2>Resources & Tools</h2>
+        
+        <div class="charging-card">
+          <h3>Helpful Organizations</h3>
+          <ul>
+            <li><strong>U.S. Department of Energy:</strong> <a href="https://www.fueleconomy.gov/feg/" target="_blank" rel="noopener noreferrer">Alternative Fuels Data Center</a> - Official charging station locator and EV info.</li>
+            <li><strong>EV Charging Guide:</strong> <a href="https://plugshare.com/" target="_blank" rel="noopener noreferrer">PlugShare</a> - Community app with 500K+ charging locations.</li>
+            <li><strong>Tesla Supercharger:</strong> <a href="https://www.tesla.com/supercharger" target="_blank" rel="noopener noreferrer">Official Tesla Network</a> - Best in-vehicle integration for Tesla owners.</li>
+            <li><strong>ChargePoint:</strong> <a href="https://www.chargepoint.com/" target="_blank" rel="noopener noreferrer">Largest Public Network</a> - 50,000+ stations, mostly Level 2.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="cta-section">
+        <h2>Need Personalized Charging Advice?</h2>
+        <p>Have questions about which charger to install or how to optimize charging costs? Chat with our AI EV expert.</p>
+        <a href="https://ev-expert-chat-701502515049.us-west1.run.app" target="_blank" rel="noopener noreferrer" class="donate-btn">Ask EVy AI Assistant</a>
+      </section>
     </main>
   </div>
 
-  <footer>
-    <p>© 2026 Simplify EV News</p>
-  </footer>
-
   <script src="script.js"></script>
+  <script src="consent.js"></script>
+  <script>
+    const btn = document.getElementById('mobile-menu-btn');
+    const links = document.getElementById('nav-links');
+    if(btn && links) btn.addEventListener('click', ()=> links.classList.toggle('open'));
+    document.querySelectorAll('.dropdown-toggle').forEach(b=>{
+      b.addEventListener('click', (e)=>{
+        const p = b.closest('.nav-dropdown');
+        if(p) p.classList.toggle('open');
+        e.stopPropagation();
+      });
+    });
+  </script>
 </body>
 </html>

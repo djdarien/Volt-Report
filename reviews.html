@@ -3,15 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="EV Reviews - Simplify EV News">
-  <title>Reviews - Simplify EV News</title>
+  <meta name="description" content="EV Reviews and Ratings - In-depth analysis of electric vehicles from Tesla, Rivian, Lucid, and more. Compare specs, performance, and real-world experiences.">
+  <meta name="og:title" content="EV Reviews - Volt Report">
+  <meta name="og:description" content="Comprehensive reviews of popular electric vehicles with ratings, pros, cons, and real-world data.">
+  <title>EV Reviews - Volt Report</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .review-section { margin: 3rem 0; padding: 2rem 0; border-bottom: 1px solid #eee; }
+    .review-section h2 { color: #000; margin-bottom: 2rem; font-size: 28px; font-weight: 700; }
+    .review-section:last-child { border-bottom: none; }
+    
+    .review-card {
+      background: #fff;
+      border: 1px solid rgba(204,0,0,0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      transition: box-shadow .22s ease, border-color .22s ease, transform .22s ease;
+    }
+    
+    .review-card:hover {
+      box-shadow: 0 8px 28px rgba(204,0,0,0.15);
+      border-color: rgba(204,0,0,0.3);
+      transform: translateY(-3px);
+    }
+    
+    .review-header { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .review-header h3 { font-size: 22px; color: #000; margin: 0; flex: 1; }
+    .rating { display: flex; align-items: center; gap: 0.75rem; white-space: nowrap; }
+    .stars { font-size: 18px; color: #cc0000; font-weight: 700; }
+    .score { font-size: 16px; font-weight: 700; color: #000; }
+    
+    .review-content { color: #555; line-height: 1.7; }
+    .review-content p { margin: 0 0 1rem; }
+    .review-content h4 { color: #000; margin: 1.5rem 0 0.75rem; font-weight: 700; }
+    .review-content ul { margin: 0 0 1rem 1.5rem; padding: 0; }
+    .review-content li { margin-bottom: 0.5rem; }
+    .review-content em { color: #888; font-size: 0.9rem; }
+    
+    .user-review-note { background: rgba(204,0,0,0.05); border-left: 4px solid #cc0000; padding: 1rem; margin-top: 1.5rem; border-radius: 6px; }
+    .user-review-note p { margin: 0; color: #cc0000; font-weight: 600; }
+    
+    .comparison-section { margin: 3rem 0; }
+    .comparison-table-wrapper { overflow-x: auto; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .comparison-table { width: 100%; border-collapse: collapse; background: #fff; }
+    .comparison-table thead { background: #000; color: #fff; }
+    .comparison-table th { padding: 1rem; text-align: left; font-weight: 700; border-bottom: 3px solid #cc0000; }
+    .comparison-table td { padding: 1rem; border-bottom: 1px solid #eee; }
+    .comparison-table tbody tr:hover { background: rgba(204,0,0,0.03); }
+    
+    .cta-section { background: linear-gradient(135deg, #000 0%, #111 100%); color: #fff; padding: 3rem 2rem; border-radius: 12px; text-align: center; margin: 3rem 0; }
+    .cta-section h2 { color: #fff; margin-bottom: 1rem; }
+    .cta-section p { margin-bottom: 2rem; font-size: 1.1rem; }
+    
+    .page-header { margin-bottom: 2rem; }
+    .page-header h1 { color: #000; margin-bottom: 0.5rem; font-size: 2.5rem; }
+    .subtitle { color: #666; font-size: 1.1rem; }
+    
+    @media (max-width: 768px) {
+      .review-header { flex-direction: column; align-items: flex-start; }
+      .rating { margin-top: 0.5rem; }
+      .review-card { padding: 1.5rem; }
+    }
+  </style>
 </head>
 <body class="no-sidenav">
   <nav class="navbar">
-      <div class="nav-inner">
-      <div class="logo"><a href="index.html">Simplify EV News</a></div>
-      <div class="nav-links">
+    <div class="nav-inner">
+      <div class="logo"><a href="index.html">Volt Report</a></div>
+      <button class="openbtn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+      <div class="nav-links" id="nav-links">
         <a href="index.html">Home</a>
         <div class="nav-dropdown">
           <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Categories ▾</button>
@@ -33,7 +96,7 @@
             <a href="#" role="menuitem" onclick="updateCategory('Ford EV')">Ford (Mach-E, Lightning)</a>
           </div>
         </div>
-        <a href="chat.html">Ask EVy chat bot</a>
+        <a href="https://ev-expert-chat-701502515049.us-west1.run.app" target="_blank" rel="noopener noreferrer">Ask EVy chat bot</a>
         <a href="guides.html">EV Guides</a>
         <a href="reviews.html" class="active">Reviews</a>
         <a href="charging.html">Charging</a>
@@ -47,37 +110,166 @@
   <div class="container">
     <main class="main-content">
       <header class="page-header">
-        <h2>EV Reviews</h2>
-        <p>In-depth and concise reviews of popular electric vehicles — range, charging, and ownership notes.</p>
+        <h1>EV Reviews & Ratings</h1>
+        <p class="subtitle">In-depth reviews of electric vehicles with performance data, pros, cons, and real-world insights.</p>
       </header>
 
-      <section>
-        <div class="guide-card">
-          <img src="images/tesla-gallery-model-3-2024/Model3_48.jpg" alt="Model 3" loading="lazy" decoding="async">
-          <div class="guide-card-content">
-            <h4>Tesla Model 3 - Quick Review</h4>
-            <p>Summary: Affordable performance, strong range, and easy-to-use charging network. Great daily driver.</p>
-            <a href="#" class="read-more">Read Full Review</a>
+      <section class="review-section">
+        <h2>Tesla Reviews</h2>
+        <div class="review-card">
+          <div class="review-header">
+            <h3>Tesla Model 3 (2024)</h3>
+            <div class="rating"><span class="stars">★★★★★</span><span class="score">4.8/5</span></div>
+          </div>
+          <div class="review-content">
+            <p><strong>Price:</strong> $38,990 - $52,990 | <strong>Range:</strong> 272 - 358 mi | <strong>0-60:</strong> 3.1s</p>
+            <h4>What Makes It Great:</h4>
+            <ul><li>Industry-leading acceleration</li><li>Advanced Autopilot and FSD</li><li>Extensive Supercharger network</li><li>Excellent efficiency</li></ul>
+            <h4>Considerations:</h4>
+            <ul><li>Minimalist interior</li><li>Limited physical controls</li><li>Service availability varies</li></ul>
+            <div class="user-review-note"><p>⭐ Coming Soon: 2022 Tesla Model 3 User Review</p></div>
           </div>
         </div>
-
-        <div class="guide-card">
-          <img src="images/tesla-gallery-sales/Sales_93.jpg" alt="Supercharger" loading="lazy" decoding="async">
-          <div class="guide-card-content">
-            <h4>Charging Experience</h4>
-            <p>How Superchargers and public networks compare for long trips.</p>
-            <a href="#" class="read-more">Learn More</a>
+        <div class="review-card">
+          <div class="review-header">
+            <h3>Tesla Model Y (2024)</h3>
+            <div class="rating"><span class="stars">★★★★★</span><span class="score">4.9/5</span></div>
+          </div>
+          <div class="review-content">
+            <p><strong>Price:</strong> $43,990 - $65,990 | <strong>Range:</strong> 260 - 330 mi | <strong>0-60:</strong> 2.1s</p>
+            <h4>What Makes It Great:</h4>
+            <ul><li>Best-selling EV globally</li><li>Spacious interior, optional 3-row</li><li>Rapid charging</li><li>Strong performance</li></ul>
+            <h4>Considerations:</h4>
+            <ul><li>Premium pricing</li><li>Tight third-row seating</li><li>Minimalist design trade-offs</li></ul>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <h3>Tesla Cybertruck (2024)</h3>
+            <div class="rating"><span class="stars">★★★★☆</span><span class="score">4.6/5</span></div>
+          </div>
+          <div class="review-content">
+            <p><strong>Price:</strong> $60,990 - $99,990 | <strong>Range:</strong> 250 - 320 mi | <strong>0-60:</strong> 2.6s</p>
+            <h4>What Makes It Great:</h4>
+            <ul><li>Iconic stainless steel design</li><li>14,000 lbs towing capacity</li><li>Unique frunk storage</li><li>Futuristic appeal</li></ul>
+            <h4>Considerations:</h4>
+            <ul><li>Design limits accessory compatibility</li><li>Challenging to park</li><li>Developing service network</li></ul>
           </div>
         </div>
       </section>
 
+      <section class="review-section">
+        <h2>Rivian Reviews</h2>
+        <div class="review-card">
+          <div class="review-header">
+            <h3>Rivian R1S (Electric SUV)</h3>
+            <div class="rating"><span class="stars">★★★★★</span><span class="score">4.8/5</span></div>
+          </div>
+          <div class="review-content">
+            <p><strong>Price:</strong> $75,490 - $91,490 | <strong>Range:</strong> 260 - 420 mi | <strong>0-60:</strong> 3.0s</p>
+            <h4>What Makes It Great:</h4>
+            <ul><li>True 3-row seating</li><li>Premium interior materials</li><li>Adventure-focused design</li><li>User-friendly tech</li></ul>
+            <h4>Considerations:</h4>
+            <ul><li>Higher price point</li><li>Building reliability track record</li><li>Limited charging network</li></ul>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <h3>Rivian R1T (Electric Truck)</h3>
+            <div class="rating"><span class="stars">★★★★★</span><span class="score">4.7/5</span></div>
+          </div>
+          <div class="review-content">
+            <p><strong>Price:</strong> $71,490 - $87,490 | <strong>Range:</strong> 260 - 420 mi | <strong>0-60:</strong> 3.0s</p>
+            <h4>What Makes It Great:</h4>
+            <ul><li>Innovative Gear Tunnel storage</li><li>Premium quality throughout</li><li>Adventure capabilities</li><li>Excellent performance</li></ul>
+            <h4>Considerations:</h4>
+            <ul><li>Premium pricing</li><li>Limited service infrastructure</li><li>Newer manufacturer</li></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="review-section">
+        <h2>Other Popular EVs</h2>
+        <div class="review-card">
+          <div class="review-header">
+            <h3>Ford Mustang Mach-E</h3>
+            <div class="rating"><span class="stars">★★★★☆</span><span class="score">4.4/5</span></div>
+          </div>
+          <div class="review-content">
+            <p><strong>Price:</strong> $35,995 - $52,000 | <strong>Range:</strong> 210 - 312 mi | <strong>0-60:</strong> 3.5s</p>
+            <h4>Highlights:</h4>
+            <ul><li>Affordable premium EV</li><li>Sporty performance</li><li>Extensive dealer network</li><li>Ford reliability heritage</li></ul>
+            <h4>Considerations:</h4>
+            <ul><li>Quality varies by trim</li><li>Infotainment lag</li><li>Less spacious than competitors</li></ul>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <h3>Lucid Air (Luxury Sedan)</h3>
+            <div class="rating"><span class="stars">★★★★☆</span><span class="score">4.5/5</span></div>
+          </div>
+          <div class="review-content">
+            <p><strong>Price:</strong> $71,400 - $139,000+ | <strong>Range:</strong> 420 - 516 mi | <strong>0-60:</strong> 1.99s</p>
+            <h4>Highlights:</h4>
+            <ul><li>Longest EPA range</li><li>Ultra-premium interior</li><li>Sub-2.0 second acceleration</li><li>Spacious design</li></ul>
+            <h4>Considerations:</h4>
+            <ul><li>Very high pricing</li><li>New brand concerns</li><li>Limited service network</li></ul>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <h3>Chevrolet Blazer EV</h3>
+            <div class="rating"><span class="stars">★★★★☆</span><span class="score">4.3/5</span></div>
+          </div>
+          <div class="review-content">
+            <p><strong>Price:</strong> $43,795 - $51,995 | <strong>Range:</strong> 293 - 316 mi | <strong>0-60:</strong> 4.9s</p>
+            <h4>Highlights:</h4>
+            <ul><li>Competitive pricing</li><li>Spacious interior</li><li>Good handling</li><li>Chevy dealer support</li></ul>
+            <h4>Considerations:</h4>
+            <ul><li>Building long-term data</li><li>Less tech-focused</li></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="comparison-section">
+        <h2>Quick Comparison</h2>
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr><th>Model</th><th>Price</th><th>Range</th><th>0-60</th><th>Best For</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Tesla Model 3</td><td>$38,990+</td><td>272-358 mi</td><td>3.1s</td><td>Daily driving</td></tr>
+              <tr><td>Tesla Model Y</td><td>$43,990+</td><td>260-330 mi</td><td>2.1s</td><td>Families</td></tr>
+              <tr><td>Rivian R1S</td><td>$75,490+</td><td>260-420 mi</td><td>3.0s</td><td>Luxury 3-row</td></tr>
+              <tr><td>Lucid Air</td><td>$71,400+</td><td>420-516 mi</td><td>1.99s</td><td>Range/luxury</td></tr>
+              <tr><td>Ford Mach-E</td><td>$35,995+</td><td>210-312 mi</td><td>3.5s</td><td>Budget sporty</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <h2>Get More EV Insights</h2>
+        <p>Have questions about these EVs? Chat with our AI EV expert for personalized recommendations.</p>
+        <a href="https://ev-expert-chat-701502515049.us-west1.run.app" target="_blank" rel="noopener noreferrer" class="donate-btn">Ask EVy AI Assistant</a>
+      </section>
     </main>
   </div>
 
-  <footer>
-    <p>© 2026 Simplify EV News</p>
-  </footer>
-
   <script src="script.js"></script>
+  <script src="consent.js"></script>
+  <script>
+    const btn = document.getElementById('mobile-menu-btn');
+    const links = document.getElementById('nav-links');
+    if(btn && links) btn.addEventListener('click', ()=> links.classList.toggle('open'));
+    document.querySelectorAll('.dropdown-toggle').forEach(b=>{
+      b.addEventListener('click', (e)=>{
+        const p = b.closest('.nav-dropdown');
+        if(p) p.classList.toggle('open');
+        e.stopPropagation();
+      });
+    });
+  </script>
 </body>
 </html>
