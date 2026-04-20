@@ -18,7 +18,7 @@
   <a class="sr-only skip-link" href="#main">Skip to content</a>
   <nav class="navbar">
     <div class="nav-inner">
-      <div class="logo"><a href="index.html">Volt Report</a></div>
+      <div class="logo"><a href="index.html">Volt Report</a><span id="supporter-badge" class="supporter-badge hidden">Supporter Access</span></div>
       <button class="openbtn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
       <div class="nav-links" id="nav-links">
         <a href="index.html" class="active">Home</a>
@@ -53,6 +53,7 @@
           </div>
         </div>
         <a href="https://ev-expert-chat-701502515049.us-west1.run.app" target="_blank" rel="noopener noreferrer">Ask EVy chat bot</a>
+        <a href="https://streamlabs.com/khaos_demon/tip" id="donate-nav-btn" class="donate-nav-btn donate-cta" target="_blank" rel="noopener noreferrer">Donate</a>
         <a href="guides.html">EV Guides</a>
         <a href="reviews.html">Reviews</a>
         <a href="charging.html">Charging</a>
@@ -62,6 +63,16 @@
       </div>
     </div>
   </nav>
+
+  <div id="donation-popup" class="donation-popup" role="dialog" aria-live="polite" aria-modal="true" aria-label="Support Volt Report">
+    <button id="donation-popup-close" class="donation-popup-close" type="button" aria-label="Close donation prompt">×</button>
+    <h4>Help keep Volt Report running</h4>
+    <p>A small tip keeps hosting and this AI-based EV assistant online. It’s optional, but very appreciated.</p>
+    <div class="donation-popup-actions">
+      <a id="donation-popup-donate" href="https://streamlabs.com/khaos_demon/tip" target="_blank" rel="noopener noreferrer">Donate</a>
+      <button id="donation-popup-dismiss" type="button">Maybe later</button>
+    </div>
+  </div>
 
   <div class="container">
     <!-- Main Content -->

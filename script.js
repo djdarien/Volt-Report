@@ -151,6 +151,66 @@ function shareArticle(title, url) {
   }
 }
 
+const DONATION_KEY = 'voltreport_supporter';
+const DONATION_POPUP_DISMISSED = 'voltreport_donation_popup_dismissed';
+
+function isSupporter() {
+  return localStorage.getItem(DONATION_KEY) === 'true';
+}
+
+function setSupporter() {
+  localStorage.setItem(DONATION_KEY, 'true');
+  updateSupporterUI();
+}
+
+function updateSupporterUI() {
+  const badge = document.getElementById('supporter-badge');
+  if (badge) {
+    badge.classList.toggle('hidden', !isSupporter());
+  }
+  document.querySelectorAll('.donate-cta, #donate-nav-btn').forEach((btn) => {
+    if (!btn) return;
+    if (isSupporter()) {
+      btn.classList.add('supporter-cta');
+      btn.textContent = btn.dataset.supporterText || btn.textContent;
+    } else {
+      btn.classList.remove('supporter-cta');
+    }
+  });
+}
+
+function hideDonationPopup(dismiss = true) {
+  const popup = document.getElementById('donation-popup');
+  if (popup) popup.classList.remove('open');
+  if (dismiss) localStorage.setItem(DONATION_POPUP_DISMISSED, 'true');
+}
+
+function showDonationPopup() {
+  if (isSupporter()) return;
+  if (localStorage.getItem(DONATION_POPUP_DISMISSED) === 'true') return;
+  const popup = document.getElementById('donation-popup');
+  if (popup) popup.classList.add('open');
+}
+
+function initDonationUI() {
+  document.querySelectorAll('.donate-cta, #donate-nav-btn, #donation-popup-donate').forEach((trigger) => {
+    if (!trigger) return;
+    trigger.addEventListener('click', () => {
+      setSupporter();
+      hideDonationPopup();
+    });
+  });
+  const closeButton = document.getElementById('donation-popup-close');
+  if (closeButton) {
+    closeButton.addEventListener('click', () => hideDonationPopup(true));
+  }
+  const dismissButton = document.getElementById('donation-popup-dismiss');
+  if (dismissButton) {
+    dismissButton.addEventListener('click', () => hideDonationPopup(true));
+  }
+  updateSupporterUI();
+}
+
 // UI Toggles
 function toggleDarkMode() {
   document.body.classList.toggle("dark-mode");
@@ -161,4 +221,10 @@ function toggleSidenav() {
 }
 
 // Load on startup
-window.onload = fetchNews;
+window.addEventListener('DOMContentLoaded', () => {
+  initDonationUI();
+  showDonationPopup();
+  if (document.getElementById('news-container')) {
+    fetchNews();
+  }
+});

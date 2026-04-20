@@ -11,7 +11,7 @@
     <!-- Side Navigation -->
     <div class="sidenav" id="sidenav">
       <div class="sidenav-header">
-        <h2>Volt Report</h2>
+        <h2>Volt Report <span id="supporter-badge" class="supporter-badge hidden">Supporter Access</span></h2>
         <span class="closebtn" onclick="toggleSidenav()">&times;</span>
       </div>
 
@@ -33,7 +33,7 @@
 
       <div class="additional-controls">
         <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
-        <button onclick="window.location.href='https://www.streamlabs.com/khaos_Demon'">Donate</button>
+        <button id="donate-nav-btn" class="donate-cta" onclick="window.location.href='https://streamlabs.com/khaos_demon/tip'">Donate</button>
       </div>
     </div>
 
@@ -66,6 +66,8 @@
       </footer>
     </div>
   </div>
+
+  <script src="script.js"></script>
 
   <script>
     function toggleDarkMode() {
