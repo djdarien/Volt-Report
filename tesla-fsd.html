@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tesla Autopilot & Full Self-Driving (FSD) - Complete feature guide, beta updates, capabilities, and safety information.">
+  <meta name="og:title" content="Tesla Autopilot & FSD Guide - Volt Report">
+  <meta name="og:description" content="Learn about Tesla Autopilot and Full Self-Driving capabilities, latest beta features, and how to use them safely.">
+  <title>Tesla Autopilot & FSD Guide - Volt Report</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .fsd-section { margin: 3rem 0; padding: 2rem 0; border-bottom: 1px solid #eee; }
+    .fsd-section h2 { color: #000; margin-bottom: 2rem; font-size: 28px; font-weight: 700; }
+    .fsd-section:last-child { border-bottom: none; }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .feature-item {
+      background: linear-gradient(135deg, #f9f9f9 0%, #fff 100%);
+      border: 1px solid rgba(204,0,0,0.12);
+      border-radius: 14px;
+      padding: 1.75rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      transition: transform .22s ease, border-color .22s ease;
+    }
+    
+    .feature-item:hover {
+      transform: translateY(-3px);
+      border-color: rgba(204,0,0,0.3);
+    }
+    
+    .feature-item h3 {
+      color: #000;
+      font-size: 18px;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+    
+    .feature-item p {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0;
+    }
+    
+    .status-badge {
+      display: inline-block;
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 0.75rem;
+    }
+    
+    .status-available {
+      background: #d4f4dd;
+      color: #0a5f2f;
+    }
+    
+    .status-beta {
+      background: #fff3cd;
+      color: #856404;
+    }
+    
+    .status-coming {
+      background: #e7e7e7;
+      color: #555;
+    }
+    
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      margin: 2rem 0;
+      overflow: hidden;
+    }
+    
+    .comparison-table thead {
+      background: #000;
+      color: #fff;
+    }
+    
+    .comparison-table th {
+      padding: 1rem;
+      text-align: left;
+      font-weight: 700;
+      border-bottom: 3px solid #cc0000;
+    }
+    
+    .comparison-table td {
+      padding: 1rem;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+    }
+    
+    .comparison-table tbody tr:hover {
+      background: rgba(204,0,0,0.03);
+    }
+    
+    .check { color: #0a5f2f; font-weight: 700; }
+    .x { color: #d32f2f; font-weight: 700; }
+    
+    .safety-info {
+      background: rgba(204,0,0,0.05);
+      border-left: 4px solid #cc0000;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+    
+    .safety-info h4 {
+      color: #cc0000;
+      margin-top: 0;
+    }
+    
+    .safety-info ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .safety-info li {
+      margin-bottom: 0.75rem;
+      color: #333;
+    }
+    
+    .update-card {
+      background: #fff;
+      border: 1px solid rgba(204,0,0,0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    
+    .update-card h4 {
+      color: #cc0000;
+      margin-top: 0;
+      font-size: 16px;
+    }
+    
+    .update-card .date {
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 0.5rem;
+    }
+    
+    .update-card p {
+      margin: 0.5rem 0;
+      color: #555;
+      font-size: 14px;
+    }
+    
+    .page-header { margin-bottom: 2rem; }
+    .page-header h1 { color: #000; margin-bottom: 0.5rem; font-size: 2.5rem; }
+    .subtitle { color: #666; font-size: 1.1rem; }
+    
+    .cta-section {
+      background: linear-gradient(135deg, #000 0%, #111 100%);
+      color: #fff;
+      padding: 3rem 2rem;
+      border-radius: 12px;
+      text-align: center;
+      margin: 3rem 0;
+    }
+    
+    .cta-section h2 { color: #fff; margin-bottom: 1rem; }
+    .cta-section p { margin-bottom: 2rem; font-size: 1.1rem; }
+    
+    @media (max-width: 768px) {
+      .feature-grid { grid-template-columns: 1fr; }
+      .comparison-table { font-size: 12px; }
+      .comparison-table th, .comparison-table td { padding: 0.75rem; }
+    }
+  </style>
+</head>
+<body class="no-sidenav">
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="logo"><a href="index.html">Volt Report</a><span id="supporter-badge" class="supporter-badge hidden">Supporter Access</span></div>
+      <button class="openbtn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Categories ▾</button>
+          <div class="dropdown-menu" role="menu" aria-label="EV Categories">
+            <div style="padding:6px 10px;color:#ccc;font-weight:700">Tesla</div>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model 3')">Model 3</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model Y')">Model Y</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Autopilot')">Autopilot</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla FSD')">Full Self-Driving</a>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.06);margin:8px 0">
+            <div style="padding:6px 10px;color:#ccc;font-weight:700">Other EVs</div>
+            <a href="#" role="menuitem" onclick="updateCategory('Rivian')">Rivian</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Lucid Motors')">Lucid</a>
+          </div>
+        </div>
+        <a href="https://ev-expert-chat-701502515049.us-west1.run.app" target="_blank" rel="noopener noreferrer">Ask EVy chat bot</a>
+        <a href="https://streamlabs.com/khaos_demon/tip" id="donate-nav-btn" class="donate-nav-btn donate-cta" target="_blank" rel="noopener noreferrer">Donate</a>
+        <a href="guides.html">EV Guides</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="charging.html">Charging</a>
+        <a href="maps.html">Charging Maps</a>
+        <a href="tesla-specs.html">Tesla Specs</a>
+        <a href="tesla-fsd.html" class="active">Tesla FSD</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <main class="main-content">
+      <header class="page-header">
+        <h1>Tesla Autopilot & Full Self-Driving</h1>
+        <p class="subtitle">Complete guide to Tesla's autonomous driving features, latest updates, capabilities, and safety best practices.</p>
+      </header>
+
+      <section class="fsd-section">
+        <h2>Autopilot vs Full Self-Driving (FSD)</h2>
+        
+        <div style="overflow-x: auto; border-radius: 14px; margin: 2rem 0;">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Autopilot (Standard)</th>
+                <th>Enhanced Autopilot</th>
+                <th>Full Self-Driving</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Cruise Control</strong></td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+              </tr>
+              <tr>
+                <td><strong>Lane Keeping</strong></td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+              </tr>
+              <tr>
+                <td><strong>Traffic-Aware Cruise</strong></td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+              </tr>
+              <tr>
+                <td><strong>Automatic Lane Changes</strong></td>
+                <td class="x">✗</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+              </tr>
+              <tr>
+                <td><strong>Auto Park</strong></td>
+                <td class="x">✗</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+              </tr>
+              <tr>
+                <td><strong>Summon (Basic)</strong></td>
+                <td class="x">✗</td>
+                <td class="x">✗</td>
+                <td class="check">✓</td>
+              </tr>
+              <tr>
+                <td><strong>Navigate on Streets</strong></td>
+                <td class="x">✗</td>
+                <td class="x">✗</td>
+                <td class="check">✓ (Beta)</td>
+              </tr>
+              <tr>
+                <td><strong>Price</strong></td>
+                <td class="check">Standard</td>
+                <td>$6,000</td>
+                <td>$12,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="fsd-section">
+        <h2>Core Autopilot Features</h2>
+        <div class="feature-grid">
+          <div class="feature-item">
+            <h3>Adaptive Cruise Control</h3>
+            <p>Maintains your set speed and distance from other vehicles. Works on highways and local roads.</p>
+            <span class="status-badge status-available">Standard</span>
+          </div>
+          <div class="feature-item">
+            <h3>Lane Keeping Assist</h3>
+            <p>Keeps your car centered in its lane with gentle steering corrections.</p>
+            <span class="status-badge status-available">Standard</span>
+          </div>
+          <div class="feature-item">
+            <h3>Traffic-Aware Cruise</h3>
+            <p>Automatically slows down for traffic and accelerates when traffic clears.</p>
+            <span class="status-badge status-available">Standard</span>
+          </div>
+          <div class="feature-item">
+            <h3>Traffic Light Recognition</h3>
+            <p>Detects traffic lights and stop signs. Can optionally control stops.</p>
+            <span class="status-badge status-available">Standard</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="fsd-section">
+        <h2>Enhanced Autopilot Features ($6,000)</h2>
+        <div class="feature-grid">
+          <div class="feature-item">
+            <h3>Automatic Lane Changes</h3>
+            <p>Car automatically changes lanes when you set your turn signal. No manual steering required.</p>
+            <span class="status-badge status-available">Available</span>
+          </div>
+          <div class="feature-item">
+            <h3>Autopark</h3>
+            <p>Automatically detects suitable parking spaces and takes over steering to park your car.</p>
+            <span class="status-badge status-available">Available</span>
+          </div>
+          <div class="feature-item">
+            <h3>Smart Summon</h3>
+            <p>Calls your car to come to you in parking lots and on roads (limited range).</p>
+            <span class="status-badge status-beta">Limited Beta</span>
+          </div>
+          <div class="feature-item">
+            <h3>Navigate on Autopilot</h3>
+            <p>Suggests lane changes and makes automatic turns on highways during navigation.</p>
+            <span class="status-badge status-available">Available</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="fsd-section">
+        <h2>Full Self-Driving (FSD) Features ($12,000+)</h2>
+        <p>FSD includes all Autopilot features plus advanced autonomous capabilities.</p>
+        <div class="feature-grid">
+          <div class="feature-item">
+            <h3>Navigate on Streets (Experimental)</h3>
+            <p>Drives autonomously on city streets with traffic lights, stop signs, and obstacles. Requires attention.</p>
+            <span class="status-badge status-beta">Active Beta</span>
+          </div>
+          <div class="feature-item">
+            <h3>Automatic Parking</h3>
+            <p>Finds and parks in parallel and perpendicular spots with full automation.</p>
+            <span class="status-badge status-available">Available</span>
+          </div>
+          <div class="feature-item">
+            <h3>Summon (Advanced)</h3>
+            <p>Car can navigate to you across greater distances and complex parking scenarios.</p>
+            <span class="status-badge status-beta">Early Beta</span>
+          </div>
+          <div class="feature-item">
+            <h3>Lane Changes & Overtaking</h3>
+            <p>Intelligent lane selection and safe overtaking maneuvers on multi-lane roads.</p>
+            <span class="status-badge status-available">Available</span>
+          </div>
+          <div class="feature-item">
+            <h3>Traffic Aware Cruise</h3>
+            <p>Advanced traffic detection with predictive braking and acceleration.</p>
+            <span class="status-badge status-available">Available</span>
+          </div>
+          <div class="feature-item">
+            <h3>Recognizes Stop Signs</h3>
+            <p>Detects and can handle stop sign situations independently.</p>
+            <span class="status-badge status-available">Available</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="fsd-section">
+        <h2>Safety & Responsibility</h2>
+        <div class="safety-info">
+          <h4>⚠️ Critical Safety Information</h4>
+          <ul>
+            <li><strong>Remain Attentive:</strong> Autopilot and FSD are driver-assistance features, not autonomous driving. You must monitor and be ready to take control at any time.</li>
+            <li><strong>Keep Hands on Wheel:</strong> The system detects hand pressure. Remove hands for extended periods and the car will warn you and gradually disengage.</li>
+            <li><strong>Understand Limitations:</strong> Neither system works in all conditions (heavy rain, snow, poor visibility, missing lane markings, etc.).</li>
+            <li><strong>Weather Matters:</strong> FSD Beta's vision-based system is affected by weather. Be extra cautious in rain or snow.</li>
+            <li><strong>Construction Zones:</strong> Both systems can be confused by temporary lane markings. Manually navigate construction areas when possible.</li>
+            <li><strong>Your Responsibility:</strong> You are liable for the vehicle's actions. Tesla's terms require you to be responsible for safe operation.</li>
+          </ul>
+        </div>
+
+        <div class="safety-info">
+          <h4>✓ Best Practices</h4>
+          <ul>
+            <li>Test new features on familiar roads first, not on critical highway trips.</li>
+            <li>Check Tesla's official documentation and YouTube channel for the latest features and updates.</li>
+            <li>Join Tesla owner communities and Reddit forums to learn real-world experiences.</li>
+            <li>Keep your car's software up-to-date for latest safety patches and improvements.</li>
+            <li>On FSD beta, use it in low-traffic areas first to understand its behavior.</li>
+            <li>Always assume the car may not recognize an obstacle or situation correctly.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="fsd-section">
+        <h2>Latest Updates & Beta Releases</h2>
+        
+        <div class="update-card">
+          <h4>FSD V12 & Beyond</h4>
+          <div class="date">Latest versions focus on vision-only architecture</div>
+          <p>Tesla transitioned to a camera-based system removing radar. New versions emphasize improved object detection and prediction under various conditions.</p>
+          <p><strong>Latest features:</strong> Improved street navigation, better handling of edge cases, smoother driving behavior.</p>
+        </div>
+
+        <div class="update-card">
+          <h4>Continuous Improvement</h4>
+          <div class="date">Rolling updates</div>
+          <p>Tesla releases FSD beta updates roughly every 1-2 weeks. Beta testers report improvements through Tesla's feedback system.</p>
+          <p><strong>Current focus:</strong> Reducing false positives, improving lane keeping, better pedestrian prediction.</p>
+        </div>
+
+        <div class="update-card">
+          <h4>Hardware Support</h4>
+          <div class="date">Applies to all Tesla vehicles</div>
+          <p>Even older Tesla vehicles (2016+) with proper hardware can access Autopilot features. Some advanced FSD features require HW3.0+ (newer computers).</p>
+          <p><strong>Tip:</strong> Check your car's hardware version in Settings to see which features you're eligible for.</p>
+        </div>
+      </section>
+
+      <section class="fsd-section">
+        <h2>Comparing to Competitors</h2>
+        <p>How Tesla's Autopilot and FSD compare to other manufacturers:</p>
+        
+        <ul style="margin: 1.5rem 0; padding-left: 1.5rem; line-height: 1.8;">
+          <li><strong>Supercruise (GM/Cadillac):</strong> More conservative, works only on highway mapping (limited roads). Doesn't include city street autonomy.</li>
+          <li><strong>Super Intelligent Pilot (Xpeng):</strong> Advanced on highways, expanding city street capability. Chinese focus, limited US availability.</li>
+          <li><strong>BlueCruise (Ford):</strong> Similar to Supercruise. Hands-off highway driving on pre-mapped roads only.</li>
+          <li><strong>Waymo Driver (Alphabet):</strong> Fully autonomous ride-hailing in select cities. Not consumer-facing for personal vehicles yet.</li>
+          <li><strong>Tesla FSD:</strong> Most ambitious consumer offering with city streets, parking, and continuous over-the-air updates.</li>
+        </ul>
+      </section>
+
+      <section class="fsd-section">
+        <h2>Resources & Learning</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+          <a href="https://www.tesla.com/support/autopilot" target="_blank" rel="noopener noreferrer" style="background: #fff; border: 1px solid #ddd; border-radius: 12px; padding: 1.5rem; text-decoration: none; text-align: center; color: #000; transition: border-color .2s ease;">
+            <h4 style="margin: 0 0 0.75rem; color: #cc0000;">Official Autopilot Guide</h4>
+            <p style="margin: 0; color: #666; font-size: 14px;">Tesla's official documentation on Autopilot features and safety.</p>
+          </a>
+          <a href="https://www.tesla.com/support/fsd-beta" target="_blank" rel="noopener noreferrer" style="background: #fff; border: 1px solid #ddd; border-radius: 12px; padding: 1.5rem; text-decoration: none; text-align: center; color: #000; transition: border-color .2s ease;">
+            <h4 style="margin: 0 0 0.75rem; color: #cc0000;">FSD Beta Program</h4>
+            <p style="margin: 0; color: #666; font-size: 14px;">How to enroll in FSD beta and participate in early testing.</p>
+          </a>
+          <a href="https://reddit.com/r/teslaautopilot" target="_blank" rel="noopener noreferrer" style="background: #fff; border: 1px solid #ddd; border-radius: 12px; padding: 1.5rem; text-decoration: none; text-align: center; color: #000; transition: border-color .2s ease;">
+            <h4 style="margin: 0 0 0.75rem; color: #cc0000;">Community Discussions</h4>
+            <p style="margin: 0; color: #666; font-size: 14px;">Real Tesla owners share experiences and learn together on Reddit.</p>
+          </a>
+          <a href="https://www.youtube.com/user/teslaownercentral" target="_blank" rel="noopener noreferrer" style="background: #fff; border: 1px solid #ddd; border-radius: 12px; padding: 1.5rem; text-decoration: none; text-align: center; color: #000; transition: border-color .2s ease;">
+            <h4 style="margin: 0 0 0.75rem; color: #cc0000;">Video Demos</h4>
+            <p style="margin: 0; color: #666; font-size: 14px;">Video demonstrations of Autopilot and FSD features in action.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <h2>Questions About FSD or Autopilot?</h2>
+        <p>Chat with our AI EV expert for personalized advice on which features are right for you.</p>
+        <a href="https://ev-expert-chat-701502515049.us-west1.run.app" target="_blank" rel="noopener noreferrer" class="donate-btn donate-cta">Ask EVy AI Assistant</a>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>Tesla Autopilot & FSD Guide | Powered by Volt Report</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    const btn = document.getElementById('mobile-menu-btn');
+    const links = document.getElementById('nav-links');
+    if(btn && links) btn.addEventListener('click', ()=> links.classList.toggle('open'));
+    document.querySelectorAll('.dropdown-toggle').forEach(b=>{
+      b.addEventListener('click', (e)=>{
+        const p = b.closest('.nav-dropdown');
+        if(p) p.classList.toggle('open');
+        e.stopPropagation();
+      });
+    });
+  </script>
+</body>
+</html>

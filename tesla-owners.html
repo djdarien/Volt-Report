@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tesla Owner Resources - Manuals, warranty, service, maintenance guides, and community forums for Tesla owners.">
+  <meta name="og:title" content="Tesla Owner Resources - Volt Report">
+  <meta name="og:description" content="Complete resource hub for Tesla owners with guides, warranty info, service centers, and community links.">
+  <title>Tesla Owner Resources - Volt Report</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .resource-section { margin: 3rem 0; padding: 2rem 0; border-bottom: 1px solid #eee; }
+    .resource-section h2 { color: #000; margin-bottom: 2rem; font-size: 28px; font-weight: 700; }
+    .resource-section:last-child { border-bottom: none; }
+    
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .resource-card {
+      background: #fff;
+      border: 1px solid rgba(204,0,0,0.12);
+      border-radius: 14px;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      transition: transform .22s ease, border-color .22s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .resource-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(204,0,0,0.3);
+    }
+    
+    .resource-card .icon {
+      font-size: 32px;
+      margin-bottom: 1rem;
+    }
+    
+    .resource-card h3 {
+      color: #000;
+      font-size: 18px;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+    
+    .resource-card p {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0 0 1rem;
+      flex-grow: 1;
+    }
+    
+    .resource-card a {
+      display: inline-block;
+      color: #cc0000;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color .2s ease;
+    }
+    
+    .resource-card a:hover {
+      color: #a00000;
+      text-decoration: underline;
+    }
+    
+    .maintenance-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      margin: 2rem 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    .maintenance-table thead {
+      background: #000;
+      color: #fff;
+    }
+    
+    .maintenance-table th {
+      padding: 1rem;
+      text-align: left;
+      font-weight: 700;
+      border-bottom: 3px solid #cc0000;
+    }
+    
+    .maintenance-table td {
+      padding: 1rem;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+    }
+    
+    .maintenance-table tbody tr:hover {
+      background: rgba(204,0,0,0.03);
+    }
+    
+    .faq-section {
+      margin: 2rem 0;
+    }
+    
+    .faq-item {
+      background: #f5f5f5;
+      border-left: 4px solid #cc0000;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+    
+    .faq-item h4 {
+      color: #000;
+      margin-top: 0;
+      font-size: 16px;
+    }
+    
+    .faq-item p {
+      margin: 0.75rem 0 0;
+      color: #555;
+      line-height: 1.6;
+    }
+    
+    .warranty-box {
+      background: rgba(204,0,0,0.05);
+      border-left: 4px solid #cc0000;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+    
+    .warranty-box h4 {
+      color: #cc0000;
+      margin-top: 0;
+    }
+    
+    .warranty-box ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .warranty-box li {
+      margin-bottom: 0.75rem;
+      color: #333;
+    }
+    
+    .community-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .community-card {
+      background: linear-gradient(135deg, #f9f9f9 0%, #fff 100%);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: border-color .2s ease;
+    }
+    
+    .community-card:hover {
+      border-color: rgba(204,0,0,0.3);
+    }
+    
+    .community-card h4 {
+      color: #000;
+      margin: 0.75rem 0;
+      font-size: 16px;
+    }
+    
+    .community-card p {
+      color: #666;
+      font-size: 13px;
+      margin: 0.5rem 0;
+    }
+    
+    .community-card a {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.5rem 1rem;
+      background: #cc0000;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background .2s ease;
+    }
+    
+    .community-card a:hover {
+      background: #a00000;
+    }
+    
+    .page-header { margin-bottom: 2rem; }
+    .page-header h1 { color: #000; margin-bottom: 0.5rem; font-size: 2.5rem; }
+    .subtitle { color: #666; font-size: 1.1rem; }
+    
+    @media (max-width: 768px) {
+      .resource-grid, .community-cards { grid-template-columns: 1fr; }
+      .maintenance-table { font-size: 12px; }
+      .maintenance-table th, .maintenance-table td { padding: 0.75rem; }
+    }
+  </style>
+</head>
+<body class="no-sidenav">
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="logo"><a href="index.html">Volt Report</a><span id="supporter-badge" class="supporter-badge hidden">Supporter Access</span></div>
+      <button class="openbtn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Categories ▾</button>
+          <div class="dropdown-menu" role="menu" aria-label="EV Categories">
+            <div style="padding:6px 10px;color:#ccc;font-weight:700">Tesla</div>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model 3')">Model 3</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model Y')">Model Y</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Service')">Service</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Warranty')">Warranty</a>
+          </div>
+        </div>
+        <a href="https://ev-expert-chat-701502515049.us-west1.run.app" target="_blank" rel="noopener noreferrer">Ask EVy chat bot</a>
+        <a href="https://streamlabs.com/khaos_demon/tip" id="donate-nav-btn" class="donate-nav-btn donate-cta" target="_blank" rel="noopener noreferrer">Donate</a>
+        <a href="guides.html">EV Guides</a>
+        <a href="charging.html">Charging</a>
+        <a href="maps.html">Charging Maps</a>
+        <a href="tesla-specs.html">Tesla Specs</a>
+        <a href="tesla-fsd.html">Tesla FSD</a>
+        <a href="tesla-owners.html" class="active">Owner Resources</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <main class="main-content">
+      <header class="page-header">
+        <h1>Tesla Owner Resources</h1>
+        <p class="subtitle">Complete guides, manuals, warranty info, service resources, and community forums for Tesla owners.</p>
+      </header>
+
+      <section class="resource-section">
+        <h2>Official Tesla Resources</h2>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <div class="icon">📖</div>
+            <h3>Owner's Manuals</h3>
+            <p>Official owner's manuals for all Tesla models. Includes detailed guides on features, troubleshooting, and maintenance.</p>
+            <a href="https://www.tesla.com/ownersmanual" target="_blank" rel="noopener noreferrer">Access Manuals →</a>
+          </div>
+          
+          <div class="resource-card">
+            <div class="icon">🔧</div>
+            <h3>Tesla Support</h3>
+            <p>Official Tesla support center with contact info, troubleshooting guides, and common solutions for issues.</p>
+            <a href="https://www.tesla.com/support" target="_blank" rel="noopener noreferrer">Visit Support →</a>
+          </div>
+          
+          <div class="resource-card">
+            <div class="icon">🏢</div>
+            <h3>Service Centers</h3>
+            <p>Find Tesla service locations, schedule maintenance appointments, and check repair status online.</p>
+            <a href="https://www.tesla.com/service" target="_blank" rel="noopener noreferrer">Find Service Center →</a>
+          </div>
+          
+          <div class="resource-card">
+            <div class="icon">⚡</div>
+            <h3>Charging Help</h3>
+            <p>Complete guide to home charging installation, Supercharger networks, and charging optimization.</p>
+            <a href="https://www.tesla.com/help-me-charge" target="_blank" rel="noopener noreferrer">Charging Guide →</a>
+          </div>
+          
+          <div class="resource-card">
+            <div class="icon">🚗</div>
+            <h3>Vehicle Maintenance</h3>
+            <p>Official maintenance schedule and procedures for keeping your Tesla in optimal condition.</p>
+            <a href="https://www.tesla.com/support/vehicle-maintenance" target="_blank" rel="noopener noreferrer">Maintenance Info →</a>
+          </div>
+          
+          <div class="resource-card">
+            <div class="icon">📱</div>
+            <h3>Tesla App</h3>
+            <p>Official Tesla mobile app for vehicle control, monitoring, and access to owner resources.</p>
+            <a href="https://www.tesla.com/app" target="_blank" rel="noopener noreferrer">App Details →</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="resource-section">
+        <h2>Warranty & Protection</h2>
+        
+        <div class="warranty-box">
+          <h4>🛡️ Tesla Warranty Coverage</h4>
+          <ul>
+            <li><strong>Battery & Drive Unit:</strong> 8 years or 120,000-200,000 miles (varies by model) - 100% coverage</li>
+            <li><strong>Bumper-to-Bumper:</strong> 4 years or 50,000 miles - covers most components except wear items</li>
+            <li><strong>Paint:</strong> 4 years - protection against defects</li>
+            <li><strong>Roadside Assistance:</strong> Complimentary 24/7 support for first 4 years</li>
+            <li><strong>Regional Variations:</strong> Warranty terms may differ by country. Check your local Tesla site.</li>
+          </ul>
+        </div>
+
+        <div class="faq-section">
+          <div class="faq-item">
+            <h4>What's covered under bumper-to-bumper warranty?</h4>
+            <p>Almost everything except normal wear items (tires, wiper blades, brake pads). This includes the touchscreen, seals, gaskets, hardware, and most mechanical parts.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h4>Can I extend my warranty?</h4>
+            <p>Yes, Tesla offers extended service plans. Talk to your service center or check your Tesla app for available extension options and pricing.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h4>How much battery degradation should I expect?</h4>
+            <p>Most Teslas retain 90-95% of original battery capacity after 8 years/120k miles. Warranty covers degradation below specified levels (typically 70% minimum).</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="resource-section">
+        <h2>Maintenance Schedule</h2>
+        <div style="overflow-x: auto; border-radius: 14px;">
+          <table class="maintenance-table">
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>Frequency</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Tire Rotation</strong></td>
+                <td>Every 6,250 miles or 6 months</td>
+                <td>Ensures even wear and extends tire life</td>
+              </tr>
+              <tr>
+                <td><strong>Tire Balance & Alignment</strong></td>
+                <td>As needed (annually check)</td>
+                <td>Improves handling and comfort</td>
+              </tr>
+              <tr>
+                <td><strong>Brake Inspection</strong></td>
+                <td>Annually</td>
+                <td>Check brake fluid and components</td>
+              </tr>
+              <tr>
+                <td><strong>Battery Diagnostic</strong></td>
+                <td>Every 2 years</td>
+                <td>Ensure battery health and performance</td>
+              </tr>
+              <tr>
+                <td><strong>Coolant Inspection</strong></td>
+                <td>Every 2 years</td>
+                <td>Check battery and drivetrain coolant</td>
+              </tr>
+              <tr>
+                <td><strong>Air Conditioning</strong></td>
+                <td>As needed</td>
+                <td>Service if performance decreases</td>
+              </tr>
+              <tr>
+                <td><strong>Soft Resets</strong></td>
+                <td>Monthly</td>
+                <td>Shift to Neutral and hold brake for 10 seconds to refresh systems</td>
+              </tr>
+              <tr>
+                <td><strong>Software Updates</strong></td>
+                <td>Regular (automatic)</td>
+                <td>Keep car updated for latest features and security patches</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <p style="color: #666; font-size: 14px; margin-top: 1rem;">
+          <strong>Note:</strong> Tesla vehicles require significantly less maintenance than gas cars. No oil changes, transmission fluid, or spark plugs needed. Regenerative braking means brake service is rare.
+        </p>
+      </section>
+
+      <section class="resource-section">
+        <h2>Battery Health & Longevity Tips</h2>
+        
+        <div class="faq-section">
+          <div class="faq-item">
+            <h4>📊 How to Check Battery Health</h4>
+            <p>In your Tesla: <strong>Controls → Service → Battery</strong> to see current health percentage and estimated range. Most owners see 2-3% degradation per 100,000 miles.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h4>⚡ Optimal Charging Habits</h4>
+            <p><strong>Daily:</strong> Charge to 80% for maximum battery longevity. <strong>Long trips:</strong> Charge to 100% only before road trips. <strong>Storage:</strong> Keep battery between 20-80% if storing for extended periods.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h4>❄️ Cold Weather Impact</h4>
+            <p>Cold reduces range 20-40% temporarily. The battery reheats itself when driving. Use preconditioning before trips and seat heaters instead of cabin heat to preserve range.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h4>🔋 Supercharging Strategy</h4>
+            <p>Occasional supercharging is fine, but frequent DC fast charging can accelerate battery degradation. Use home charging (Level 2) for daily use and Superchargers mainly for road trips.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h4>🌡️ Hot Weather Concerns</h4>
+            <p>Park in shade or use pre-cooling in the app to keep battery cool. Extreme heat for prolonged periods can impact longevity, though modern Teslas manage this automatically.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="resource-section">
+        <h2>Community & Forums</h2>
+        <p>Connect with other Tesla owners, share experiences, and get advice from the community:</p>
+        
+        <div class="community-cards">
+          <div class="community-card">
+            <h4>🔗 r/Tesla (Reddit)</h4>
+            <p>Largest online Tesla community with 1M+ members. News, discussions, and Q&A.</p>
+            <a href="https://reddit.com/r/tesla" target="_blank" rel="noopener noreferrer">Join Community</a>
+          </div>
+          
+          <div class="community-card">
+            <h4>💬 Tesla Motors Club</h4>
+            <p>Active forum for owners to discuss models, mods, troubleshooting, and advice.</p>
+            <a href="https://teslamotorsclub.com" target="_blank" rel="noopener noreferrer">Visit Forum</a>
+          </div>
+          
+          <div class="community-card">
+            <h4>🎥 YouTube Channels</h4>
+            <p>Channels dedicated to Tesla ownership, maintenance tips, and feature reviews.</p>
+            <a href="https://www.youtube.com/results?search_query=tesla+owner+tips" target="_blank" rel="noopener noreferrer">Watch Videos</a>
+          </div>
+          
+          <div class="community-card">
+            <h4>📱 Facebook Groups</h4>
+            <p>Model-specific groups (Model 3 Owners, Model Y Owners) for local discussions.</p>
+            <a href="https://www.facebook.com/search/groups/?q=tesla" target="_blank" rel="noopener noreferrer">Find Groups</a>
+          </div>
+          
+          <div class="community-card">
+            <h4>🌐 Tesla Forums</h4>
+            <p>Official Tesla discussion boards and owner spaces on the Tesla website.</p>
+            <a href="https://www.tesla.com" target="_blank" rel="noopener noreferrer">Visit Tesla.com</a>
+          </div>
+          
+          <div class="community-card">
+            <h4>📧 Owner Meetups</h4>
+            <p>Find local Tesla owner groups and organizing for meetups, group charges, and events.</p>
+            <a href="https://reddit.com/r/tesla" target="_blank" rel="noopener noreferrer">Find Local Groups</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="resource-section">
+        <h2>Useful Owner Tools & Websites</h2>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <div class="icon">📊</div>
+            <h3>Teslafi</h3>
+            <p>Track your Tesla's health, efficiency, and driving patterns. Advanced analytics and alerts.</p>
+            <a href="https://www.teslafi.com" target="_blank" rel="noopener noreferrer">Visit Teslafi →</a>
+          </div>
+          
+          <div class="resource-card">
+            <div class="icon">🔌</div>
+            <h3>PlugShare</h3>
+            <p>Find charging stations worldwide. Community reviews and real-time availability updates.</p>
+            <a href="https://www.plugshare.com" target="_blank" rel="noopener noreferrer">Visit PlugShare →</a>
+          </div>
+          
+          <div class="resource-card">
+            <div class="icon">🗺️</div>
+            <h3>ABRP</h3>
+            <p>A Better Route Planner. EV-specific trip planning with optimal charging stops.</p>
+            <a href="https://abetterrouteplanner.com" target="_blank" rel="noopener noreferrer">Visit ABRP →</a>
+          </div>
+          
+          <div class="resource-card">
+            <div class="icon">🎨</div>
+            <h3>Customization Hub</h3>
+            <p>Resources for mods, accessories, and cosmetic upgrades for your Tesla.</p>
+            <a href="https://teslamotorsclub.com/tmc/forums/modifications.156/" target="_blank" rel="noopener noreferrer">View Mods →</a>
+          </div>
+          
+          <div class="resource-card">
+            <div class="icon">🚙</div>
+            <h3>FSD Beta Info</h3>
+            <p>Resources on Full Self-Driving beta, requirements, and how to join the program.</p>
+            <a href="https://www.tesla.com/support/fsd-beta" target="_blank" rel="noopener noreferrer">FSD Beta →</a>
+          </div>
+          
+          <div class="resource-card">
+            <div class="icon">💡</div>
+            <h3>Tips & Tricks</h3>
+            <p>Hidden features and productivity tips that most Tesla owners don't know about.</p>
+            <a href="https://reddit.com/r/tesla/wiki/index" target="_blank" rel="noopener noreferrer">Tips Wiki →</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="resource-section">
+        <h2>Financing & Insurance</h2>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <div class="icon">💳</div>
+            <h3>Tesla Financing</h3>
+            <p>Official Tesla financing options, loan terms, and lease information.</p>
+            <a href="https://www.tesla.com/financing" target="_blank" rel="noopener noreferrer">View Financing →</a>
+          </div>
+          
+          <div class="resource-card">
+            <div class="icon">🛡️</div>
+            <h3>Insurance Tips</h3>
+            <p>Get quotes and find insurers that specialize in Tesla vehicles at competitive rates.</p>
+            <a href="https://www.tesla.com/support/insurance" target="_blank" rel="noopener noreferrer">Insurance Guide →</a>
+          </div>
+          
+          <div class="resource-card">
+            <div class="icon">💰</div>
+            <h3>Tax Credits</h3>
+            <p>Federal, state, and local incentives available for Tesla purchases.</p>
+            <a href="https://fueleconomy.gov/feg/taxevb.shtml" target="_blank" rel="noopener noreferrer">Tax Credits →</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>Tesla Owner Resources | Powered by Volt Report</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    const btn = document.getElementById('mobile-menu-btn');
+    const links = document.getElementById('nav-links');
+    if(btn && links) btn.addEventListener('click', ()=> links.classList.toggle('open'));
+    document.querySelectorAll('.dropdown-toggle').forEach(b=>{
+      b.addEventListener('click', (e)=>{
+        const p = b.closest('.nav-dropdown');
+        if(p) p.classList.toggle('open');
+        e.stopPropagation();
+      });
+    });
+  </script>
+</body>
+</html>

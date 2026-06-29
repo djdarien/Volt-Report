@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tesla Model Specs & Comparison - Compare Model 3, Y, S, X, and Cybertruck specifications, pricing, performance, and range.">
+  <meta name="og:title" content="Tesla Model Comparison - Volt Report">
+  <meta name="og:description" content="Side-by-side comparison of all Tesla models with specs, pricing, and real-world performance data.">
+  <title>Tesla Model Specs - Volt Report</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .specs-section { margin: 3rem 0; padding: 2rem 0; border-bottom: 1px solid #eee; }
+    .specs-section h2 { color: #000; margin-bottom: 2rem; font-size: 28px; font-weight: 700; }
+    .specs-section:last-child { border-bottom: none; }
+    
+    .model-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .model-card {
+      background: linear-gradient(135deg, #f9f9f9 0%, #fff 100%);
+      border: 2px solid rgba(204,0,0,0.12);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+    
+    .model-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(204,0,0,0.35);
+      box-shadow: 0 12px 32px rgba(204,0,0,0.15);
+    }
+    
+    .model-card h3 {
+      color: #000;
+      font-size: 22px;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+    
+    .model-price {
+      color: #cc0000;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .model-card .spec-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      font-size: 14px;
+    }
+    
+    .model-card .spec-row:last-child {
+      border-bottom: none;
+    }
+    
+    .spec-label {
+      font-weight: 600;
+      color: #333;
+    }
+    
+    .spec-value {
+      color: #666;
+      text-align: right;
+    }
+    
+    .comparison-table-wrapper {
+      overflow-x: auto;
+      margin: 2rem 0;
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+    
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      font-size: 14px;
+    }
+    
+    .comparison-table thead {
+      background: #000;
+      color: #fff;
+    }
+    
+    .comparison-table th {
+      padding: 1rem;
+      text-align: left;
+      font-weight: 700;
+      border-bottom: 3px solid #cc0000;
+    }
+    
+    .comparison-table td {
+      padding: 0.9rem;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .comparison-table tbody tr:hover {
+      background: rgba(204,0,0,0.03);
+    }
+    
+    .highlight {
+      background: rgba(204,0,0,0.1);
+      font-weight: 600;
+      color: #cc0000;
+    }
+    
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .feature-card {
+      background: #fff;
+      border: 1px solid rgba(204,0,0,0.1);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      transition: border-color .22s ease;
+    }
+    
+    .feature-card:hover {
+      border-color: rgba(204,0,0,0.25);
+    }
+    
+    .feature-card h4 {
+      color: #000;
+      font-size: 16px;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+    
+    .feature-card p {
+      color: #666;
+      font-size: 13px;
+      line-height: 1.5;
+      margin: 0;
+    }
+    
+    .page-header { margin-bottom: 2rem; }
+    .page-header h1 { color: #000; margin-bottom: 0.5rem; font-size: 2.5rem; }
+    .subtitle { color: #666; font-size: 1.1rem; }
+    
+    .compare-filter {
+      background: rgba(204,0,0,0.06);
+      border: 1px solid rgba(204,0,0,0.2);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 1.5rem 0;
+    }
+    
+    .compare-filter label {
+      display: inline-block;
+      margin-right: 1.5rem;
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+    }
+    
+    .compare-filter input[type="checkbox"] {
+      margin-right: 0.5rem;
+    }
+    
+    @media (max-width: 768px) {
+      .model-grid { grid-template-columns: 1fr; }
+      .comparison-table { font-size: 12px; }
+      .comparison-table th, .comparison-table td { padding: 0.7rem; }
+      .model-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body class="no-sidenav">
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="logo"><a href="index.html">Volt Report</a><span id="supporter-badge" class="supporter-badge hidden">Supporter Access</span></div>
+      <button class="openbtn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Categories ▾</button>
+          <div class="dropdown-menu" role="menu" aria-label="EV Categories">
+            <div style="padding:6px 10px;color:#ccc;font-weight:700">Tesla</div>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model 3')">Model 3</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model Y')">Model Y</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model S')">Model S</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model X')">Model X</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Cybertruck')">Cybertruck</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla Autopilot')">Autopilot</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Tesla FSD')">Full Self-Driving</a>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.06);margin:8px 0">
+            <div style="padding:6px 10px;color:#ccc;font-weight:700">Other EVs</div>
+            <a href="#" role="menuitem" onclick="updateCategory('Rivian')">Rivian</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Lucid Motors')">Lucid</a>
+            <a href="#" role="menuitem" onclick="updateCategory('BYD EV')">BYD</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Volkswagen EV')">Volkswagen</a>
+            <a href="#" role="menuitem" onclick="updateCategory('Ford EV')">Ford (Mach-E, Lightning)</a>
+          </div>
+        </div>
+        <a href="https://ev-expert-chat-701502515049.us-west1.run.app" target="_blank" rel="noopener noreferrer">Ask EVy chat bot</a>
+        <a href="https://streamlabs.com/khaos_demon/tip" id="donate-nav-btn" class="donate-nav-btn donate-cta" target="_blank" rel="noopener noreferrer">Donate</a>
+        <a href="guides.html">EV Guides</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="charging.html">Charging</a>
+        <a href="maps.html">Charging Maps</a>
+        <a href="tesla-specs.html" class="active">Tesla Specs</a>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <main class="main-content">
+      <header class="page-header">
+        <h1>Tesla Model Specs & Comparison</h1>
+        <p class="subtitle">Complete specifications, pricing, and performance data for all Tesla models. Compare range, acceleration, and features side-by-side.</p>
+      </header>
+
+      <section class="specs-section">
+        <h2>Tesla Models Overview</h2>
+        <div class="model-grid">
+          <div class="model-card">
+            <h3>Model 3</h3>
+            <div class="model-price">$38,990+</div>
+            <div class="spec-row">
+              <span class="spec-label">Range</span>
+              <span class="spec-value">272 - 358 mi</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">0-60 MPH</span>
+              <span class="spec-value">3.1 - 5.8s</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Top Speed</span>
+              <span class="spec-value">163 - 200 mph</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Seats</span>
+              <span class="spec-value">5</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Efficiency</span>
+              <span class="spec-value">24-26 kWh/100mi</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Best For</span>
+              <span class="spec-value">Daily driving</span>
+            </div>
+          </div>
+
+          <div class="model-card">
+            <h3>Model Y</h3>
+            <div class="model-price">$43,990+</div>
+            <div class="spec-row">
+              <span class="spec-label">Range</span>
+              <span class="spec-value">260 - 330 mi</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">0-60 MPH</span>
+              <span class="spec-value">2.1 - 6.2s</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Top Speed</span>
+              <span class="spec-value">155 - 200 mph</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Seats</span>
+              <span class="spec-value">5-7 (optional 3-row)</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Efficiency</span>
+              <span class="spec-value">24-26 kWh/100mi</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Best For</span>
+              <span class="spec-value">Families</span>
+            </div>
+          </div>
+
+          <div class="model-card">
+            <h3>Model S</h3>
+            <div class="model-price">$73,990+</div>
+            <div class="spec-row">
+              <span class="spec-label">Range</span>
+              <span class="spec-value">320 - 405 mi</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">0-60 MPH</span>
+              <span class="spec-value">1.99 - 4.2s</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Top Speed</span>
+              <span class="spec-value">155 - 200 mph</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Seats</span>
+              <span class="spec-value">5</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Efficiency</span>
+              <span class="spec-value">25-28 kWh/100mi</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Best For</span>
+              <span class="spec-value">Performance & range</span>
+            </div>
+          </div>
+
+          <div class="model-card">
+            <h3>Model X</h3>
+            <div class="model-price">$79,990+</div>
+            <div class="spec-row">
+              <span class="spec-label">Range</span>
+              <span class="spec-value">310 - 348 mi</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">0-60 MPH</span>
+              <span class="spec-value">2.5 - 5.8s</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Top Speed</span>
+              <span class="spec-value">155 - 200 mph</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Seats</span>
+              <span class="spec-value">7 with falcon doors</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Efficiency</span>
+              <span class="spec-value">28-32 kWh/100mi</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Best For</span>
+              <span class="spec-value">3-row families</span>
+            </div>
+          </div>
+
+          <div class="model-card">
+            <h3>Cybertruck</h3>
+            <div class="model-price">$60,990+</div>
+            <div class="spec-row">
+              <span class="spec-label">Range</span>
+              <span class="spec-value">250 - 320 mi</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">0-60 MPH</span>
+              <span class="spec-value">2.6 - 6.5s</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Top Speed</span>
+              <span class="spec-value">180 mph</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Towing</span>
+              <span class="spec-value">14,000 lbs</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Efficiency</span>
+              <span class="spec-value">24-28 kWh/100mi</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Best For</span>
+              <span class="spec-value">Trucks & towing</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="specs-section">
+        <h2>Detailed Model Comparison</h2>
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Specification</th>
+                <th>Model 3</th>
+                <th>Model Y</th>
+                <th>Model S</th>
+                <th>Model X</th>
+                <th>Cybertruck</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Starting Price</strong></td>
+                <td class="highlight">$38,990</td>
+                <td>$43,990</td>
+                <td>$73,990</td>
+                <td>$79,990</td>
+                <td>$60,990</td>
+              </tr>
+              <tr>
+                <td><strong>EPA Range (Max)</strong></td>
+                <td>358 mi</td>
+                <td>330 mi</td>
+                <td class="highlight">405 mi</td>
+                <td>348 mi</td>
+                <td>320 mi</td>
+              </tr>
+              <tr>
+                <td><strong>Acceleration (0-60)</strong></td>
+                <td>5.8s (RWD)</td>
+                <td>6.2s (RWD)</td>
+                <td class="highlight">1.99s (Plaid)</td>
+                <td>5.8s (RWD)</td>
+                <td>6.5s (RWD)</td>
+              </tr>
+              <tr>
+                <td><strong>Passenger Seats</strong></td>
+                <td class="highlight">5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>7</td>
+                <td>5 (with jump seats)</td>
+              </tr>
+              <tr>
+                <td><strong>Cargo Space</strong></td>
+                <td>28 cu ft</td>
+                <td class="highlight">76 cu ft (with 3-row)</td>
+                <td>28 cu ft</td>
+                <td>28 cu ft</td>
+                <td>100+ cu ft</td>
+              </tr>
+              <tr>
+                <td><strong>Towing Capacity</strong></td>
+                <td>N/A</td>
+                <td>3,500 lbs</td>
+                <td>N/A</td>
+                <td>5,000 lbs</td>
+                <td class="highlight">14,000 lbs</td>
+              </tr>
+              <tr>
+                <td><strong>Supercharger Time (10-80%)</strong></td>
+                <td>25 min</td>
+                <td>27 min</td>
+                <td class="highlight">15 min</td>
+                <td>20 min</td>
+                <td>25 min</td>
+              </tr>
+              <tr>
+                <td><strong>Efficiency (kWh/100mi)</strong></td>
+                <td class="highlight">24</td>
+                <td>25</td>
+                <td>27</td>
+                <td>30</td>
+                <td>26</td>
+              </tr>
+              <tr>
+                <td><strong>Software/FSD Ready</strong></td>
+                <td class="highlight">✓ Full Support</td>
+                <td class="highlight">✓ Full Support</td>
+                <td class="highlight">✓ Full Support</td>
+                <td class="highlight">✓ Full Support</td>
+                <td>✓ In Development</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="specs-section">
+        <h2>Key Features by Model</h2>
+        
+        <h3 style="margin-top: 1.5rem; color: #000; font-weight: 700;">Model 3 Highlights</h3>
+        <div class="feature-list">
+          <div class="feature-card">
+            <h4>🏎️ Performance</h4>
+            <p>Acceleration from 3.1s on Plaid variant. Fun on any road.</p>
+          </div>
+          <div class="feature-card">
+            <h4>💰 Affordability</h4>
+            <p>Most affordable Tesla with full Autopilot capability included.</p>
+          </div>
+          <div class="feature-card">
+            <h4>⚡ Efficiency</h4>
+            <p>Best-in-class efficiency keeps charging costs lowest.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🔋 Reliability</h4>
+            <p>Most sold EV globally with proven long-term ownership data.</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 2rem; color: #000; font-weight: 700;">Model Y Highlights</h3>
+        <div class="feature-list">
+          <div class="feature-card">
+            <h4>👨‍👩‍👧‍👦 Spacious Interior</h4>
+            <p>Up to 7 seats with optional 3-row configuration for families.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🚀 Best Seller</h4>
+            <p>World's best-selling EV with proven reliability and support.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🌍 AWD Available</h4>
+            <p>All-wheel drive for better traction in winter conditions.</p>
+          </div>
+          <div class="feature-card">
+            <h4>📱 Tech Integration</h4>
+            <p>Latest Infotainment system and full software update support.</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 2rem; color: #000; font-weight: 700;">Model S Highlights</h3>
+        <div class="feature-list">
+          <div class="feature-card">
+            <h4>⚡ Plaid Acceleration</h4>
+            <p>1.99s 0-60 with Plaid tri-motor configuration—fastest Tesla.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🔋 Long Range</h4>
+            <p>405-mile EPA range—best for cross-country road trips.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🎮 Premium Upgrades</h4>
+            <p>Newest interior design with 17" touchscreen and advanced audio.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🏆 Flagship</h4>
+            <p>Original Tesla sedan with most advanced features and tech.</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 2rem; color: #000; font-weight: 700;">Model X Highlights</h3>
+        <div class="feature-list">
+          <div class="feature-card">
+            <h4>🦅 Falcon Doors</h4>
+            <p>Iconic gull-wing doors for unique entry and premium feel.</p>
+          </div>
+          <div class="feature-card">
+            <h4>👨‍👩‍👧‍👧 True 3-Row</h4>
+            <p>Spacious third row with easy access thanks to door design.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🚗 Spacious</h4>
+            <p>Most spacious interior with comfortable seating for 7.</p>
+          </div>
+          <div class="feature-card">
+            <h4>📦 Smart Air Suspension</h4>
+            <p>Adaptive air suspension for comfort on any road condition.</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 2rem; color: #000; font-weight: 700;">Cybertruck Highlights</h3>
+        <div class="feature-list">
+          <div class="feature-card">
+            <h4>🛡️ Exoskeleton</h4>
+            <p>Ultra-hard stainless steel body for durability and unique design.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🚚 Truck Power</h4>
+            <p>14,000 lbs towing—designed for real work and adventure.</p>
+          </div>
+          <div class="feature-card">
+            <h4>💪 Innovative</h4>
+            <p>First-of-its-kind EV truck with futuristic styling.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🔌 Frunk Storage</h4>
+            <p>Massive front trunk for gear and adventure equipment.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="specs-section">
+        <h2>Charging & Battery Info</h2>
+        <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 12px; margin: 2rem 0;">
+          <h3 style="color: #000; margin-bottom: 1rem;">Battery Options & Range</h3>
+          <ul style="margin: 0; padding-left: 1.5rem;">
+            <li><strong>Standard Range Plus (Model 3/Y):</strong> ~260-280 mi EPA</li>
+            <li><strong>Long Range (All Models):</strong> ~300-358 mi EPA depending on model</li>
+            <li><strong>Plaid (S/X):</strong> ~400+ mi EPA with ultimate performance</li>
+            <li><strong>Cybertruck (Tri-Motor):</strong> ~320 mi EPA with 14,000 lbs towing</li>
+            <li><strong>Home Charging (Level 2):</strong> Add ~30-35 mi per hour charged</li>
+            <li><strong>Supercharging:</strong> Add 200+ mi in 15-20 minutes at 10-80% charge</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="specs-section">
+        <h2>Real-World Tips for Tesla Owners</h2>
+        <div style="background: rgba(204,0,0,0.05); border-left: 4px solid #cc0000; padding: 1.5rem; border-radius: 12px;">
+          <h4 style="color: #cc0000; margin-top: 0;">Battery Health & Longevity</h4>
+          <ul>
+            <li>Tesla batteries are warrantied for 8 years or 120k-200k miles depending on model</li>
+            <li>Charge to 80% daily for optimal battery health; full charge only before long trips</li>
+            <li>Preconditioning battery 15-20 min before DC fast charging improves efficiency</li>
+            <li>Cold weather reduces range 20-40%; warm up cabin with seat heaters instead of AC</li>
+            <li>Avoid frequent supercharging; use home Level 2 charging when possible</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="specs-section">
+        <h2>Purchase & Ownership Resources</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+          <a href="https://www.tesla.com/models" target="_blank" rel="noopener noreferrer" style="background: #fff; border: 1px solid #ddd; border-radius: 12px; padding: 1.5rem; text-decoration: none; text-align: center; color: #000; transition: border-color .2s ease;">
+            <h4 style="margin: 0 0 0.75rem; color: #cc0000;">Configure Your Tesla</h4>
+            <p style="margin: 0; color: #666; font-size: 14px;">Build and price your Tesla on the official site</p>
+          </a>
+          <a href="https://www.tesla.com/ownersmanual" target="_blank" rel="noopener noreferrer" style="background: #fff; border: 1px solid #ddd; border-radius: 12px; padding: 1.5rem; text-decoration: none; text-align: center; color: #000; transition: border-color .2s ease;">
+            <h4 style="margin: 0 0 0.75rem; color: #cc0000;">Owner's Manuals</h4>
+            <p style="margin: 0; color: #666; font-size: 14px;">Official guides for all Tesla models and features</p>
+          </a>
+          <a href="https://www.tesla.com/support/service" target="_blank" rel="noopener noreferrer" style="background: #fff; border: 1px solid #ddd; border-radius: 12px; padding: 1.5rem; text-decoration: none; text-align: center; color: #000; transition: border-color .2s ease;">
+            <h4 style="margin: 0 0 0.75rem; color: #cc0000;">Service & Support</h4>
+            <p style="margin: 0; color: #666; font-size: 14px;">Find service centers and schedule maintenance</p>
+          </a>
+          <a href="https://www.tesla.com/supercharger" target="_blank" rel="noopener noreferrer" style="background: #fff; border: 1px solid #ddd; border-radius: 12px; padding: 1.5rem; text-decoration: none; text-align: center; color: #000; transition: border-color .2s ease;">
+            <h4 style="margin: 0 0 0.75rem; color: #cc0000;">Supercharger Map</h4>
+            <p style="margin: 0; color: #666; font-size: 14px;">Locate chargers and plan road trips</p>
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>Tesla Model Specs & Comparison | Powered by Volt Report</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    const btn = document.getElementById('mobile-menu-btn');
+    const links = document.getElementById('nav-links');
+    if(btn && links) btn.addEventListener('click', ()=> links.classList.toggle('open'));
+    document.querySelectorAll('.dropdown-toggle').forEach(b=>{
+      b.addEventListener('click', (e)=>{
+        const p = b.closest('.nav-dropdown');
+        if(p) p.classList.toggle('open');
+        e.stopPropagation();
+      });
+    });
+  </script>
+</body>
+</html>
