@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Tesla Autopilot & Full Self-Driving (FSD) - Complete feature guide, beta updates, capabilities, and safety information.">
+  <meta name="description" content="Tesla Autopilot & Full Self-Driving (FSD) - Complete feature guide, beta updates including V14 Lite for HW3, capabilities, and safety information.">
   <meta name="og:title" content="Tesla Autopilot & FSD Guide - Volt Report">
-  <meta name="og:description" content="Learn about Tesla Autopilot and Full Self-Driving capabilities, latest beta features, and how to use them safely.">
+  <meta name="og:description" content="Learn about Tesla Autopilot and Full Self-Driving capabilities, latest beta features including V14 Lite for HW3 cars, and how to use them safely.">
   <title>Tesla Autopilot & FSD Guide - Volt Report</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -205,6 +205,7 @@
         <a href="https://ev-expert-chat-701502515049.us-west1.run.app" target="_blank" rel="noopener noreferrer">Ask EVy chat bot</a>
         <a href="https://streamlabs.com/khaos_demon/tip" id="donate-nav-btn" class="donate-nav-btn donate-cta" target="_blank" rel="noopener noreferrer">Donate</a>
         <a href="guides.html">EV Guides</a>
+        <a href="blog.html">EV Blog</a>
         <a href="reviews.html">Reviews</a>
         <a href="charging.html">Charging</a>
         <a href="maps.html">Charging Maps</a>
@@ -219,7 +220,7 @@
     <main class="main-content">
       <header class="page-header">
         <h1>Tesla Autopilot & Full Self-Driving</h1>
-        <p class="subtitle">Complete guide to Tesla's autonomous driving features, latest updates, capabilities, and safety best practices.</p>
+        <p class="subtitle">Complete guide to Tesla's autonomous driving features, latest updates (including V14 Lite for HW3), capabilities, and safety best practices.</p>
       </header>
 
       <section class="fsd-section">
@@ -409,24 +410,40 @@
         <h2>Latest Updates & Beta Releases</h2>
         
         <div class="update-card">
-          <h4>FSD V12 & Beyond</h4>
+          <h4>FSD V14 Lite for Hardware 3 (HW3 / AI3)</h4>
+          <div class="date">Rolling out from late June 2026 · Firmware 2026.20.x series</div>
+          <p>Tesla is delivering <strong>FSD V14 Lite</strong> to Hardware 3 vehicles — the first major FSD update for roughly 4 million HW3 cars that had been on older builds (around v12.6) for over a year.</p>
+          <p><strong>What it is:</strong> A distilled (compressed) version of the full FSD v14 neural network used on HW4/AI4 cars. The model is reduced so it fits HW3’s much smaller memory and compute budget while still bringing many of the same driving improvements.</p>
+          <p><strong>Key points for HW3 owners:</strong></p>
+          <ul style="margin:0.5rem 0 0.75rem 1.25rem;color:#555;font-size:14px;line-height:1.6;">
+            <li>Speed profiles, start self-driving from park, improved merges, intersections, and low-speed maneuvers</li>
+            <li>Smoother city driving and better reaction times reported by many early users</li>
+            <li>Still a supervised Level 2 system — hands-on and attentive driving required</li>
+            <li>Some owners report remaining issues with parking, throttle/brake stabbing, conservative speeds, and occasional phantom braking</li>
+            <li>Rollout started with early-access HW3 customers and has been expanding based on feedback</li>
+          </ul>
+          <p><strong>Note:</strong> A full hands-on <a href="blog.html">V14 Lite review is coming soon</a> on the EV Blog.</p>
+        </div>
+
+        <div class="update-card">
+          <h4>FSD V14 & Beyond (HW4 / AI4)</h4>
           <div class="date">Latest versions focus on vision-only architecture</div>
           <p>Tesla transitioned to a camera-based system removing radar. New versions emphasize improved object detection and prediction under various conditions.</p>
-          <p><strong>Latest features:</strong> Improved street navigation, better handling of edge cases, smoother driving behavior.</p>
+          <p><strong>Latest features:</strong> Improved street navigation, better handling of edge cases, smoother driving behavior, reinforcement learning improvements.</p>
         </div>
 
         <div class="update-card">
           <h4>Continuous Improvement</h4>
           <div class="date">Rolling updates</div>
-          <p>Tesla releases FSD beta updates roughly every 1-2 weeks. Beta testers report improvements through Tesla's feedback system.</p>
-          <p><strong>Current focus:</strong> Reducing false positives, improving lane keeping, better pedestrian prediction.</p>
+          <p>Tesla releases FSD updates on a regular cadence. Beta and early-access testers report improvements through Tesla's feedback system.</p>
+          <p><strong>Current focus:</strong> Reducing interventions, improving parking and low-speed behavior, better highway and city consistency.</p>
         </div>
 
         <div class="update-card">
           <h4>Hardware Support</h4>
-          <div class="date">Applies to all Tesla vehicles</div>
-          <p>Even older Tesla vehicles (2016+) with proper hardware can access Autopilot features. Some advanced FSD features require HW3.0+ (newer computers).</p>
-          <p><strong>Tip:</strong> Check your car's hardware version in Settings to see which features you're eligible for.</p>
+          <div class="date">Applies to HW3 and HW4 vehicles</div>
+          <p>HW3 (AI3) vehicles now receive FSD V14 Lite. HW4 (AI4) vehicles run the full V14 stack. Older cars need the correct Autopilot computer and cameras to access FSD features.</p>
+          <p><strong>Tip:</strong> Check your car's hardware version in Controls → Software (or Settings) to see which features and software branch you're on.</p>
         </div>
       </section>
 
@@ -439,7 +456,7 @@
           <li><strong>Super Intelligent Pilot (Xpeng):</strong> Advanced on highways, expanding city street capability. Chinese focus, limited US availability.</li>
           <li><strong>BlueCruise (Ford):</strong> Similar to Supercruise. Hands-off highway driving on pre-mapped roads only.</li>
           <li><strong>Waymo Driver (Alphabet):</strong> Fully autonomous ride-hailing in select cities. Not consumer-facing for personal vehicles yet.</li>
-          <li><strong>Tesla FSD:</strong> Most ambitious consumer offering with city streets, parking, and continuous over-the-air updates.</li>
+          <li><strong>Tesla FSD:</strong> Most ambitious consumer offering with city streets, parking, and continuous over-the-air updates — including V14 Lite bringing modern behavior to HW3 cars.</li>
         </ul>
       </section>
 
@@ -458,9 +475,9 @@
             <h4 style="margin: 0 0 0.75rem; color: #cc0000;">Community Discussions</h4>
             <p style="margin: 0; color: #666; font-size: 14px;">Real Tesla owners share experiences and learn together on Reddit.</p>
           </a>
-          <a href="https://www.youtube.com/user/teslaownercentral" target="_blank" rel="noopener noreferrer" style="background: #fff; border: 1px solid #ddd; border-radius: 12px; padding: 1.5rem; text-decoration: none; text-align: center; color: #000; transition: border-color .2s ease;">
-            <h4 style="margin: 0 0 0.75rem; color: #cc0000;">Video Demos</h4>
-            <p style="margin: 0; color: #666; font-size: 14px;">Video demonstrations of Autopilot and FSD features in action.</p>
+          <a href="blog.html" style="background: #fff; border: 1px solid #ddd; border-radius: 12px; padding: 1.5rem; text-decoration: none; text-align: center; color: #000; transition: border-color .2s ease;">
+            <h4 style="margin: 0 0 0.75rem; color: #cc0000;">EV Blog – V14 Lite</h4>
+            <p style="margin: 0; color: #666; font-size: 14px;">V14 Lite review for HW3 cars — coming soon on the Volt Report blog.</p>
           </a>
         </div>
       </section>
