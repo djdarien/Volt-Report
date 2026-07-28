@@ -1,51 +1,42 @@
-<!-- guides.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="EV Guides and Resources - Volt Report" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="EV Guides and Resources - Volt Report">
   <title>EV Guides - Volt Report</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="no-sidenav">
-  <!-- Top Navbar -->
   <nav class="navbar">
     <div class="nav-inner">
       <div class="logo"><a href="index.html">Volt Report</a><span id="supporter-badge" class="supporter-badge hidden">Supporter Access</span></div>
-      <div class="nav-links">
+      <button class="openbtn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+      <div class="nav-links" id="nav-links">
         <a href="index.html">Home</a>
         <div class="nav-dropdown">
           <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Categories ▾</button>
           <div class="dropdown-menu" role="menu" aria-label="EV Categories">
             <div style="padding:6px 10px;color:#ccc;font-weight:700">Tesla</div>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model 3')">Model 3</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model Y')">Model Y</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model S')">Model S</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model X')">Model X</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Cybertruck')">Cybertruck</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla Autopilot')">Autopilot</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla FSD')">Full Self-Driving</a>
+            <a href="index.html" role="menuitem">Model 3 / Y / S / X</a>
+            <a href="index.html" role="menuitem">Cybertruck / FSD</a>
             <hr style="border:none;border-top:1px solid rgba(255,255,255,0.06);margin:8px 0">
-            <div style="padding:6px 10px;color:#ccc;font-weight:700">Other EVs</div>
-            <a href="#" role="menuitem" onclick="updateCategory('Rivian')">Rivian</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Lucid Motors')">Lucid</a>
-            <a href="#" role="menuitem" onclick="updateCategory('BYD EV')">BYD</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Volkswagen EV')">Volkswagen</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Ford EV')">Ford (Mach-E, Lightning)</a>
+            <a href="index.html" role="menuitem">Other EVs &amp; Charging</a>
           </div>
         </div>
+        <a href="https://ev-expert-chat-701502515049.us-west1.run.app" target="_blank" rel="noopener noreferrer">Ask EVy</a>
+        <a href="https://www.paypal.com/paypalme/djdarien" id="donate-nav-btn" class="donate-nav-btn donate-cta" target="_blank" rel="noopener noreferrer">Donate</a>
         <a href="guides.html" class="active">EV Guides</a>
-        <a href="https://ev-expert-chat-701502515049.us-west1.run.app" target="_blank" rel="noopener noreferrer">Ask EVy chat bot</a>
-        <a href="https://streamlabs.com/khaos_demon/tip" id="donate-nav-btn" class="donate-nav-btn donate-cta" target="_blank" rel="noopener noreferrer">Donate</a>
-        <a href="reviews.html">Reviews</a>
+        <a href="blog.html">EV Blog</a>
         <a href="charging.html">Charging</a>
-        <a href="maps.html">Charging Maps</a>
+        <a href="maps.html">Maps</a>
         <a href="tesla-specs.html">Tesla Specs</a>
-        <a href="tesla-fsd.html">Tesla FSD</a>
+        <a href="tesla-fsd.html">FSD</a>
         <a href="tesla-owners.html">Owner Resources</a>
         <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="games.html">Games</a>
       </div>
     </div>
   </nav>
@@ -56,69 +47,54 @@
         <h2>EV Resources</h2>
         <p>Helpful guides, manuals, and resources for EV owners. Explore Tesla-specific manuals, charging tips, maintenance guides, and incentives.</p>
 
-        <!-- Tesla Manuals -->
         <div class="guide-section">
           <h3>Tesla Manuals</h3>
           <div class="guide-card">
-            <img src="images/tesla-gallery-model-3-2024/Model3_48.jpg" alt="Tesla Model 3" loading="lazy" decoding="async" />
+            <img src="images/tesla-gallery-model-3-2024/Model3_48.jpg" alt="Tesla Model 3" loading="lazy" decoding="async">
             <div class="guide-card-content">
               <h4>Model 3 Manual</h4>
               <p>Read the official Tesla Model 3 manual for detailed information on operation, safety, and features.</p>
               <a href="https://www.tesla.com/ownersmanual/model3/en_us/" target="_blank" rel="noopener noreferrer">View Manual</a>
             </div>
           </div>
-
           <div class="guide-card">
-            <img src="images/tesla-gallery-sales/Sales_94.jpg" alt="Tesla Model Y" loading="lazy" decoding="async" />
+            <img src="images/tesla-gallery-sales/Sales_94.jpg" alt="Tesla Model Y" loading="lazy" decoding="async">
             <div class="guide-card-content">
               <h4>Model Y Manual</h4>
               <p>Explore everything you need to know about your Tesla Model Y, from charging to advanced features.</p>
               <a href="https://www.tesla.com/ownersmanual/modely/en_us/" target="_blank" rel="noopener noreferrer">View Manual</a>
             </div>
           </div>
-        </div>
-
           <div class="guide-card">
-            <img src="images/tesla-gallery-model-3-2024/Model3_48.jpg" alt="Tesla Model Specs" loading="lazy" decoding="async" />
+            <img src="images/tesla-gallery-model-3-2024/Model3_48.jpg" alt="Tesla Model Specs" loading="lazy" decoding="async">
             <div class="guide-card-content">
-              <h4>Tesla Model Specs & Comparison</h4>
+              <h4>Tesla Model Specs &amp; Comparison</h4>
               <p>Compare all Tesla models—Model 3, Y, S, X, and Cybertruck. View pricing, range, performance, and detailed specifications side-by-side.</p>
               <a href="tesla-specs.html">View Tesla Specs</a>
             </div>
           </div>
         </div>
 
-        <!-- Charging Resources -->
         <div class="guide-section">
           <h3>Charging Resources</h3>
           <div class="guide-card">
-            <img src="images/tesla-gallery-wall-connector/WallConnector_87.jpg" alt="EV Charging" loading="lazy" decoding="async" />
+            <img src="images/tesla-gallery-wall-connector/WallConnector_87.jpg" alt="EV Charging" loading="lazy" decoding="async">
             <div class="guide-card-content">
               <h4>PlugShare</h4>
               <p>Find charging stations near you with PlugShare, a community-driven charging map.</p>
               <a href="https://www.plugshare.com/" target="_blank" rel="noopener noreferrer">Visit PlugShare</a>
             </div>
           </div>
-
           <div class="guide-card">
-            <img src="images/tesla-gallery-sales/Sales_93.jpg" alt="Tesla Supercharger" />
+            <img src="images/tesla-gallery-sales/Sales_93.jpg" alt="Tesla Supercharger" loading="lazy" decoding="async">
             <div class="guide-card-content">
               <h4>Tesla Supercharger Map</h4>
               <p>Locate Tesla Superchargers worldwide and plan your long-distance EV trips with ease.</p>
-              <a href="https://www.tesla.com/findus?v=2&bounds=90,-180,-90,180&filters=supercharger" target="_blank">View Superchargers</a>
-            </div>
-          </div>
-
-          <div class="guide-card">
-            <img src="images/tesla-gallery-wall-connector/WallConnector_91.png" alt="Tesla Charging Help" />
-            <div class="guide-card-content">
-              <h4>Tesla Charging Help</h4>
-              <p>Official Tesla charging help center: learn about home charging, adapters, and charging etiquette.</p>
-              <a href="https://www.tesla.com/help-me-charge" target="_blank">Visit Tesla Charging Help</a>
+              <a href="https://www.tesla.com/findus?v=2&amp;bounds=90,-180,-90,180&amp;filters=supercharger" target="_blank" rel="noopener noreferrer">View Superchargers</a>
             </div>
           </div>
           <div class="guide-card">
-            <img src="images/tesla-gallery-wall-connector/WallConnector_87.jpg" alt="Charging Maps" loading="lazy" decoding="async" />
+            <img src="images/tesla-gallery-wall-connector/WallConnector_87.jpg" alt="Charging Maps" loading="lazy" decoding="async">
             <div class="guide-card-content">
               <h4>Charging Maps</h4>
               <p>Open a Tesla browser-friendly map page with direct links to OpenChargeMap, PlugShare, Tesla Superchargers, and fast charger tools.</p>
@@ -127,28 +103,26 @@
           </div>
         </div>
 
-        <!-- Maintenance -->
         <div class="guide-section">
           <h3>Tesla Maintenance</h3>
           <div class="guide-card">
-            <img src="images/tesla-gallery-sales/Sales_99.jpg" alt="Tesla Service" />
+            <img src="images/tesla-gallery-sales/Sales_99.jpg" alt="Tesla Service" loading="lazy" decoding="async">
             <div class="guide-card-content">
               <h4>Vehicle Maintenance</h4>
               <p>Review Tesla’s official vehicle maintenance guide for service recommendations and care tips.</p>
-              <a href="https://www.tesla.com/support/vehicle-maintenance" target="_blank">Read Maintenance Guide</a>
+              <a href="https://www.tesla.com/support/vehicle-maintenance" target="_blank" rel="noopener noreferrer">Read Maintenance Guide</a>
             </div>
           </div>
         </div>
 
-        <!-- EV Incentives -->
         <div class="guide-section">
           <h3>EV Incentives</h3>
           <div class="guide-card">
-            <img src="https://github.com/djdarien/simplifynews/blob/main/images/tesla-gallery-sales/Sales_97.jpg?raw=true" alt="EV Incentives" />
+            <img src="images/tesla-gallery-sales/Sales_97.jpg" alt="EV Incentives" loading="lazy" decoding="async">
             <div class="guide-card-content">
               <h4>US Federal EV Tax Credit</h4>
               <p>Check if your EV qualifies for federal and state incentives and learn how to claim benefits.</p>
-              <a href="https://www.fueleconomy.gov/feg/taxevb.shtml" target="_blank">Learn More</a>
+              <a href="https://www.fueleconomy.gov/feg/taxevb.shtml" target="_blank" rel="noopener noreferrer">Learn More</a>
             </div>
           </div>
         </div>
@@ -157,9 +131,28 @@
   </div>
 
   <footer>
-    <p>© 2025 Volt Report | Powered by NewsData API</p>
+    <p>© 2026 Volt Report | Powered by NewsData API</p>
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var btn = document.getElementById('mobile-menu-btn');
+      var links = document.getElementById('nav-links');
+      if (btn && links) btn.addEventListener('click', function () { links.classList.toggle('open'); });
+      document.querySelectorAll('.dropdown-toggle').forEach(function (b) {
+        b.addEventListener('click', function (e) {
+          var parent = b.closest('.nav-dropdown');
+          if (!parent) return;
+          parent.classList.toggle('open');
+          b.setAttribute('aria-expanded', parent.classList.contains('open') ? 'true' : 'false');
+          e.stopPropagation();
+        });
+      });
+      document.addEventListener('click', function () {
+        document.querySelectorAll('.nav-dropdown.open').forEach(function (el) { el.classList.remove('open'); });
+      });
+    });
+  </script>
 </body>
 </html>
