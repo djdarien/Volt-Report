@@ -1,49 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Tesla-friendly charging maps and quick EV tools for the in-car browser." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tesla-friendly charging maps and quick EV tools for the in-car browser.">
   <title>Charging Maps - Volt Report</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="no-sidenav">
   <nav class="navbar">
     <div class="nav-inner">
       <div class="logo"><a href="index.html">Volt Report</a><span id="supporter-badge" class="supporter-badge hidden">Supporter Access</span></div>
-      <div class="nav-links">
+      <button class="openbtn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+      <div class="nav-links" id="nav-links">
         <a href="index.html">Home</a>
         <div class="nav-dropdown">
           <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Categories ▾</button>
           <div class="dropdown-menu" role="menu" aria-label="EV Categories">
             <div style="padding:6px 10px;color:#ccc;font-weight:700">Tesla</div>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model 3')">Model 3</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model Y')">Model Y</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model S')">Model S</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model X')">Model X</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Cybertruck')">Cybertruck</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla Autopilot')">Autopilot</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla FSD')">Full Self-Driving</a>
+            <a href="index.html" role="menuitem">Model 3 / Y / S / X</a>
+            <a href="index.html" role="menuitem">Cybertruck / FSD</a>
             <hr style="border:none;border-top:1px solid rgba(255,255,255,0.06);margin:8px 0">
-            <div style="padding:6px 10px;color:#ccc;font-weight:700">Other EVs</div>
-            <a href="#" role="menuitem" onclick="updateCategory('Rivian')">Rivian</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Lucid Motors')">Lucid Motors</a>
-            <a href="#" role="menuitem" onclick="updateCategory('BYD EV')">BYD EV</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Volkswagen EV')">Volkswagen EV</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Ford EV')">Ford EV</a>
+            <a href="index.html" role="menuitem">Other EVs &amp; Charging</a>
           </div>
         </div>
+        <a href="https://ev-expert-chat-701502515049.us-west1.run.app" target="_blank" rel="noopener noreferrer">Ask EVy</a>
+        <a href="https://www.paypal.com/paypalme/djdarien" id="donate-nav-btn" class="donate-nav-btn donate-cta" target="_blank" rel="noopener noreferrer">Donate</a>
+        <a href="guides.html">EV Guides</a>
+        <a href="blog.html">EV Blog</a>
         <a href="charging.html">Charging</a>
         <a href="maps.html" class="active">Maps</a>
-        <a href="guides.html">EV Guides</a>
-        <a href="reviews.html">Reviews</a>
         <a href="tesla-specs.html">Tesla Specs</a>
-        <a href="tesla-fsd.html">Tesla FSD</a>
+        <a href="tesla-fsd.html">FSD</a>
         <a href="tesla-owners.html">Owner Resources</a>
         <a href="about.html">About</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="contact.html">Contact Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="games.html">Games</a>
       </div>
     </div>
   </nav>
@@ -51,7 +44,7 @@
   <div class="container">
     <main class="main-content">
       <header class="page-header">
-        <h1>Charging Maps & Tesla Browser Tools</h1>
+        <h1>Charging Maps &amp; Tesla Browser Tools</h1>
         <p class="subtitle">Static, fast, and Tesla-compatible tools for finding chargers, planning routes, and using the browser in your car.</p>
       </header>
 
@@ -61,7 +54,7 @@
           <div class="map-card">
             <h3>OpenChargeMap</h3>
             <p>Reliable open charging station directory with a clean map view for in-car browsing.</p>
-            <a href="https://openchargemap.org/poi?CountryIDs=2&CountryName=unitedstates" target="_blank" rel="noopener noreferrer">OpenChargeMap US map →</a>
+            <a href="https://openchargemap.org/poi?CountryIDs=2&amp;CountryName=unitedstates" target="_blank" rel="noopener noreferrer">OpenChargeMap US map →</a>
           </div>
           <div class="map-card">
             <h3>PlugShare</h3>
@@ -95,7 +88,7 @@
         <h2>Embedded Map Preview</h2>
         <p>Use the preview below if your Tesla browser supports iframe embedding. If it does not load, open the direct map links above instead.</p>
         <div class="iframe-wrapper">
-          <iframe class="map-iframe" src="https://openchargemap.org/poi?CountryIDs=2&CountryName=unitedstates" title="OpenChargeMap US preview"></iframe>
+          <iframe class="map-iframe" src="https://openchargemap.org/poi?CountryIDs=2&amp;CountryName=unitedstates" title="OpenChargeMap US preview"></iframe>
         </div>
       </section>
 
@@ -111,27 +104,6 @@
           </ul>
         </div>
       </section>
-
-      <section class="charging-section">
-        <h2>Quick Access to Charging Apps</h2>
-        <div class="map-grid">
-          <div class="map-card">
-            <h3>ChargePoint</h3>
-            <p>Large Level 2 and DC fast public network with easy charger lookup.</p>
-            <a href="https://www.chargepoint.com/" target="_blank" rel="noopener noreferrer">ChargePoint →</a>
-          </div>
-          <div class="map-card">
-            <h3>Blink</h3>
-            <p>Access fast and Level 2 chargers across many public locations.</p>
-            <a href="https://www.blinkcharging.com/" target="_blank" rel="noopener noreferrer">Blink →</a>
-          </div>
-          <div class="map-card">
-            <h3>Shell Recharge</h3>
-            <p>Premium chargers with loyalty rewards and reliable public network.</p>
-            <a href="https://www.shellrecharge.com/" target="_blank" rel="noopener noreferrer">Shell Recharge →</a>
-          </div>
-        </div>
-      </section>
     </main>
   </div>
 
@@ -140,5 +112,24 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var btn = document.getElementById('mobile-menu-btn');
+      var links = document.getElementById('nav-links');
+      if (btn && links) btn.addEventListener('click', function () { links.classList.toggle('open'); });
+      document.querySelectorAll('.dropdown-toggle').forEach(function (b) {
+        b.addEventListener('click', function (e) {
+          var parent = b.closest('.nav-dropdown');
+          if (!parent) return;
+          parent.classList.toggle('open');
+          b.setAttribute('aria-expanded', parent.classList.contains('open') ? 'true' : 'false');
+          e.stopPropagation();
+        });
+      });
+      document.addEventListener('click', function () {
+        document.querySelectorAll('.nav-dropdown.open').forEach(function (el) { el.classList.remove('open'); });
+      });
+    });
+  </script>
 </body>
 </html>
