@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lightweight touch-friendly web games that work in the Tesla browser over 4G LTE. Perfect for passengers.">
+  <title>In-Car Games - Volt Report</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .games-hero {
+      text-align: center;
+      padding: 2rem 1rem 1.5rem;
+    }
+    .games-hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .games-hero p {
+      color: #555;
+      max-width: 520px;
+      margin: 0 auto 0.75rem;
+      font-size: 1rem;
+    }
+    body.dark-mode .games-hero p { color: #aaa; }
+    .games-tip {
+      background: rgba(204,0,0,0.06);
+      border-left: 4px solid #cc0000;
+      padding: 0.9rem 1.1rem;
+      border-radius: 10px;
+      margin: 1.25rem auto;
+      max-width: 640px;
+      font-size: 0.92rem;
+      color: #333;
+    }
+    body.dark-mode .games-tip { background: rgba(204,0,0,0.12); color: #ddd; }
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.1rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .game-card {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 14px;
+      padding: 1.35rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    body.dark-mode .game-card {
+      background: #141414;
+      border-color: #222;
+    }
+    .game-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(204,0,0,0.3);
+      box-shadow: 0 10px 28px rgba(204,0,0,0.1);
+    }
+    .game-card h3 {
+      font-size: 1.15rem;
+      margin: 0 0 0.35rem;
+      color: #111;
+    }
+    body.dark-mode .game-card h3 { color: #f0f0f0; }
+    .game-card .tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: #111;
+      color: #fff;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      margin-bottom: 0.6rem;
+    }
+    .game-card .tag.self { background: #cc0000; }
+    .game-card p {
+      color: #666;
+      font-size: 0.9rem;
+      flex-grow: 1;
+      margin-bottom: 1rem;
+      line-height: 1.45;
+    }
+    body.dark-mode .game-card p { color: #aaa; }
+    .game-card a.play-btn {
+      display: inline-block;
+      background: #111;
+      color: #fff;
+      text-decoration: none;
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .game-card a.play-btn:hover {
+      background: #cc0000;
+      color: #fff;
+    }
+    .section-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #888;
+      margin: 2rem 0 0.75rem;
+    }
+  </style>
+</head>
+<body class="no-sidenav">
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="logo"><a href="index.html">Volt Report</a><span id="supporter-badge" class="supporter-badge hidden">Supporter Access</span></div>
+      <button class="openbtn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="games.html" class="active">Games</a>
+        <a href="https://ev-expert-chat-701502515049.us-west1.run.app" target="_blank" rel="noopener noreferrer">Ask EVy</a>
+        <a href="https://www.paypal.com/paypalme/djdarien" id="donate-nav-btn" class="donate-nav-btn donate-cta" target="_blank" rel="noopener noreferrer">Donate</a>
+        <a href="guides.html">EV Guides</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="charging.html">Charging</a>
+        <a href="maps.html">Maps</a>
+        <a href="tesla-specs.html">Tesla Specs</a>
+        <a href="tesla-fsd.html">FSD</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <main class="main-content">
+      <header class="games-hero">
+        <h1>In-Car Games</h1>
+        <p>Lightweight, touch-friendly web games that work in the Tesla browser — even over 4G LTE. Perfect for passengers while parked or on the move.</p>
+      </header>
+
+      <div class="games-tip">
+        <strong>Tips:</strong> Maximize the browser window for the best experience. These are pure HTML5 / Canvas games — no heavy downloads. Self-hosted ones work even with spotty connectivity after the first load.
+      </div>
+
+      <p class="section-label">Self-Hosted (Fastest / Offline-friendly)</p>
+      <div class="games-grid">
+        <div class="game-card">
+          <span class="tag self">Self-hosted</span>
+          <h3>2048</h3>
+          <p>Swipe to merge tiles and reach 2048. Extremely light, perfect touch controls, classic addictive puzzle.</p>
+          <a class="play-btn" href="games/2048.html">Play 2048 →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag self">Self-hosted</span>
+          <h3>Snake</h3>
+          <p>Classic snake. Swipe or use on-screen controls. Smooth, responsive, and tiny file size.</p>
+          <a class="play-btn" href="games/snake.html">Play Snake →</a>
+        </div>
+      </div>
+
+      <p class="section-label">Curated External Games (Touch-friendly)</p>
+      <div class="games-grid">
+        <div class="game-card">
+          <span class="tag">Puzzle</span>
+          <h3>2048 (Original)</h3>
+          <p>The original Gabriele Cirulli version. Clean and works great on the Tesla screen.</p>
+          <a class="play-btn" href="https://play2048.co/" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Arcade</span>
+          <h3>Clumsy Bird</h3>
+          <p>Flappy Bird-style one-tap flyer. Very lightweight open-source clone.</p>
+          <a class="play-btn" href="https://ellisonleao.github.io/clumsy-bird/" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Puzzle</span>
+          <h3>Hextris</h3>
+          <p>Fast-paced hexagonal Tetris-like game. Excellent on touchscreens.</p>
+          <a class="play-btn" href="https://hextris.io/" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Card</span>
+          <h3>Solitaire</h3>
+          <p>Classic Klondike solitaire. Relaxing and works well with touch.</p>
+          <a class="play-btn" href="https://www.solitr.com/" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Party</span>
+          <h3>AirConsole</h3>
+          <p>Use your phone as the controller. Fun multiplayer party games right in the browser.</p>
+          <a class="play-btn" href="https://www.airconsole.com/" target="_blank" rel="noopener">Open AirConsole →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Portal</span>
+          <h3>Jowua Games</h3>
+          <p>Collection specifically popular with Tesla owners. Many titles tested in the car browser.</p>
+          <a class="play-btn" href="https://www.jowua-life.com/pages/jowua-games" target="_blank" rel="noopener">Open Jowua →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Variety</span>
+          <h3>YouTube Playables</h3>
+          <p>Hundreds of casual games. Open YouTube in the browser and go to Playables.</p>
+          <a class="play-btn" href="https://www.youtube.com/playables" target="_blank" rel="noopener">Open Playables →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Puzzle</span>
+          <h3>Sudoku</h3>
+          <p>Clean web Sudoku. Good for longer charging stops.</p>
+          <a class="play-btn" href="https://sudoku.com/" target="_blank" rel="noopener">Play →</a>
+        </div>
+      </div>
+
+      <div class="games-tip" style="margin-top:2rem;">
+        <strong>Note:</strong> These are different from Tesla Arcade titles. They require no controllers (touch only) and stay lightweight for cellular data. Always play responsibly — passengers only while driving.
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <p>Volt Report • Lightweight games for the Tesla browser</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const btn = document.getElementById('mobile-menu-btn');
+      const links = document.getElementById('nav-links');
+      if(btn && links) {
+        btn.addEventListener('click', ()=> links.classList.toggle('open'));
+      }
+    });
+  </script>
+</body>
+</html>

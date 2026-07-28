@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>Snake - Volt Report</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Montserrat', system-ui, sans-serif;
+      background: #0a0a0a;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 12px;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: 0.08em; margin: 8px 0; color: #fff; }
+    .score { font-size: 1.1rem; margin-bottom: 10px; color: #ccc; }
+    #canvas {
+      background: #111;
+      border: 2px solid #333;
+      border-radius: 8px;
+      display: block;
+      max-width: 100%;
+      touch-action: none;
+    }
+    .dpad {
+      margin-top: 16px;
+      display: grid;
+      grid-template-areas:
+        ". up ."
+        "left . right"
+        ". down .";
+      gap: 6px;
+      justify-content: center;
+    }
+    .dpad button {
+      width: 64px;
+      height: 64px;
+      background: #222;
+      border: 1px solid #444;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+    .dpad button:active { background: #cc0000; }
+    .up { grid-area: up; }
+    .left { grid-area: left; }
+    .right { grid-area: right; }
+    .down { grid-area: down; }
+    .controls { margin-top: 12px; display: flex; gap: 10px; }
+    .controls button {
+      background: #cc0000;
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    a.back { color: #aaa; margin-top: 16px; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <h1>SNAKE</h1>
+  <div class="score">Score: <span id="score">0</span></div>
+  <canvas id="canvas" width="360" height="360"></canvas>
+
+  <div class="dpad">
+    <button class="up" data-dir="up">▲</button>
+    <button class="left" data-dir="left">◀</button>
+    <button class="right" data-dir="right">▶</button>
+    <button class="down" data-dir="down">▼</button>
+  </div>
+
+  <div class="controls">
+    <button id="restart">Restart</button>
+  </div>
+  <a class="back" href="../games.html">← Back to Games</a>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const scoreEl = document.getElementById('score');
+    const GRID = 18;
+    const CELL = canvas.width / GRID;
+
+    let snake, dir, nextDir, food, score, running, timer;
+
+    function randFood() {
+      let p;
+      do {
+        p = { x: Math.floor(Math.random() * GRID), y: Math.floor(Math.random() * GRID) };
+      } while (snake.some(s => s.x === p.x && s.y === p.y));
+      return p;
+    }
+
+    function init() {
+      snake = [{x: 8, y: 9}, {x: 7, y: 9}, {x: 6, y: 9}];
+      dir = nextDir = 'right';
+      food = randFood();
+      score = 0;
+      scoreEl.textContent = score;
+      running = true;
+      if (timer) clearInterval(timer);
+      timer = setInterval(tick, 110);
+      draw();
+    }
+
+    function tick() {
+      if (!running) return;
+      dir = nextDir;
+      const head = { ...snake[0] };
+      if (dir === 'up') head.y--;
+      if (dir === 'down') head.y++;
+      if (dir === 'left') head.x--;
+      if (dir === 'right') head.x++;
+
+      if (head.x < 0 || head.x >= GRID || head.y < 0 || head.y >= GRID ||
+          snake.some(s => s.x === head.x && s.y === head.y)) {
+        running = false;
+        draw();
+        return;
+      }
+
+      snake.unshift(head);
+      if (head.x === food.x && head.y === food.y) {
+        score += 10;
+        scoreEl.textContent = score;
+        food = randFood();
+      } else {
+        snake.pop();
+      }
+      draw();
+    }
+
+    function draw() {
+      ctx.fillStyle = '#111';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // food
+      ctx.fillStyle = '#cc0000';
+      ctx.beginPath();
+      ctx.arc(food.x * CELL + CELL/2, food.y * CELL + CELL/2, CELL/2 - 2, 0, Math.PI*2);
+      ctx.fill();
+
+      // snake
+      snake.forEach((s, i) => {
+        ctx.fillStyle = i === 0 ? '#e0e0e0' : '#888';
+        ctx.fillRect(s.x * CELL + 1, s.y * CELL + 1, CELL - 2, CELL - 2);
+      });
+
+      if (!running) {
+        ctx.fillStyle = 'rgba(0,0,0,0.65)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 28px Montserrat, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Game Over', canvas.width/2, canvas.height/2 - 10);
+        ctx.font = '16px Montserrat, sans-serif';
+        ctx.fillText('Tap Restart', canvas.width/2, canvas.height/2 + 20);
+      }
+    }
+
+    function setDir(d) {
+      if (!running) return;
+      if (d === 'up' && dir !== 'down') nextDir = 'up';
+      if (d === 'down' && dir !== 'up') nextDir = 'down';
+      if (d === 'left' && dir !== 'right') nextDir = 'left';
+      if (d === 'right' && dir !== 'left') nextDir = 'right';
+    }
+
+    document.querySelectorAll('.dpad button').forEach(btn => {
+      btn.addEventListener('click', () => setDir(btn.dataset.dir));
+      btn.addEventListener('touchstart', e => { e.preventDefault(); setDir(btn.dataset.dir); }, {passive: false});
+    });
+
+    document.getElementById('restart').addEventListener('click', init);
+
+    document.addEventListener('keydown', e => {
+      const map = { ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right' };
+      if (map[e.key]) { e.preventDefault(); setDir(map[e.key]); }
+    });
+
+    // swipe support
+    let sx, sy;
+    canvas.addEventListener('touchstart', e => {
+      const t = e.touches[0];
+      sx = t.clientX; sy = t.clientY;
+    }, {passive: true});
+    canvas.addEventListener('touchend', e => {
+      if (sx == null) return;
+      const t = e.changedTouches[0];
+      const dx = t.clientX - sx, dy = t.clientY - sy;
+      if (Math.max(Math.abs(dx), Math.abs(dy)) < 25) return;
+      if (Math.abs(dx) > Math.abs(dy)) setDir(dx > 0 ? 'right' : 'left');
+      else setDir(dy > 0 ? 'down' : 'up');
+      sx = sy = null;
+    }, {passive: true});
+
+    // resize canvas display
+    function resize() {
+      const s = Math.min(window.innerWidth - 24, 360);
+      canvas.style.width = s + 'px';
+      canvas.style.height = s + 'px';
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    init();
+  </script>
+</body>
+</html>
