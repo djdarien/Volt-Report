@@ -8,110 +8,26 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    .games-hero {
-      text-align: center;
-      padding: 2rem 1rem 1.5rem;
-    }
-    .games-hero h1 {
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      margin-bottom: 0.4rem;
-    }
-    .games-hero p {
-      color: #555;
-      max-width: 520px;
-      margin: 0 auto 0.75rem;
-      font-size: 1rem;
-    }
+    .games-hero { text-align: center; padding: 2rem 1rem 1.5rem; }
+    .games-hero h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .games-hero p { color: #555; max-width: 540px; margin: 0 auto 0.75rem; font-size: 1rem; }
     body.dark-mode .games-hero p { color: #aaa; }
-    .games-tip {
-      background: rgba(204,0,0,0.06);
-      border-left: 4px solid #cc0000;
-      padding: 0.9rem 1.1rem;
-      border-radius: 10px;
-      margin: 1.25rem auto;
-      max-width: 640px;
-      font-size: 0.92rem;
-      color: #333;
-    }
+    .games-tip { background: rgba(204,0,0,0.06); border-left: 4px solid #cc0000; padding: 0.9rem 1.1rem; border-radius: 10px; margin: 1.25rem auto; max-width: 680px; font-size: 0.92rem; color: #333; }
     body.dark-mode .games-tip { background: rgba(204,0,0,0.12); color: #ddd; }
-    .games-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.1rem;
-      margin: 1.5rem 0 2rem;
-    }
-    .game-card {
-      background: #fff;
-      border: 1px solid rgba(0,0,0,0.06);
-      border-radius: 14px;
-      padding: 1.35rem;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-      display: flex;
-      flex-direction: column;
-    }
-    body.dark-mode .game-card {
-      background: #141414;
-      border-color: #222;
-    }
-    .game-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(204,0,0,0.3);
-      box-shadow: 0 10px 28px rgba(204,0,0,0.1);
-    }
-    .game-card h3 {
-      font-size: 1.15rem;
-      margin: 0 0 0.35rem;
-      color: #111;
-    }
+    .games-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1.25rem 0 1.75rem; }
+    .game-card { background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 14px; padding: 1.2rem; box-shadow: 0 4px 14px rgba(0,0,0,0.05); transition: transform 0.2s, border-color 0.2s; display: flex; flex-direction: column; }
+    body.dark-mode .game-card { background: #141414; border-color: #222; }
+    .game-card:hover { transform: translateY(-2px); border-color: rgba(204,0,0,0.3); }
+    .game-card h3 { font-size: 1.08rem; margin: 0 0 0.3rem; color: #111; }
     body.dark-mode .game-card h3 { color: #f0f0f0; }
-    .game-card .tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      background: #111;
-      color: #fff;
-      padding: 0.2rem 0.55rem;
-      border-radius: 999px;
-      margin-bottom: 0.6rem;
-    }
+    .game-card .tag { display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; background: #111; color: #fff; padding: 0.18rem 0.5rem; border-radius: 999px; margin-bottom: 0.5rem; }
     .game-card .tag.self { background: #cc0000; }
-    .game-card p {
-      color: #666;
-      font-size: 0.9rem;
-      flex-grow: 1;
-      margin-bottom: 1rem;
-      line-height: 1.45;
-    }
+    .game-card .tag.portal { background: #333; }
+    .game-card p { color: #666; font-size: 0.88rem; flex-grow: 1; margin-bottom: 0.85rem; line-height: 1.4; }
     body.dark-mode .game-card p { color: #aaa; }
-    .game-card a.play-btn {
-      display: inline-block;
-      background: #111;
-      color: #fff;
-      text-decoration: none;
-      padding: 0.55rem 1.1rem;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-align: center;
-      transition: background 0.2s;
-    }
-    .game-card a.play-btn:hover {
-      background: #cc0000;
-      color: #fff;
-    }
-    .section-label {
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #888;
-      margin: 2rem 0 0.75rem;
-    }
+    .game-card a.play-btn { display: inline-block; background: #111; color: #fff; text-decoration: none; padding: 0.5rem 1rem; border-radius: 999px; font-weight: 600; font-size: 0.88rem; text-align: center; transition: background 0.2s; }
+    .game-card a.play-btn:hover { background: #cc0000; color: #fff; }
+    .section-label { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin: 1.75rem 0 0.65rem; }
   </style>
 </head>
 <body class="no-sidenav">
@@ -121,17 +37,26 @@
       <button class="openbtn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
       <div class="nav-links" id="nav-links">
         <a href="index.html">Home</a>
-        <a href="games.html" class="active">Games</a>
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Categories ▾</button>
+          <div class="dropdown-menu" role="menu">
+            <div style="padding:6px 10px;color:#ccc;font-weight:700">Tesla</div>
+            <a href="index.html" role="menuitem">Model 3 / Y / S / X</a>
+            <a href="index.html" role="menuitem">Cybertruck / FSD</a>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.06);margin:8px 0">
+            <a href="index.html" role="menuitem">Other EVs &amp; Charging</a>
+          </div>
+        </div>
         <a href="https://ev-expert-chat-701502515049.us-west1.run.app" target="_blank" rel="noopener noreferrer">Ask EVy</a>
         <a href="https://www.paypal.com/paypalme/djdarien" id="donate-nav-btn" class="donate-nav-btn donate-cta" target="_blank" rel="noopener noreferrer">Donate</a>
         <a href="guides.html">EV Guides</a>
-        <a href="reviews.html">Reviews</a>
         <a href="charging.html">Charging</a>
         <a href="maps.html">Maps</a>
         <a href="tesla-specs.html">Tesla Specs</a>
         <a href="tesla-fsd.html">FSD</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
+        <a href="games.html" class="active">Games</a>
       </div>
     </div>
   </nav>
@@ -140,83 +65,219 @@
     <main class="main-content">
       <header class="games-hero">
         <h1>In-Car Games</h1>
-        <p>Lightweight, touch-friendly web games that work in the Tesla browser — even over 4G LTE. Perfect for passengers while parked or on the move.</p>
+        <p>Lightweight, touch-friendly web games for the Tesla browser. Works over 4G LTE. Perfect for passengers while charging or parked.</p>
       </header>
 
       <div class="games-tip">
-        <strong>Tips:</strong> Maximize the browser window for the best experience. These are pure HTML5 / Canvas games — no heavy downloads. Self-hosted ones work even with spotty connectivity after the first load.
+        <strong>Tips:</strong> Maximize the browser for best results. Self-hosted games load fastest and stay light on data. Play only when parked or as a passenger.
       </div>
 
-      <p class="section-label">Self-Hosted (Fastest / Offline-friendly)</p>
+      <p class="section-label">Self-Hosted (Fastest)</p>
       <div class="games-grid">
         <div class="game-card">
           <span class="tag self">Self-hosted</span>
           <h3>2048</h3>
-          <p>Swipe to merge tiles and reach 2048. Extremely light, perfect touch controls, classic addictive puzzle.</p>
+          <p>Swipe to merge tiles. Classic, ultra-light, perfect touch controls.</p>
           <a class="play-btn" href="games/2048.html">Play 2048 →</a>
         </div>
         <div class="game-card">
           <span class="tag self">Self-hosted</span>
           <h3>Snake</h3>
-          <p>Classic snake. Swipe or use on-screen controls. Smooth, responsive, and tiny file size.</p>
+          <p>Classic snake with swipe + on-screen D-pad. Tiny and responsive.</p>
           <a class="play-btn" href="games/snake.html">Play Snake →</a>
         </div>
       </div>
 
-      <p class="section-label">Curated External Games (Touch-friendly)</p>
+      <p class="section-label">Recommended Portals</p>
+      <div class="games-grid">
+        <div class="game-card">
+          <span class="tag portal">Portal</span>
+          <h3>Tesla Game Zone</h3>
+          <p>Dedicated collection of web games made for the Tesla in-car browser.</p>
+          <a class="play-btn" href="https://tesla.apirobots.pro/" target="_blank" rel="noopener">Open →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag portal">Portal</span>
+          <h3>Jowua Games</h3>
+          <p>Popular with Tesla owners. Many titles tested in the car browser.</p>
+          <a class="play-btn" href="https://www.jowua-life.com/pages/jowua-games" target="_blank" rel="noopener">Open →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag portal">Portal</span>
+          <h3>YouTube Playables</h3>
+          <p>Hundreds of casual touch games. Open in the Tesla browser.</p>
+          <a class="play-btn" href="https://www.youtube.com/playables" target="_blank" rel="noopener">Open →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag portal">Portal</span>
+          <h3>AirConsole</h3>
+          <p>Phone-as-controller multiplayer party games.</p>
+          <a class="play-btn" href="https://www.airconsole.com/" target="_blank" rel="noopener">Open →</a>
+        </div>
+      </div>
+
+      <p class="section-label">Puzzle &amp; Brain</p>
       <div class="games-grid">
         <div class="game-card">
           <span class="tag">Puzzle</span>
           <h3>2048 (Original)</h3>
-          <p>The original Gabriele Cirulli version. Clean and works great on the Tesla screen.</p>
+          <p>The original Gabriele Cirulli version.</p>
           <a class="play-btn" href="https://play2048.co/" target="_blank" rel="noopener">Play →</a>
-        </div>
-        <div class="game-card">
-          <span class="tag">Arcade</span>
-          <h3>Clumsy Bird</h3>
-          <p>Flappy Bird-style one-tap flyer. Very lightweight open-source clone.</p>
-          <a class="play-btn" href="https://ellisonleao.github.io/clumsy-bird/" target="_blank" rel="noopener">Play →</a>
         </div>
         <div class="game-card">
           <span class="tag">Puzzle</span>
           <h3>Hextris</h3>
-          <p>Fast-paced hexagonal Tetris-like game. Excellent on touchscreens.</p>
+          <p>Fast hexagonal Tetris-style game. Excellent on touch.</p>
           <a class="play-btn" href="https://hextris.io/" target="_blank" rel="noopener">Play →</a>
-        </div>
-        <div class="game-card">
-          <span class="tag">Card</span>
-          <h3>Solitaire</h3>
-          <p>Classic Klondike solitaire. Relaxing and works well with touch.</p>
-          <a class="play-btn" href="https://www.solitr.com/" target="_blank" rel="noopener">Play →</a>
-        </div>
-        <div class="game-card">
-          <span class="tag">Party</span>
-          <h3>AirConsole</h3>
-          <p>Use your phone as the controller. Fun multiplayer party games right in the browser.</p>
-          <a class="play-btn" href="https://www.airconsole.com/" target="_blank" rel="noopener">Open AirConsole →</a>
-        </div>
-        <div class="game-card">
-          <span class="tag">Portal</span>
-          <h3>Jowua Games</h3>
-          <p>Collection specifically popular with Tesla owners. Many titles tested in the car browser.</p>
-          <a class="play-btn" href="https://www.jowua-life.com/pages/jowua-games" target="_blank" rel="noopener">Open Jowua →</a>
-        </div>
-        <div class="game-card">
-          <span class="tag">Variety</span>
-          <h3>YouTube Playables</h3>
-          <p>Hundreds of casual games. Open YouTube in the browser and go to Playables.</p>
-          <a class="play-btn" href="https://www.youtube.com/playables" target="_blank" rel="noopener">Open Playables →</a>
         </div>
         <div class="game-card">
           <span class="tag">Puzzle</span>
           <h3>Sudoku</h3>
-          <p>Clean web Sudoku. Good for longer charging stops.</p>
+          <p>Clean web Sudoku for longer charging stops.</p>
           <a class="play-btn" href="https://sudoku.com/" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Puzzle</span>
+          <h3>Mahjong Solitaire</h3>
+          <p>Classic tile-matching Mahjong.</p>
+          <a class="play-btn" href="https://www.mahjong.com/" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Puzzle</span>
+          <h3>Nonogram / Picross</h3>
+          <p>Picture logic puzzles.</p>
+          <a class="play-btn" href="https://www.puzzle-nonograms.com/" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Puzzle</span>
+          <h3>Minesweeper</h3>
+          <p>Classic Minesweeper, touch-friendly.</p>
+          <a class="play-btn" href="https://minesweeper.online/" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Puzzle</span>
+          <h3>Wordle</h3>
+          <p>Daily word puzzle.</p>
+          <a class="play-btn" href="https://www.nytimes.com/games/wordle/index.html" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Puzzle</span>
+          <h3>Connections</h3>
+          <p>NYT grouping puzzle.</p>
+          <a class="play-btn" href="https://www.nytimes.com/games/connections" target="_blank" rel="noopener">Play →</a>
+        </div>
+      </div>
+
+      <p class="section-label">Arcade &amp; Action</p>
+      <div class="games-grid">
+        <div class="game-card">
+          <span class="tag">Arcade</span>
+          <h3>Clumsy Bird</h3>
+          <p>Flappy Bird-style one-tap flyer. Very light.</p>
+          <a class="play-btn" href="https://ellisonleao.github.io/clumsy-bird/" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Arcade</span>
+          <h3>Pac-Man</h3>
+          <p>HTML5 Pac-Man clone.</p>
+          <a class="play-btn" href="https://pacman.platzh1rsch.ch/" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Arcade</span>
+          <h3>Tetris</h3>
+          <p>Classic block-stacking.</p>
+          <a class="play-btn" href="https://tetris.com/play-tetris" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Arcade</span>
+          <h3>Breakout / Arkanoid</h3>
+          <p>Brick-breaker classic.</p>
+          <a class="play-btn" href="https://www.crazygames.com/game/atari-breakout" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Arcade</span>
+          <h3>Asteroids</h3>
+          <p>Space shooter classic.</p>
+          <a class="play-btn" href="https://www.playretrogames.com/arcade/asteroids" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Arcade</span>
+          <h3>Snake (Online)</h3>
+          <p>Another clean Snake variant.</p>
+          <a class="play-btn" href="https://playsnake.org/" target="_blank" rel="noopener">Play →</a>
+        </div>
+      </div>
+
+      <p class="section-label">Cards &amp; Board</p>
+      <div class="games-grid">
+        <div class="game-card">
+          <span class="tag">Card</span>
+          <h3>Solitaire</h3>
+          <p>Classic Klondike solitaire.</p>
+          <a class="play-btn" href="https://www.solitr.com/" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Card</span>
+          <h3>Freecell</h3>
+          <p>Freecell solitaire.</p>
+          <a class="play-btn" href="https://www.solitaireparadise.com/games_list/freecellsolitaire.html" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Board</span>
+          <h3>Chess</h3>
+          <p>Play chess vs computer or online.</p>
+          <a class="play-btn" href="https://www.chess.com/play" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Board</span>
+          <h3>Checkers</h3>
+          <p>Classic draughts / checkers.</p>
+          <a class="play-btn" href="https://www.mathsisfun.com/games/checkers.html" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Card</span>
+          <h3>Hearts</h3>
+          <p>Classic trick-taking card game.</p>
+          <a class="play-btn" href="https://cardgames.io/hearts/" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Card</span>
+          <h3>Spades</h3>
+          <p>Popular partnership card game.</p>
+          <a class="play-btn" href="https://cardgames.io/spades/" target="_blank" rel="noopener">Play →</a>
+        </div>
+      </div>
+
+      <p class="section-label">More Casual</p>
+      <div class="games-grid">
+        <div class="game-card">
+          <span class="tag">Casual</span>
+          <h3>Cookie Clicker</h3>
+          <p>Idle / clicker classic. Very light after load.</p>
+          <a class="play-btn" href="https://orteil.dashnet.org/cookieclicker/" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Casual</span>
+          <h3>Agar.io</h3>
+          <p>Simple multiplayer blob game (works in many browsers).</p>
+          <a class="play-btn" href="https://agar.io/" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Casual</span>
+          <h3>Slither.io</h3>
+          <p>Snake-style multiplayer.</p>
+          <a class="play-btn" href="https://slither.io/" target="_blank" rel="noopener">Play →</a>
+        </div>
+        <div class="game-card">
+          <span class="tag">Casual</span>
+          <h3>Geometry Dash Lite-style</h3>
+          <p>Rhythm / precision runners (browser versions).</p>
+          <a class="play-btn" href="https://www.crazygames.com/game/geometry-dash" target="_blank" rel="noopener">Play →</a>
         </div>
       </div>
 
       <div class="games-tip" style="margin-top:2rem;">
-        <strong>Note:</strong> These are different from Tesla Arcade titles. They require no controllers (touch only) and stay lightweight for cellular data. Always play responsibly — passengers only while driving.
+        <strong>Note:</strong> These are different from Tesla Arcade. Most are pure touch / HTML5 and stay lightweight on cellular data. Always play responsibly — passengers only while the car is moving.
       </div>
     </main>
   </div>
@@ -227,12 +288,24 @@
 
   <script src="script.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      const btn = document.getElementById('mobile-menu-btn');
-      const links = document.getElementById('nav-links');
-      if(btn && links) {
-        btn.addEventListener('click', ()=> links.classList.toggle('open'));
+    document.addEventListener('DOMContentLoaded', function () {
+      var btn = document.getElementById('mobile-menu-btn');
+      var links = document.getElementById('nav-links');
+      if (btn && links) {
+        btn.addEventListener('click', function () { links.classList.toggle('open'); });
       }
+      document.querySelectorAll('.dropdown-toggle').forEach(function (b) {
+        b.addEventListener('click', function (e) {
+          var parent = b.closest('.nav-dropdown');
+          if (!parent) return;
+          parent.classList.toggle('open');
+          b.setAttribute('aria-expanded', parent.classList.contains('open') ? 'true' : 'false');
+          e.stopPropagation();
+        });
+      });
+      document.addEventListener('click', function () {
+        document.querySelectorAll('.nav-dropdown.open').forEach(function (el) { el.classList.remove('open'); });
+      });
     });
   </script>
 </body>
