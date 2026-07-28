@@ -4,77 +4,55 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="EV Blog - Volt Report. Insights, reviews, and updates on Tesla FSD, electric vehicles, and EV technology.">
-  <meta name="og:title" content="EV Blog - Volt Report">
-  <meta name="og:description" content="Tesla FSD updates, EV reviews, and electric vehicle insights from Volt Report.">
+  <meta property="og:title" content="EV Blog - Volt Report">
+  <meta property="og:description" content="Tesla FSD updates, EV reviews, and electric vehicle insights from Volt Report.">
   <title>EV Blog - Volt Report</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    .blog-section { margin: 3rem 0; padding: 2rem 0; border-bottom: 1px solid #eee; }
-    .blog-section h2 { color: #000; margin-bottom: 2rem; font-size: 28px; font-weight: 700; }
+    .blog-section { margin: 2rem 0; padding: 1.5rem 0; border-bottom: 1px solid #eee; }
+    .blog-section h2 { color: #000; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 700; }
     .blog-section:last-child { border-bottom: none; }
-    
     .blog-card {
       background: #fff;
-      border: 1px solid rgba(204,0,0,0.12);
+      border: 1px solid rgba(0,0,0,0.06);
       border-radius: 14px;
-      padding: 2rem;
-      margin-bottom: 1.75rem;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      transition: box-shadow .22s ease, border-color .22s ease, transform .22s ease;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+      transition: box-shadow .2s, border-color .2s, transform .2s;
     }
-    
     .blog-card:hover {
-      box-shadow: 0 8px 28px rgba(204,0,0,0.15);
-      border-color: rgba(204,0,0,0.3);
-      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(204,0,0,0.12);
+      border-color: rgba(204,0,0,0.25);
+      transform: translateY(-2px);
     }
-    
-    .blog-card h3 {
-      color: #000;
-      font-size: 22px;
-      margin: 0 0 0.5rem;
-      font-weight: 700;
-    }
-    
-    .blog-meta {
-      font-size: 13px;
-      color: #999;
-      margin-bottom: 1rem;
-    }
-    
-    .blog-card p {
-      color: #555;
-      line-height: 1.65;
-      margin: 0 0 1rem;
-    }
-    
+    .blog-card h3 { color: #000; font-size: 1.2rem; margin: 0 0 0.4rem; font-weight: 700; }
+    .blog-meta { font-size: 0.82rem; color: #999; margin-bottom: 0.75rem; }
+    .blog-card p { color: #555; line-height: 1.6; margin: 0 0 0.75rem; }
     .coming-soon-badge {
       display: inline-block;
       background: #fff3cd;
       color: #856404;
-      padding: 0.35rem 0.85rem;
-      border-radius: 20px;
-      font-size: 12px;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
       font-weight: 700;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.6rem;
     }
-    
-    .page-header { margin-bottom: 2rem; }
-    .page-header h1 { color: #000; margin-bottom: 0.5rem; font-size: 2.5rem; }
-    .subtitle { color: #666; font-size: 1.1rem; }
-    
+    .page-header { margin-bottom: 1.5rem; }
+    .page-header h1 { color: #000; margin-bottom: 0.4rem; font-size: 2rem; }
+    .subtitle { color: #666; font-size: 1.05rem; }
     .cta-section {
-      background: linear-gradient(135deg, #000 0%, #111 100%);
+      background: #111;
       color: #fff;
-      padding: 3rem 2rem;
+      padding: 2rem 1.5rem;
       border-radius: 12px;
       text-align: center;
-      margin: 3rem 0;
+      margin: 2rem 0;
     }
-    
-    .cta-section h2 { color: #fff; margin-bottom: 1rem; }
-    .cta-section p { margin-bottom: 2rem; font-size: 1.1rem; }
+    .cta-section h2 { color: #fff; margin-bottom: 0.75rem; }
+    .cta-section p { margin-bottom: 1.25rem; }
   </style>
 </head>
 <body class="no-sidenav">
@@ -88,35 +66,24 @@
           <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Categories ▾</button>
           <div class="dropdown-menu" role="menu" aria-label="EV Categories">
             <div style="padding:6px 10px;color:#ccc;font-weight:700">Tesla</div>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model 3')">Model 3</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model Y')">Model Y</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model S')">Model S</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla Model X')">Model X</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Cybertruck')">Cybertruck</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla Autopilot')">Autopilot</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Tesla FSD')">Full Self-Driving</a>
+            <a href="index.html" role="menuitem">Model 3 / Y / S / X</a>
+            <a href="index.html" role="menuitem">Cybertruck / FSD</a>
             <hr style="border:none;border-top:1px solid rgba(255,255,255,0.06);margin:8px 0">
-            <div style="padding:6px 10px;color:#ccc;font-weight:700">Other EVs</div>
-            <a href="#" role="menuitem" onclick="updateCategory('Rivian')">Rivian</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Lucid Motors')">Lucid</a>
-            <a href="#" role="menuitem" onclick="updateCategory('BYD EV')">BYD</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Volkswagen EV')">Volkswagen</a>
-            <a href="#" role="menuitem" onclick="updateCategory('Ford EV')">Ford (Mach-E, Lightning)</a>
+            <a href="index.html" role="menuitem">Other EVs &amp; Charging</a>
           </div>
         </div>
-        <a href="https://ev-expert-chat-701502515049.us-west1.run.app" target="_blank" rel="noopener noreferrer">Ask EVy chat bot</a>
-        <a href="https://streamlabs.com/khaos_demon/tip" id="donate-nav-btn" class="donate-nav-btn donate-cta" target="_blank" rel="noopener noreferrer">Donate</a>
+        <a href="https://ev-expert-chat-701502515049.us-west1.run.app" target="_blank" rel="noopener noreferrer">Ask EVy</a>
+        <a href="https://www.paypal.com/paypalme/djdarien" id="donate-nav-btn" class="donate-nav-btn donate-cta" target="_blank" rel="noopener noreferrer">Donate</a>
         <a href="guides.html">EV Guides</a>
         <a href="blog.html" class="active">EV Blog</a>
-        <a href="reviews.html">Reviews</a>
         <a href="charging.html">Charging</a>
-        <a href="maps.html">Charging Maps</a>
+        <a href="maps.html">Maps</a>
         <a href="tesla-specs.html">Tesla Specs</a>
-        <a href="tesla-fsd.html">Tesla FSD</a>
+        <a href="tesla-fsd.html">FSD</a>
         <a href="tesla-owners.html">Owner Resources</a>
         <a href="about.html">About</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="contact.html">Contact Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="games.html">Games</a>
       </div>
     </div>
   </nav>
@@ -159,16 +126,22 @@
   </footer>
 
   <script src="script.js"></script>
-  <script src="consent.js"></script>
   <script>
-    const btn = document.getElementById('mobile-menu-btn');
-    const links = document.getElementById('nav-links');
-    if(btn && links) btn.addEventListener('click', ()=> links.classList.toggle('open'));
-    document.querySelectorAll('.dropdown-toggle').forEach(b=>{
-      b.addEventListener('click', (e)=>{
-        const p = b.closest('.nav-dropdown');
-        if(p) p.classList.toggle('open');
-        e.stopPropagation();
+    document.addEventListener('DOMContentLoaded', function () {
+      var btn = document.getElementById('mobile-menu-btn');
+      var links = document.getElementById('nav-links');
+      if (btn && links) btn.addEventListener('click', function () { links.classList.toggle('open'); });
+      document.querySelectorAll('.dropdown-toggle').forEach(function (b) {
+        b.addEventListener('click', function (e) {
+          var parent = b.closest('.nav-dropdown');
+          if (!parent) return;
+          parent.classList.toggle('open');
+          b.setAttribute('aria-expanded', parent.classList.contains('open') ? 'true' : 'false');
+          e.stopPropagation();
+        });
+      });
+      document.addEventListener('click', function () {
+        document.querySelectorAll('.nav-dropdown.open').forEach(function (el) { el.classList.remove('open'); });
       });
     });
   </script>
