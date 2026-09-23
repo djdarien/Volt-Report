@@ -34,12 +34,17 @@ const categoryQueries = {
 // Update category → fetch replacement query
 function updateCategory(query) {
   currentQuery = categoryQueries[query] || query;
+  if (!document.getElementById("news-container")) {
+    window.location.href = "index.html";
+    return;
+  }
   fetchNews();
 }
 
 // Fetch news from NewsData.io
 async function fetchNews() {
   const newsContainer = document.getElementById("news-container");
+  if (!newsContainer) return;
   newsContainer.setAttribute('aria-busy', 'true');
   newsContainer.innerHTML = "<p>Loading latest EV news...</p>";
 
@@ -47,7 +52,6 @@ async function fetchNews() {
   if (API_KEY && !USE_PROXY) {
     endpoint = `https://newsdata.io/api/1/news?apikey=${API_KEY}&q=${encodeURIComponent(currentQuery)}&language=en&country=us&image=1`;
   } else if (USE_PROXY) {
-    // Expect a server-side proxy at /api/news that accepts the same query params
     endpoint = `/api/news?q=${encodeURIComponent(currentQuery)}&language=en&country=us&image=1`;
   } else {
     newsContainer.innerHTML = "<p class='notice'>No API configured. Please configure a server-side proxy or set an API key (not recommended).</p>";
@@ -57,71 +61,48 @@ async function fetchNews() {
 
   try {
     const response = await fetch(endpoint);
-
     if (!response.ok) {
       throw new Error(`Fetch failed: ${response.status}`);
     }
-
     const data = await response.json();
     console.log("NewsData.io result:", data);
-
     newsContainer.innerHTML = "";
-
     if (!data.results || data.results.length === 0) {
       newsContainer.innerHTML = "<p>No articles found for this category.</p>";
       return;
     }
-
     data.results.forEach((article) => {
       const card = document.createElement("div");
       card.className = "news-card";
-
-      // Fallback image if missing
-      const imgSrc =
-        article.image_url ||
-        "https://via.placeholder.com/300x180.png?text=EV+News";
-
-      // Clickable image
+      const imgSrc = article.image_url || "https://via.placeholder.com/300x180.png?text=EV+News";
       const imgLink = document.createElement("a");
       imgLink.href = article.link || "#";
       imgLink.target = "_blank";
-
       const img = document.createElement("img");
       img.src = imgSrc;
       img.alt = article.title || "Article image";
       img.loading = "lazy";
       img.decoding = "async";
       img.width = 600;
-
       imgLink.appendChild(img);
       card.appendChild(imgLink);
-
-      // Title
       const title = document.createElement("h2");
       title.textContent = article.title || "Untitled Article";
       card.appendChild(title);
-
-      // Description text
       const desc = document.createElement("p");
-      desc.textContent =
-        article.description || "No description available for this article.";
+      desc.textContent = article.description || "No description available for this article.";
       card.appendChild(desc);
-
-      // Read More link
       const readMore = document.createElement("a");
       readMore.href = article.link || "#";
       readMore.target = "_blank";
       readMore.className = "read-more";
       readMore.textContent = "Read More";
       card.appendChild(readMore);
-
-      // Share Button
       const shareBtn = document.createElement("button");
       shareBtn.textContent = "Share";
       shareBtn.setAttribute('aria-label', `Share article: ${article.title}`);
       shareBtn.onclick = () => shareArticle(article.title, article.link || "#");
       card.appendChild(shareBtn);
-
       newsContainer.appendChild(card);
     });
     newsContainer.setAttribute('aria-busy', 'false');
@@ -132,21 +113,14 @@ async function fetchNews() {
   }
 }
 
-// Native share API
 function shareArticle(title, url) {
   if (navigator.share) {
-    navigator
-      .share({
-        title,
-        url,
-      })
-      .catch((err) => console.error("Share failed:", err));
+    navigator.share({ title, url }).catch((err) => console.error("Share failed:", err));
   } else if (navigator.clipboard) {
     navigator.clipboard.writeText(`${title} - ${url}`).then(() => {
       alert("Link copied to clipboard.");
     });
   } else {
-    // Fallback: select and copy via prompt
     window.prompt("Copy this link:", url);
   }
 }
@@ -211,7 +185,6 @@ function initDonationUI() {
   updateSupporterUI();
 }
 
-// UI Toggles
 function toggleDarkMode() {
   document.body.classList.toggle("dark-mode");
 }
@@ -220,7 +193,6 @@ function toggleSidenav() {
   document.getElementById("sidenav").classList.toggle("open");
 }
 
-// Load on startup
 window.addEventListener('DOMContentLoaded', () => {
   initDonationUI();
   showDonationPopup();
