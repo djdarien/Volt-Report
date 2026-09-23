@@ -3,59 +3,94 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="EV charging guide and maps: home setup, networks, Superchargers, PlugShare, OpenChargeMap.">
+  <meta name="description" content="EV charging guide and maps -- home setup, networks, Superchargers, PlugShare, OpenChargeMap, and Tesla browser tools.">
+  <meta name="og:title" content="EV Charging & Maps - Volt Report">
+  <meta name="og:description" content="Charging guide and station maps in one page for home, road trips, and the Tesla in-car browser.">
   <title>Charging & Maps - Volt Report</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body class="no-sidenav">
   <nav class="navbar">
     <div class="nav-inner">
-      <div class="logo"><a href="index.html">Volt Report</a></div>
+      <div class="logo"><a href="index.html">Volt Report</a><span id="supporter-badge" class="supporter-badge hidden">Supporter Access</span></div>
       <button class="openbtn" id="mobile-menu-btn" aria-label="Toggle menu">Menu</button>
       <div class="nav-links" id="nav-links">
         <a href="index.html">Home</a>
-        <a href="charging.html" class="active">Charging & Maps</a>
+        <a href="https://ev-expert-chat-701502515049.us-west1.run.app" target="_blank" rel="noopener noreferrer">Ask EVy</a>
+        <a href="https://www.paypal.com/paypalme/djdarien" id="donate-nav-btn" class="donate-nav-btn donate-cta" target="_blank" rel="noopener noreferrer">Donate</a>
+        <a href="guides.html">EV Guides</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="charging.html" class="active">Charging &amp; Maps</a>
         <a href="tesla-specs.html">Tesla Specs</a>
         <a href="tesla-fsd.html">Tesla FSD</a>
-        <a href="blog.html">EV Blog</a>
+        <a href="tesla-owners.html">Owner Resources</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
       </div>
     </div>
   </nav>
   <div class="container">
     <main class="main-content">
       <header class="page-header">
-        <h1>EV Charging & Maps</h1>
-        <p class="subtitle">Guide and station maps in one place.</p>
-        <p><a href="#maps">Maps</a> &middot; <a href="#guide">Guide</a></p>
+        <h1>EV Charging &amp; Maps</h1>
+        <p class="subtitle">Home setup, public networks, costs, and live charging maps in one place.</p>
+        <p class="page-tabs"><a href="#guide">Guide</a> <a href="#maps">Maps</a> <a href="#costs">Costs</a></p>
       </header>
-
       <section class="charging-section" id="maps">
         <h2>Charging Maps</h2>
+        <p>Open these Tesla-friendly maps for station search and trip planning. If the preview embed fails in the car browser, use the cards.</p>
         <div class="map-grid">
-          <div class="map-card"><h3>OpenChargeMap</h3><p>Open station directory.</p><a href="https://openchargemap.org/poi?CountryIDs=2&CountryName=unitedstates" target="_blank" rel="noopener noreferrer">US map</a></div>
-          <div class="map-card"><h3>PlugShare</h3><p>Community status and reviews.</p><a href="https://www.plugshare.com/" target="_blank" rel="noopener noreferrer">PlugShare</a></div>
-          <div class="map-card"><h3>Tesla Superchargers</h3><p>Official Tesla map.</p><a href="https://www.tesla.com/supercharger" target="_blank" rel="noopener noreferrer">Tesla map</a></div>
-          <div class="map-card"><h3>ABRP</h3><p>EV trip planner.</p><a href="https://abetterrouteplanner.com/" target="_blank" rel="noopener noreferrer">ABRP</a></div>
-          <div class="map-card"><h3>Electrify America</h3><p>Public DC fast charging.</p><a href="https://www.electrifyamerica.com/" target="_blank" rel="noopener noreferrer">EA map</a></div>
-          <div class="map-card"><h3>EVgo</h3><p>City and highway DC fast.</p><a href="https://www.evgo.com/find-a-charger/" target="_blank" rel="noopener noreferrer">EVgo</a></div>
+          <div class="map-card"><h3>OpenChargeMap</h3><p>Open station directory with a clean map for in-car browsing.</p><a href="https://openchargemap.org/poi?CountryIDs=2&amp;CountryName=unitedstates" target="_blank" rel="noopener noreferrer">US map</a></div>
+          <div class="map-card"><h3>PlugShare</h3><p>Community map with reviews and charger status.</p><a href="https://www.plugshare.com/" target="_blank" rel="noopener noreferrer">PlugShare</a></div>
+          <div class="map-card"><h3>Tesla Superchargers</h3><p>Official Supercharger map and route planning.</p><a href="https://www.tesla.com/supercharger" target="_blank" rel="noopener noreferrer">Tesla map</a></div>
+          <div class="map-card"><h3>A Better Route Planner</h3><p>EV trip planner with charging stops built in.</p><a href="https://abetterrouteplanner.com/" target="_blank" rel="noopener noreferrer">ABRP</a></div>
+          <div class="map-card"><h3>Electrify America</h3><p>Public DC fast charging locations and pricing.</p><a href="https://www.electrifyamerica.com/" target="_blank" rel="noopener noreferrer">EA map</a></div>
+          <div class="map-card"><h3>EVgo</h3><p>City and highway DC fast charging search.</p><a href="https://www.evgo.com/find-a-charger/" target="_blank" rel="noopener noreferrer">EVgo</a></div>
         </div>
-        <div class="iframe-wrapper">
-          <iframe class="map-iframe" src="https://openchargemap.org/poi?CountryIDs=2&CountryName=unitedstates" title="OpenChargeMap US preview" loading="lazy"></iframe>
+        <div class="iframe-wrapper"><iframe class="map-iframe" src="https://openchargemap.org/poi?CountryIDs=2&amp;CountryName=unitedstates" title="OpenChargeMap US preview" loading="lazy"></iframe></div>
+        <div class="tips-panel"><p><strong>Tesla browser tips:</strong> Bookmark this page. Prefer the cards if an embed is slow. Keep extra tabs closed while driving.</p></div>
+      </section>
+      <section class="charging-section" id="guide">
+        <h2>Types of EV Charging</h2>
+        <div class="map-grid">
+          <div class="map-card"><h3>Level 1 (120V)</h3><p>3-5 miles/hour. Standard household outlet. Overnight or emergency top-ups.</p></div>
+          <div class="map-card"><h3>Level 2 (240V)</h3><p>25-30 miles/hour. Home or public charger. Full charge in 4-10 hours.</p></div>
+          <div class="map-card"><h3>DC Fast Charging</h3><p>150-350 miles/hour. 10-80% in 20-45 minutes. Superchargers and public networks.</p></div>
+        </div>
+        <h2>Home Charging Setup</h2>
+        <div class="map-card">
+          <h3>Installation basics</h3>
+          <ul>
+            <li>Cost: $500-$2,500 for equipment plus installation</li>
+            <li>Time: 4-8 hours for a standard home setup</li>
+            <li>Electrical: 30-60 amp circuit</li>
+            <li>Speed: about 25-30 miles per hour</li>
+          </ul>
+          <p>Many utilities offer rebates. Federal credit may cover part of a qualifying charger.</p>
+        </div>
+        <h2>Public networks</h2>
+        <div class="map-grid">
+          <div class="map-card"><h3>Tesla Supercharger</h3><p>150-250 kW. Best North America coverage. About $0.26/kWh or subscription.</p></div>
+          <div class="map-card"><h3>Electrify America</h3><p>150-350 kW. About $0.35/kWh or membership.</p></div>
+          <div class="map-card"><h3>EVgo</h3><p>50-350 kW in cities and highways. About $0.30/kWh.</p></div>
+          <div class="map-card"><h3>ChargePoint</h3><p>Largest public network. Mostly Level 2, DC fast growing. Pricing varies.</p></div>
         </div>
       </section>
-
-      <section class="charging-section" id="guide">
-        <h2>Charging types</h2>
+      <section class="charging-section" id="costs">
+        <h2>Charging costs</h2>
         <ul>
-          <li>Level 1 (120V): about 3-5 miles/hour</li>
-          <li>Level 2 (240V): about 25-30 miles/hour</li>
-          <li>DC fast / Supercharger: 10-80% in roughly 20-45 minutes</li>
+          <li>Home Level 2: about $0.14-0.18/kWh</li>
+          <li>Tesla Supercharger: about $0.26/kWh</li>
+          <li>Electrify America DC: about $0.35/kWh</li>
+          <li>Example Model 3 at 1,000 miles/month home charging: about $38/month vs $120-180 gas</li>
         </ul>
-        <p>Home Level 2 is usually cheapest for daily charging. Use maps above for road trips.</p>
+        <p>Use ABRP or the car nav for road trips. Charge to about 80% on DC fast. Check PlugShare before a detour.</p>
       </section>
     </main>
   </div>
   <script src="script.js"></script>
+  <script src="consent.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var btn = document.getElementById('mobile-menu-btn');
