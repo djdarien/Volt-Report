@@ -20,11 +20,11 @@
   <nav class="navbar">
     <div class="nav-inner">
       <div class="logo"><a href="index.html">Volt Report</a><span id="supporter-badge" class="supporter-badge hidden">Supporter Access</span></div>
-      <button class="openbtn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+      <button class="openbtn" id="mobile-menu-btn" aria-label="Toggle menu">&#9776;</button>
       <div class="nav-links" id="nav-links">
         <a href="index.html" class="active">Home</a>
         <div class="nav-dropdown" id="ev-categories">
-          <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Categories ▾</button>
+          <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Categories &#9662;</button>
           <div class="dropdown-menu" role="menu" aria-label="EV Categories">
             <div style="padding:6px 10px;color:#ccc;font-weight:700">Tesla</div>
             <a href="#" role="menuitem" onclick="selectCategory('Tesla Model 3')">Model 3</a>
@@ -57,8 +57,7 @@
         <a href="https://www.paypal.com/paypalme/djdarien" id="donate-nav-btn" class="donate-nav-btn donate-cta" target="_blank" rel="noopener noreferrer">Donate</a>
         <a href="guides.html">EV Guides</a>
         <a href="blog.html">EV Blog</a>
-        <a href="charging.html">Charging</a>
-        <a href="maps.html">Charging Maps</a>
+        <a href="charging.html">Charging &amp; Maps</a>
         <a href="tesla-specs.html">Tesla Specs</a>
         <a href="tesla-fsd.html">Tesla FSD</a>
         <a href="tesla-owners.html">Owner Resources</a>
@@ -70,9 +69,9 @@
   </nav>
 
   <div id="donation-popup" class="donation-popup" role="dialog" aria-live="polite" aria-modal="true" aria-label="Support Volt Report">
-    <button id="donation-popup-close" class="donation-popup-close" type="button" aria-label="Close donation prompt">×</button>
+    <button id="donation-popup-close" class="donation-popup-close" type="button" aria-label="Close donation prompt">&times;</button>
     <h4>Help keep Volt Report running</h4>
-    <p>A small tip keeps hosting and this AI-based EV assistant online. It’s optional, but very appreciated.</p>
+    <p>A small tip keeps hosting and this AI-based EV assistant online. It is optional, but very appreciated.</p>
     <div class="donation-popup-actions">
       <a id="donation-popup-donate" href="https://www.paypal.com/paypalme/djdarien" target="_blank" rel="noopener noreferrer">Donate</a>
       <button id="donation-popup-dismiss" type="button">Maybe later</button>
@@ -83,19 +82,19 @@
     <div class="main-content home-main">
       <header class="home-hero">
         <div class="hero-content">
-          <p class="hero-eyebrow">Tesla · EVs · Charging · Future</p>
+          <p class="hero-eyebrow">Tesla &middot; EVs &middot; Charging &middot; Future</p>
           <h1>Volt Report</h1>
-          <p class="hero-sub">Clean, focused electric vehicle news. Choose a category to dive in.</p>
+          <p class="hero-sub">Clean, focused electric vehicle news. FSD v14.1 Lite is out for HW3. Choose a category to dive in.</p>
+          <p class="hero-sub"><a href="tesla-fsd.html">FSD update</a> &middot; <a href="tesla-specs.html">2026 Tesla prices</a> &middot; <a href="charging.html">Charging &amp; maps</a></p>
         </div>
       </header>
 
       <section class="category-section" id="main" aria-label="Browse categories">
         <h2 class="section-title">Browse by Category</h2>
-        <p class="section-desc">Select a topic to load the latest headlines. No clutter — just the news you want.</p>
-
+        <p class="section-desc">Select a topic to load the latest headlines. No clutter -- just the news you want.</p>
         <div class="category-groups">
           <div class="category-group">
-            <h3 class="group-title"><span class="group-icon">⚡</span> Tesla</h3>
+            <h3 class="group-title"><span class="group-icon">Tesla</span> Tesla</h3>
             <div class="category-grid">
               <button class="cat-card" onclick="selectCategory('Tesla Model 3')"><span class="cat-name">Model 3</span><span class="cat-hint">Sedan updates &amp; reviews</span></button>
               <button class="cat-card" onclick="selectCategory('Tesla Model Y')"><span class="cat-name">Model Y</span><span class="cat-hint">Crossover news</span></button>
@@ -106,9 +105,8 @@
               <button class="cat-card" onclick="selectCategory('Tesla FSD')"><span class="cat-name">Full Self-Driving</span><span class="cat-hint">FSD updates</span></button>
             </div>
           </div>
-
           <div class="category-group">
-            <h3 class="group-title"><span class="group-icon">🚗</span> Other EVs</h3>
+            <h3 class="group-title">Other EVs</h3>
             <div class="category-grid">
               <button class="cat-card" onclick="selectCategory('Rivian')"><span class="cat-name">Rivian</span><span class="cat-hint">R1T / R1S</span></button>
               <button class="cat-card" onclick="selectCategory('Lucid Motors')"><span class="cat-name">Lucid</span><span class="cat-hint">Air &amp; Gravity</span></button>
@@ -117,9 +115,8 @@
               <button class="cat-card" onclick="selectCategory('Ford EV')"><span class="cat-name">Ford</span><span class="cat-hint">Mach-E &amp; Lightning</span></button>
             </div>
           </div>
-
           <div class="category-group">
-            <h3 class="group-title"><span class="group-icon">🔌</span> Charging &amp; Tech</h3>
+            <h3 class="group-title">Charging &amp; Tech</h3>
             <div class="category-grid">
               <button class="cat-card" onclick="selectCategory('Tesla Supercharger')"><span class="cat-name">Superchargers</span><span class="cat-hint">Network &amp; V4</span></button>
               <button class="cat-card" onclick="selectCategory('EV Charging Stations')"><span class="cat-name">Public Charging</span><span class="cat-hint">Stations &amp; networks</span></button>
@@ -127,9 +124,8 @@
               <button class="cat-card" onclick="selectCategory('Solid State Batteries')"><span class="cat-name">Solid State</span><span class="cat-hint">Next-gen batteries</span></button>
             </div>
           </div>
-
           <div class="category-group">
-            <h3 class="group-title"><span class="group-icon">🌍</span> Market &amp; Policy</h3>
+            <h3 class="group-title">Market &amp; Policy</h3>
             <div class="category-grid">
               <button class="cat-card" onclick="selectCategory('EV incentives')"><span class="cat-name">Incentives</span><span class="cat-hint">Tax credits &amp; rebates</span></button>
               <button class="cat-card" onclick="selectCategory('EV Market')"><span class="cat-name">EV Market</span><span class="cat-hint">Sales &amp; trends</span></button>
@@ -142,31 +138,25 @@
       <section class="news-section" id="news-section" hidden>
         <div class="news-header">
           <h2 id="news-heading">EV Headlines</h2>
-          <button type="button" class="back-to-cats" onclick="showCategories()">← All Categories</button>
+          <button type="button" class="back-to-cats" onclick="showCategories()">&larr; All Categories</button>
         </div>
         <div id="news-container" class="grid" aria-live="polite" aria-busy="false"></div>
       </section>
 
       <section class="quick-links">
         <a href="guides.html" class="quick-link">EV Guides</a>
-        <a href="charging.html" class="quick-link">Charging</a>
-        <a href="maps.html" class="quick-link">Maps</a>
+        <a href="charging.html" class="quick-link">Charging &amp; Maps</a>
         <a href="tesla-specs.html" class="quick-link">Tesla Specs</a>
         <a href="tesla-fsd.html" class="quick-link">FSD</a>
         <a href="games.html" class="quick-link">Games</a>
       </section>
 
       <div class="ad-section">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-format="fluid"
-             data-ad-layout-key="-5n+bu-1z-4o+vr"
-             data-ad-client="ca-pub-3211630470920033"
-             data-ad-slot="6828138977"></ins>
+        <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-5n+bu-1z-4o+vr" data-ad-client="ca-pub-3211630470920033" data-ad-slot="6828138977"></ins>
       </div>
 
       <footer>
-        <p>Powered by NewsData.io • Focused on Tesla &amp; EV News</p>
+        <p>Powered by NewsData.io &bull; Focused on Tesla &amp; EV News</p>
       </footer>
     </div>
   </div>
@@ -177,9 +167,7 @@
     document.addEventListener('DOMContentLoaded', function () {
       var btn = document.getElementById('mobile-menu-btn');
       var links = document.getElementById('nav-links');
-      if (btn && links) {
-        btn.addEventListener('click', function () { links.classList.toggle('open'); });
-      }
+      if (btn && links) btn.addEventListener('click', function () { links.classList.toggle('open'); });
       document.querySelectorAll('.dropdown-toggle').forEach(function (b) {
         b.addEventListener('click', function (e) {
           var parent = b.closest('.nav-dropdown');
@@ -194,28 +182,20 @@
         document.querySelectorAll('.dropdown-toggle[aria-expanded]').forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
       });
     });
-
     function selectCategory(name) {
       var section = document.getElementById('news-section');
       var heading = document.getElementById('news-heading');
       var cats = document.querySelector('.category-section');
       if (heading) heading.textContent = name + ' News';
-      if (section) {
-        section.hidden = false;
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (section) { section.hidden = false; section.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       if (cats) cats.style.opacity = '0.45';
       if (typeof updateCategory === 'function') updateCategory(name);
     }
-
     function showCategories() {
       var section = document.getElementById('news-section');
       var cats = document.querySelector('.category-section');
       if (section) section.hidden = true;
-      if (cats) {
-        cats.style.opacity = '1';
-        cats.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (cats) { cats.style.opacity = '1'; cats.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     }
   </script>
 </body>
