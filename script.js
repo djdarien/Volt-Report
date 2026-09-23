@@ -4,8 +4,10 @@
 const API_KEY = "pub_0a40bca6a31a4b92ae3f8eab6996da01"; // original key restored per request
 const USE_PROXY = false; // set to true if you later add a server-side proxy at /api/news
 
+// Default landing page query
 let currentQuery = "Tesla";
 
+// Map friendly category names to optimized NewsData search queries
 const categoryQueries = {
   "Tesla Model 3": "Tesla Model 3",
   "Tesla Model Y": "Tesla Model Y",
@@ -29,6 +31,7 @@ const categoryQueries = {
   "EV Infrastructure": "EV Infrastructure OR Charging Grid",
 };
 
+// Update category → fetch replacement query
 function updateCategory(query) {
   currentQuery = categoryQueries[query] || query;
   if (!document.getElementById("news-container")) {
@@ -38,6 +41,7 @@ function updateCategory(query) {
   fetchNews();
 }
 
+// Fetch news from NewsData.io
 async function fetchNews() {
   const newsContainer = document.getElementById("news-container");
   if (!newsContainer) return;
@@ -57,8 +61,11 @@ async function fetchNews() {
 
   try {
     const response = await fetch(endpoint);
-    if (!response.ok) throw new Error(`Fetch failed: ${response.status}`);
+    if (!response.ok) {
+      throw new Error(`Fetch failed: ${response.status}`);
+    }
     const data = await response.json();
+    console.log("NewsData.io result:", data);
     newsContainer.innerHTML = "";
     if (!data.results || data.results.length === 0) {
       newsContainer.innerHTML = "<p>No articles found for this category.</p>";
@@ -110,7 +117,9 @@ function shareArticle(title, url) {
   if (navigator.share) {
     navigator.share({ title, url }).catch((err) => console.error("Share failed:", err));
   } else if (navigator.clipboard) {
-    navigator.clipboard.writeText(`${title} - ${url}`).then(() => alert("Link copied to clipboard."));
+    navigator.clipboard.writeText(`${title} - ${url}`).then(() => {
+      alert("Link copied to clipboard.");
+    });
   } else {
     window.prompt("Copy this link:", url);
   }
@@ -118,43 +127,76 @@ function shareArticle(title, url) {
 
 const DONATION_KEY = 'voltreport_supporter';
 const DONATION_POPUP_DISMISSED = 'voltreport_donation_popup_dismissed';
-function isSupporter() { return localStorage.getItem(DONATION_KEY) === 'true'; }
-function setSupporter() { localStorage.setItem(DONATION_KEY, 'true'); updateSupporterUI(); }
+
+function isSupporter() {
+  return localStorage.getItem(DONATION_KEY) === 'true';
+}
+
+function setSupporter() {
+  localStorage.setItem(DONATION_KEY, 'true');
+  updateSupporterUI();
+}
+
 function updateSupporterUI() {
   const badge = document.getElementById('supporter-badge');
-  if (badge) badge.classList.toggle('hidden', !isSupporter());
+  if (badge) {
+    badge.classList.toggle('hidden', !isSupporter());
+  }
   document.querySelectorAll('.donate-cta, #donate-nav-btn').forEach((btn) => {
     if (!btn) return;
-    if (isSupporter()) { btn.classList.add('supporter-cta'); btn.textContent = btn.dataset.supporterText || btn.textContent; }
-    else btn.classList.remove('supporter-cta');
+    if (isSupporter()) {
+      btn.classList.add('supporter-cta');
+      btn.textContent = btn.dataset.supporterText || btn.textContent;
+    } else {
+      btn.classList.remove('supporter-cta');
+    }
   });
 }
+
 function hideDonationPopup(dismiss = true) {
   const popup = document.getElementById('donation-popup');
   if (popup) popup.classList.remove('open');
   if (dismiss) localStorage.setItem(DONATION_POPUP_DISMISSED, 'true');
 }
+
 function showDonationPopup() {
   if (isSupporter()) return;
   if (localStorage.getItem(DONATION_POPUP_DISMISSED) === 'true') return;
   const popup = document.getElementById('donation-popup');
   if (popup) popup.classList.add('open');
 }
+
 function initDonationUI() {
   document.querySelectorAll('.donate-cta, #donate-nav-btn, #donation-popup-donate').forEach((trigger) => {
     if (!trigger) return;
-    trigger.addEventListener('click', () => { setSupporter(); hideDonationPopup(); });
+    trigger.addEventListener('click', () => {
+      setSupporter();
+      hideDonationPopup();
+    });
   });
   const closeButton = document.getElementById('donation-popup-close');
-  if (closeButton) closeButton.addEventListener('click', () => hideDonationPopup(true));
+  if (closeButton) {
+    closeButton.addEventListener('click', () => hideDonationPopup(true));
+  }
   const dismissButton = document.getElementById('donation-popup-dismiss');
-  if (dismissButton) dismissButton.addEventListener('click', () => hideDonationPopup(true));
+  if (dismissButton) {
+    dismissButton.addEventListener('click', () => hideDonationPopup(true));
+  }
   updateSupporterUI();
 }
-function toggleDarkMode() { document.body.classList.toggle("dark-mode"); }
-function toggleSidenav() { document.getElementById("sidenav").classList.toggle("open"); }
+
+function toggleDarkMode() {
+  document.body.classList.toggle("dark-mode");
+}
+
+function toggleSidenav() {
+  document.getElementById("sidenav").classList.toggle("open");
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   initDonationUI();
   showDonationPopup();
-  if (document.getElementById('news-container')) fetchNews();
+  if (document.getElementById('news-container')) {
+    fetchNews();
+  }
 });
