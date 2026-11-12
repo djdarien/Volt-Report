@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Tesla FSD guide: v14.1 Lite for HW3 and $99/month subscription pricing.">
-  <title>Tesla Autopilot & FSD Guide - Volt Report</title>
+  <meta name="description" content="Tesla FSD guide, updated November 2026: v14.3 for HW4/AI4 cars, FSD v14.3 Lite for HW3, what each branch includes and excludes, and $99/month subscription pricing.">
+  <title>Tesla Autopilot &amp; FSD Guide - Volt Report</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="no-sidenav">
@@ -17,6 +17,7 @@
         <a href="charging.html">Charging &amp; Maps</a>
         <a href="tesla-specs.html">Tesla Specs</a>
         <a href="tesla-fsd.html" class="active">Tesla FSD</a>
+        <a href="roadster.html">Roadster</a>
         <a href="blog.html">EV Blog</a>
         <a href="fsd-v14-lite-review.html">V14 Lite review</a>
       </div>
@@ -24,10 +25,47 @@
   </nav>
   <div class="container">
     <main class="main-content">
-      <header class="page-header">
-        <h1>Tesla Autopilot &amp; Full Self-Driving</h1>
-        <p class="subtitle">FSD (Supervised) v14.1 Lite is out for Hardware 3. In the US, FSD is subscription-only: $99/month or $999/year.</p>
+      <header class="hero-full hero-fsd bleed">
+        <p class="hero-eyebrow">Software &middot; Updated November 2026</p>
+        <h1>Full Self-Driving</h1>
+        <p class="hero-sub">FSD (Supervised) is now two products wearing one name. Version 14.3 brings the full new model to HW4/AI4 cars. Hardware 3 cars get FSD v14.3 Lite — a distilled build that is far better than what came before, and very likely the end of the line.</p>
+        <div class="hero-actions">
+          <a class="btn btn-light" href="#hw4">HW4 · v14.3</a>
+          <a class="btn btn-outline-light" href="#hw3">HW3 · v14.3 Lite</a>
+        </div>
       </header>
+
+      <section class="fsd-section" id="hw4">
+        <p class="kicker">Hardware 4 / AI4</p>
+        <h2>FSD v14.3 — the full model</h2>
+        <p>v14.3 is the current FSD (Supervised) branch for cars on the newest AI4 computer. The latest build is <strong>v14.3.13</strong> (November 4, 2026, on software 2026.38.5.12). Per Tesla's release notes, the 14.3 generation brings:</p>
+        <ul>
+          <li><strong>One unified model</strong> across Summon, FSD, and Robotaxi driving (HW4 only)</li>
+          <li><strong>A rewritten AI compiler</strong> — Tesla claims roughly 20% faster reactions</li>
+          <li><strong>A new vision encoder</strong> feeding the driving model</li>
+          <li><strong>Automatic Collision Evasion</strong> (AI4 only) — the car can engage FSD on its own if a collision looks imminent</li>
+        </ul>
+        <p>This is the branch that gets the frontier features first, and the one Tesla's robotaxi work is built on.</p>
+      </section>
+
+      <section class="fsd-section" id="hw3">
+        <p class="kicker">Hardware 3 / AI3</p>
+        <h2>FSD v14.3 Lite — the distilled build</h2>
+        <p>"FSD v14.3 Lite" is Tesla's official name for the HW3 version: the v14 model distilled down to run on the older computer. The first v14 Lite release landed June 29, 2026; Intel-based HW3 Model S and X cars received 14.3 Lite on October 14, 2026. Lite includes:</p>
+        <ul>
+          <li>Better merges and highway fork decisions</li>
+          <li>Sharper pedestrian and traffic-light responses</li>
+          <li>Fewer false slowdowns, smoother steering</li>
+          <li>Parking, unparking, and reversing</li>
+          <li>Arrival Options and Speed Profiles — including the new, relaxed <strong>SLOTH</strong> profile (a few features are missing specifically on Intel-based Model S/X)</li>
+          <li>Start FSD from Park</li>
+        </ul>
+        <p>Lite <strong>excludes</strong> the headline HW4 items: no unified Summon/FSD/Robotaxi model, no Automatic Collision Evasion, and no unsupervised capability. Tesla has been clear that HW3 will not get unsupervised FSD or a v15 branch — v14 Lite is, in all likelihood, the last major FSD generation for these cars.</p>
+        <div class="callout">
+          <p><strong>What this means for HW3 owners like us.</strong> This site is run from a 2022 Model 3 — an HW3 car. The honest summary: 14.3 Lite is genuinely excellent day to day (see the <a href="fsd-v14-lite-review.html">hands-on review</a>), and it is also a ceiling. If unsupervised driving is the feature you are waiting for, Tesla's own messaging says it will take newer hardware. If you bought FSD to make today's drives calmer, Lite delivers that — and then some.</p>
+        </div>
+      </section>
+
       <section class="fsd-section">
         <h2>Pricing (US, 2026)</h2>
         <ul>
@@ -38,21 +76,17 @@
           <li>One-time FSD buy ended February 14, 2026 (last price $8,000). Existing VIN licenses stay on those cars.</li>
         </ul>
       </section>
+
       <section class="fsd-section">
-        <h2>FSD v14.1 Lite (HW3 / AI3)</h2>
-        <p>v14 Lite landed in June 2026. v14.1 Lite followed in August (2026.21.6). v14.2 Lite started appearing in mid-September.</p>
-        <ul>
-          <li>Distilled HW4 v14 behavior onto HW3 compute</li>
-          <li>Start FSD from Park, Arrival Options, always-on Speed Profiles (including SLOTH)</li>
-          <li>Parking, unparking, and reversing</li>
-          <li>Still supervised Level 2 -- stay attentive</li>
-        </ul>
-        <p><a href="fsd-v14-lite-review.html">Read the 2022 Model 3 V14 Lite review</a>.</p>
+        <h2>Safety &amp; oversight</h2>
+        <p>On every car, on every branch, FSD remains <strong>SAE Level 2</strong>: a supervised driver-assistance system, not autonomy. Keep your attention on the road, hands ready, and take over in rain, construction, or anything unclear.</p>
+        <p>For context on the regulatory side: NHTSA's probe into FSD performance in reduced visibility was upgraded to an Engineering Analysis (EA26002, March 18, 2026) covering roughly 3.2 million vehicles. An engineering analysis is an investigation stage — it is not a defect finding — and we report it that way.</p>
+        <p>Official references: <a href="https://www.tesla.com/autopilot" target="_blank" rel="noopener noreferrer">Tesla's FSD (Supervised) page</a> and the <a href="https://www.tesla.com/support/fsd" target="_blank" rel="noopener noreferrer">FSD support page</a>.</p>
       </section>
-      <section class="fsd-section">
-        <h2>Safety</h2>
-        <p>FSD is driver assistance, not autonomy. Keep hands ready, watch the road, and take over in rain, construction, or anything unclear.</p>
-      </section>
+
+      <footer>
+        <p>Volt Report is an independent enthusiast publication and is not affiliated with, endorsed by, or sponsored by Tesla, Inc.</p>
+      </footer>
     </main>
   </div>
   <script src="script.js"></script>
